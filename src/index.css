@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --app-font-size: 16px;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  html.text-size-normal {
+    font-size: 16px;
+  }
+
+  html.text-size-large {
+    font-size: 18px;
+  }
+
+  html.text-size-xlarge {
+    font-size: 20px;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    color: #0f172a;
+    background-color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+    font-size: 0.9375rem; /* 15px default body */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: inherit;
+  }
+
+  /* High Contrast overrides */
+  html.high-contrast body {
+    background-color: #f8fafc;
+    color: #000000;
+  }
+
+  html.high-contrast .border-slate-200,
+  html.high-contrast .border-slate-300,
+  html.high-contrast .border-gray-200 {
+    border-color: #334155;
+  }
+
+  /* Clean focus indicator for accessibility without arbitrary boxes */
+  *:focus-visible {
+    outline: 2px solid #0d9488;
+    outline-offset: 2px;
+  }
+}
+
+/* Sleek scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Accessible animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -1,0 +1,683 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Core user profile storing credentials, role, UK senior/carer details, and accessibility preferences.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Unique Firebase Authentication UID of the user.",
+          "maxLength": 128
+        },
+        "role": {
+          "type": "string",
+          "description": "Primary role of the user.",
+          "enum": ["senior", "family", "admin"]
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Full display name of the user in plain English.",
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address for login and notifications.",
+          "maxLength": 255
+        },
+        "phone": {
+          "type": "string",
+          "description": "UK telephone or mobile number for SMS/call verifications.",
+          "maxLength": 30
+        },
+        "plan": {
+          "type": "string",
+          "description": "Subscription or service tier (e.g. free, standard, family_plus).",
+          "maxLength": 50
+        },
+        "accessibilitySettings": {
+          "type": "object",
+          "description": "Senior-friendly accessibility configuration including font size, contrast, and voice synthesis."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO 8601 timestamp or server timestamp when the user profile was created."
+        }
+      },
+      "required": ["uid", "role", "displayName", "email", "createdAt"]
+    },
+    "FamilyLink": {
+      "title": "FamilyLink",
+      "description": "Delegated trust and permission linkage connecting a Senior with a Family Carer or Guardian.",
+      "type": "object",
+      "properties": {
+        "linkId": {
+          "type": "string",
+          "description": "Unique identifier for the family link relationship.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen granting or holding care access.",
+          "maxLength": 128
+        },
+        "familyUid": {
+          "type": "string",
+          "description": "UID of the family member or carer receiving access.",
+          "maxLength": 128
+        },
+        "permissions": {
+          "type": "object",
+          "description": "Map of module identifiers to permission levels (view, edit, manage)."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the family link.",
+          "enum": ["invited", "active", "revoked"]
+        },
+        "invitedBy": {
+          "type": "string",
+          "description": "UID of the party that initiated the care invitation.",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the invitation or linkage was created."
+        }
+      },
+      "required": ["linkId", "seniorUid", "familyUid", "permissions", "status", "invitedBy", "createdAt"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "In-app alerts, scam safety warnings, reminder chimes, and carer updates.",
+      "type": "object",
+      "properties": {
+        "notifId": {
+          "type": "string",
+          "description": "Unique notification ID.",
+          "maxLength": 128
+        },
+        "uid": {
+          "type": "string",
+          "description": "Recipient UID of the notification.",
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "description": "Notification category (e.g. scam_alert, reminder, carer_invite, document_shared).",
+          "maxLength": 50
+        },
+        "payload": {
+          "type": "object",
+          "description": "Structured payload details including title, body, and navigation route."
+        },
+        "read": {
+          "type": "boolean",
+          "description": "Whether the notification has been acknowledged or read."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the notification was dispatched."
+        }
+      },
+      "required": ["notifId", "uid", "type", "read", "createdAt"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable security and permission audit log entry written by system triggers and Cloud Functions.",
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string",
+          "description": "Unique audit log entry identifier.",
+          "maxLength": 128
+        },
+        "actorUid": {
+          "type": "string",
+          "description": "UID of the user or system agent executing the action.",
+          "maxLength": 128
+        },
+        "action": {
+          "type": "string",
+          "description": "Action executed (e.g. PERMISSION_CHANGE, LINK_REVOKED, LOGIN, SCAM_VERIFIED).",
+          "maxLength": 100
+        },
+        "targetUid": {
+          "type": "string",
+          "description": "UID of the target user affected by this action.",
+          "maxLength": 128
+        },
+        "targetResource": {
+          "type": "string",
+          "description": "Target resource or collection path modified.",
+          "maxLength": 200
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp when the audit log occurred."
+        }
+      },
+      "required": ["logId", "actorUid", "action", "targetUid", "targetResource", "timestamp"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Trusted administrative record in the secure adminUsers collection used for server-side rule lookups.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "UID of the administrative user.",
+          "maxLength": 128
+        },
+        "adminRole": {
+          "type": "string",
+          "description": "Administrative authority tier.",
+          "enum": ["support", "finance", "superadmin"]
+        }
+      },
+      "required": ["uid", "adminRole"]
+    },
+    "ScamCheck": {
+      "title": "ScamCheck",
+      "description": "Scam analysis check verifying message security with plain-English verdict, explanation, and UK red flags.",
+      "type": "object",
+      "properties": {
+        "checkId": {
+          "type": "string",
+          "description": "Unique scam check identifier.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen who submitted the message.",
+          "maxLength": 128
+        },
+        "inputType": {
+          "type": "string",
+          "description": "Format of the message submission.",
+          "enum": ["text", "image", "email"]
+        },
+        "rawContentRef": {
+          "type": ["string", "null"],
+          "description": "Temporary reference identifier if stored during check, nulled out afterwards for GDPR data-minimisation."
+        },
+        "verdict": {
+          "type": "string",
+          "description": "Traffic-light safety outcome.",
+          "enum": ["safe", "caution", "likely_scam"]
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Senior-friendly explanation in clear British English.",
+          "maxLength": 2000
+        },
+        "redFlags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of specific warning indicators detected."
+        },
+        "advice": {
+          "type": "string",
+          "description": "Immediate protective steps for the senior."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the scam check was conducted."
+        }
+      },
+      "required": ["checkId", "seniorUid", "inputType", "verdict", "explanation", "redFlags", "createdAt"]
+    },
+    "Guide": {
+      "title": "Guide",
+      "description": "Pre-written digital step-by-step guidance manuals in plain English.",
+      "type": "object",
+      "properties": {
+        "guideId": {
+          "type": "string",
+          "description": "Unique guide identifier.",
+          "maxLength": 128
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the guide (e.g. 'How to make a video call with grandchildren').",
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "description": "Guide category.",
+          "maxLength": 100
+        },
+        "steps": {
+          "type": "array",
+          "description": "Numbered step list with clear titles and plain English instructions.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "required": ["title", "description"]
+          }
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "UID or admin identifier that published this guide."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of the most recent update."
+        }
+      },
+      "required": ["guideId", "title", "category", "steps", "createdBy", "updatedAt"]
+    },
+    "Reminder": {
+      "title": "Reminder",
+      "description": "Senior life reminders including appointments, renewals, birthdays, and services.",
+      "type": "object",
+      "properties": {
+        "reminderId": {
+          "type": "string",
+          "description": "Unique reminder identifier.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen this reminder belongs to.",
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "description": "Category of the reminder.",
+          "enum": ["appointment", "renewal", "birthday", "service"]
+        },
+        "title": {
+          "type": "string",
+          "description": "Short, clear title of the reminder in plain English.",
+          "maxLength": 200
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "Date or datetime string when the reminder is due (e.g. YYYY-MM-DD)."
+        },
+        "recurrence": {
+          "type": "string",
+          "description": "Recurrence frequency.",
+          "enum": ["none", "weekly", "monthly", "yearly"]
+        },
+        "channel": {
+          "type": "array",
+          "description": "Notification delivery channels selected.",
+          "items": {
+            "type": "string",
+            "enum": ["in_app", "email", "sms"]
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the reminder.",
+          "enum": ["upcoming", "done", "snoozed"]
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "UID of the creator (senior or linked carer)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the reminder was created."
+        }
+      },
+      "required": ["reminderId", "seniorUid", "type", "title", "dueDate", "recurrence", "channel", "status", "createdBy", "createdAt"]
+    },
+    "Document": {
+      "title": "Document",
+      "description": "Digitised important household, identity, medical, and financial documents with expiry tracking and family sharing.",
+      "type": "object",
+      "properties": {
+        "docId": {
+          "type": "string",
+          "description": "Unique document identifier.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen owning this document.",
+          "maxLength": 128
+        },
+        "category": {
+          "type": "string",
+          "description": "Document category classification.",
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "description": "Document title in plain English.",
+          "maxLength": 200
+        },
+        "storagePath": {
+          "type": "string",
+          "description": "Cloud storage path pointer scoped to the seniorUid.",
+          "maxLength": 500
+        },
+        "expiryDate": {
+          "type": "string",
+          "description": "Optional ISO expiry date string (YYYY-MM-DD)."
+        },
+        "sharedWith": {
+          "type": "array",
+          "description": "Array of linked family member UIDs granted view access.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uploadedAt": {
+          "type": "string",
+          "description": "ISO timestamp when the document was uploaded."
+        }
+      },
+      "required": ["docId", "seniorUid", "category", "title", "storagePath", "sharedWith", "uploadedAt"]
+    },
+    "HomeAsset": {
+      "title": "HomeAsset",
+      "description": "Registered home appliance, boiler, smoke/CO alarm, or household system with service dates, warranties, and maintenance tracking.",
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "description": "Unique home asset identifier.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen owning the home asset.",
+          "maxLength": 128
+        },
+        "type": {
+          "type": "string",
+          "description": "Type category of the asset.",
+          "enum": ["boiler", "appliance", "alarm", "other"]
+        },
+        "name": {
+          "type": "string",
+          "description": "Name and model of the household asset (e.g. Worcester Bosch Greenstar 8000).",
+          "maxLength": 200
+        },
+        "warrantyExpiry": {
+          "type": "string",
+          "description": "Optional warranty expiration date (YYYY-MM-DD)."
+        },
+        "lastServiceDate": {
+          "type": "string",
+          "description": "Date of the most recent service, inspection, or filter change (YYYY-MM-DD)."
+        },
+        "serviceIntervalMonths": {
+          "type": "number",
+          "description": "Recommended recurring maintenance cycle in months (e.g. 12 for annual boiler check)."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Useful notes, model numbers, installer names, Gas Safe registration numbers, or location in home.",
+          "maxLength": 2000
+        },
+        "photoStoragePath": {
+          "type": "string",
+          "description": "Cloud Storage path to the uploaded photo or serial number plate.",
+          "maxLength": 500
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the asset record was registered."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of the latest edit."
+        }
+      },
+      "required": ["assetId", "seniorUid", "type", "name", "createdAt"]
+    },
+    "Tradesperson": {
+      "title": "Tradesperson",
+      "description": "Trusted UK tradesperson, Gas Safe engineer, electrician, or handyman contact scoped to the senior.",
+      "type": "object",
+      "properties": {
+        "tradespersonId": {
+          "type": "string",
+          "description": "Unique tradesperson record identifier.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen this trusted contact belongs to.",
+          "maxLength": 128
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of tradesperson or company (e.g. Andy Miller Heating & Plumbing).",
+          "maxLength": 200
+        },
+        "trade": {
+          "type": "string",
+          "description": "Speciality or trade (e.g. Gas Safe Heating, Electrician, Plumber, Handyman, Locksmith).",
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "description": "UK contact telephone or mobile number.",
+          "maxLength": 30
+        },
+        "notes": {
+          "type": "string",
+          "description": "Helpful notes, certifications, emergency availability, or trusted family recommendation notes.",
+          "maxLength": 2000
+        },
+        "isEmergency": {
+          "type": "boolean",
+          "description": "Whether this contact provides 24/7 or priority emergency callouts (e.g. burst pipes, power outage)."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when this contact was added."
+        }
+      },
+      "required": ["tradespersonId", "seniorUid", "name", "trade", "phone", "createdAt"]
+    },
+    "TrackedSubscription": {
+      "title": "TrackedSubscription",
+      "description": "User's external recurring subscriptions, memberships, charity direct debits, streaming services, and insurance add-ons.",
+      "type": "object",
+      "properties": {
+        "trackId": {
+          "type": "string",
+          "description": "Unique tracked subscription record identifier.",
+          "maxLength": 128
+        },
+        "seniorUid": {
+          "type": "string",
+          "description": "UID of the senior citizen owning this subscription.",
+          "maxLength": 128
+        },
+        "provider": {
+          "type": "string",
+          "description": "Name of service provider or company (e.g. Netflix, British Gas, Saga Magazine, PureGym).",
+          "maxLength": 200
+        },
+        "category": {
+          "type": "string",
+          "description": "Category classification of subscription (e.g. Streaming & TV, Utilities & Home, Insurance & Protection, Magazines & News, Fitness & Leisure, Charity Direct Debit, Other).",
+          "maxLength": 100
+        },
+        "amount": {
+          "type": "number",
+          "description": "Recurring cost per billing cycle in GBP or local currency."
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency code (default GBP).",
+          "maxLength": 10
+        },
+        "billingCycle": {
+          "type": "string",
+          "description": "Billing frequency cycle.",
+          "enum": ["monthly", "annual", "quarterly", "other"]
+        },
+        "nextRenewalDate": {
+          "type": "string",
+          "description": "Next scheduled payment or auto-renewal date (YYYY-MM-DD)."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of subscription tracking.",
+          "enum": ["active", "flagged", "cancelled"]
+        },
+        "detectedVia": {
+          "type": "string",
+          "description": "Input or detection channel.",
+          "enum": ["manual", "emailScan", "bankScan"]
+        },
+        "sharedWithFamily": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Array of linked family member UIDs with visibility into this subscription."
+        },
+        "previousAmount": {
+          "type": "number",
+          "description": "Previous recurring cost before a detected price increase."
+        },
+        "flagReason": {
+          "type": "string",
+          "description": "Explanation why this subscription is flagged (e.g. price increase, unexpected renewal)."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Helpful notes, account or policy number, or cancellation terms.",
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the subscription was added."
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of latest update."
+        }
+      },
+      "required": ["trackId", "seniorUid", "provider", "amount", "billingCycle", "nextRenewalDate", "status", "detectedVia", "sharedWithFamily", "createdAt"]
+    },
+    "Plan": {
+      "title": "Plan",
+      "description": "Public subscription tiers and pricing definitions (Essentials, Complete, Complete + Family).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the subscription plan tier.",
+          "maxLength": 100
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the subscription tier.",
+          "maxLength": 100
+        },
+        "price": {
+          "type": "number",
+          "description": "Monthly recurring price in GBP."
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency code (GBP).",
+          "maxLength": 10
+        },
+        "interval": {
+          "type": "string",
+          "description": "Billing cadence (month, year).",
+          "enum": ["month", "year"]
+        },
+        "tagline": {
+          "type": "string",
+          "description": "Short plain-English summary of target audience."
+        },
+        "isPopular": {
+          "type": "boolean",
+          "description": "Whether this plan is highlighted as Most Popular."
+        },
+        "familySeats": {
+          "type": ["number", "string"],
+          "description": "Number of family/carer accounts included."
+        },
+        "modulesIncluded": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of module IDs included in this plan."
+        },
+        "features": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Bullet-point features in plain English."
+        },
+        "supportLevel": {
+          "type": "string",
+          "description": "Level of customer and safeguarding support included."
+        },
+        "order": {
+          "type": "number",
+          "description": "Display order index."
+        }
+      },
+      "required": ["id", "name", "price", "currency", "interval", "features", "order"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "Top-level collection of user accounts."
+    },
+    "/familyLinks/{linkId}": {
+      "schema": "FamilyLink",
+      "description": "Top-level collection of senior-carer permission linkages."
+    },
+    "/notifications/{notifId}": {
+      "schema": "Notification",
+      "description": "Top-level collection of user notifications."
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Top-level immutable collection of audit logs."
+    },
+    "/adminUsers/{uid}": {
+      "schema": "AdminUser",
+      "description": "Top-level collection defining administrative roles for security rule lookups."
+    },
+    "/scamChecks/{checkId}": {
+      "schema": "ScamCheck",
+      "description": "Top-level collection of scam detection records."
+    },
+    "/guides/{guideId}": {
+      "schema": "Guide",
+      "description": "Top-level collection of digital help step-by-step guides."
+    },
+    "/reminders/{reminderId}": {
+      "schema": "Reminder",
+      "description": "Top-level collection of life reminders (appointments, renewals, birthdays, services)."
+    },
+    "/documents/{docId}": {
+      "schema": "Document",
+      "description": "Top-level collection of secured household, identity, and insurance documents with per-family sharing."
+    },
+    "/homeAssets/{assetId}": {
+      "schema": "HomeAsset",
+      "description": "Top-level collection of registered home appliances, boilers, and alarms with maintenance tracking."
+    },
+    "/tradespeople/{tradespersonId}": {
+      "schema": "Tradesperson",
+      "description": "Top-level collection of trusted UK tradespeople and emergency home contacts scoped to the senior."
+    },
+    "/trackedSubscriptions/{trackId}": {
+      "schema": "TrackedSubscription",
+      "description": "Top-level collection of user's external tracked subscriptions with renewal alerts, price jump detection, and family summary sharing."
+    },
+    "/plans/{planId}": {
+      "schema": "Plan",
+      "description": "Top-level collection of public pricing plans and subscription tiers."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Remix Remix EverEase",
+  "description": "UK SaaS platform providing digital learning, scam safeguarding, encrypted document storage, and family peace of mind for senior citizens.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

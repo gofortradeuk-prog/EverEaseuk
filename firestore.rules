@@ -1,0 +1,626 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // GLOBAL DEFAULT-DENY SAFETY NET
+    // =========================================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // HARDENED GLOBAL HELPER FUNCTIONS
+    // =========================================================================
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // -------------------------------------------------------------------------
+    // ADMIN ACCESS CONTROL (Server-Side adminUsers Zero-Trust RBAC Lookup)
+    // -------------------------------------------------------------------------
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/adminUsers/$(request.auth.uid));
+    }
+
+    function getAdminData() {
+      return get(/databases/$(database)/documents/adminUsers/$(request.auth.uid)).data;
+    }
+
+    function isSuperAdmin() {
+      return isAdmin() && getAdminData().adminRole == 'superadmin';
+    }
+
+    function isSupportAdmin() {
+      return isAdmin() && (getAdminData().adminRole in ['support', 'superadmin']);
+    }
+
+    function isFinanceAdmin() {
+      return isAdmin() && (getAdminData().adminRole in ['finance', 'superadmin']);
+    }
+
+    // -------------------------------------------------------------------------
+    // SENIOR & FAMILY / CARER DELEGATED ACCESS HELPERS
+    // -------------------------------------------------------------------------
+    function isSeniorOwner(seniorUid) {
+      return isSignedIn() && request.auth.uid == seniorUid;
+    }
+
+    // Checks permission level from a familyLink permission map
+    function checkPermissionLevel(perms, moduleName, requiredLevel) {
+      return perms is map && (
+        (perms[moduleName] != null && (
+          requiredLevel == 'view'
+            ? (perms[moduleName] in ['view', 'edit', 'manage'])
+            : requiredLevel == 'edit'
+              ? (perms[moduleName] in ['edit', 'manage'])
+              : requiredLevel == 'manage'
+                ? (perms[moduleName] == 'manage')
+                : false
+        )) ||
+        // Check alias for subscription-manager / subscriptions
+        (moduleName == 'subscriptions' && perms['subscription-manager'] != null && (
+          requiredLevel == 'view'
+            ? (perms['subscription-manager'] in ['view', 'edit', 'manage'])
+            : requiredLevel == 'edit'
+              ? (perms['subscription-manager'] in ['edit', 'manage'])
+              : requiredLevel == 'manage'
+                ? (perms['subscription-manager'] == 'manage')
+                : false
+        )) ||
+        (moduleName == 'subscription-manager' && perms['subscriptions'] != null && (
+          requiredLevel == 'view'
+            ? (perms['subscriptions'] in ['view', 'edit', 'manage'])
+            : requiredLevel == 'edit'
+              ? (perms['subscriptions'] in ['edit', 'manage'])
+              : requiredLevel == 'manage'
+                ? (perms['subscriptions'] == 'manage')
+                : false
+        ))
+      );
+    }
+
+    // Checks if there is an active family link document between senior and carer
+    function hasActiveLinkWithPermission(seniorUid, moduleName, requiredLevel) {
+      return isSignedIn() && (
+        // Check standard deterministic link ID: seniorUid_familyUid
+        (
+          exists(/databases/$(database)/documents/familyLinks/$(seniorUid + '_' + request.auth.uid)) &&
+          get(/databases/$(database)/documents/familyLinks/$(seniorUid + '_' + request.auth.uid)).data.status == 'active' &&
+          checkPermissionLevel(get(/databases/$(database)/documents/familyLinks/$(seniorUid + '_' + request.auth.uid)).data.permissions, moduleName, requiredLevel)
+        ) ||
+        // Check standard prefixed link ID: link_seniorUid_familyUid
+        (
+          exists(/databases/$(database)/documents/familyLinks/$('link_' + seniorUid + '_' + request.auth.uid)) &&
+          get(/databases/$(database)/documents/familyLinks/$('link_' + seniorUid + '_' + request.auth.uid)).data.status == 'active' &&
+          checkPermissionLevel(get(/databases/$(database)/documents/familyLinks/$('link_' + seniorUid + '_' + request.auth.uid)).data.permissions, moduleName, requiredLevel)
+        )
+      );
+    }
+
+    // =========================================================================
+    // 1. USERS COLLECTION
+    // fields: uid, role (senior/family/admin), displayName, email, phone, plan,
+    //         accessibilitySettings (fontSize, highContrast, voice), createdAt
+    // =========================================================================
+    match /users/{userId} {
+      allow get: if isSignedIn() && (
+        request.auth.uid == userId ||
+        isAdmin() ||
+        (exists(/databases/$(database)/documents/familyLinks/$(userId + '_' + request.auth.uid)) && 
+         get(/databases/$(database)/documents/familyLinks/$(userId + '_' + request.auth.uid)).data.status == 'active') ||
+        (exists(/databases/$(database)/documents/familyLinks/$('link_' + userId + '_' + request.auth.uid)) && 
+         get(/databases/$(database)/documents/familyLinks/$('link_' + userId + '_' + request.auth.uid)).data.status == 'active')
+      );
+
+      allow list: if isSignedIn() && (
+        resource.data.uid == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(userId) &&
+        request.auth.uid == userId &&
+        incoming().uid == userId &&
+        incoming().displayName is string &&
+        incoming().displayName.size() > 0 &&
+        incoming().displayName.size() <= 100 &&
+        incoming().email is string &&
+        incoming().role in ['senior', 'family', 'admin', 'family_carer', 'support_admin', 'finance_admin', 'super_admin'];
+
+      allow update: if isSignedIn() && (
+        (request.auth.uid == userId && incoming().uid == existing().uid && incoming().createdAt == existing().createdAt) ||
+        isSuperAdmin()
+      );
+
+      allow delete: if isSuperAdmin();
+    }
+
+    // =========================================================================
+    // 2. FAMILY LINKS COLLECTION
+    // fields: linkId, seniorUid, familyUid, permissions (map of module to view/edit/manage),
+    //         status (invited/active/revoked), invitedBy, createdAt
+    // =========================================================================
+    match /familyLinks/{linkId} {
+      allow get: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        resource.data.familyUid == request.auth.uid ||
+        resource.data.invitedBy == request.auth.uid ||
+        resource.data.invitedEmail == request.auth.token.email ||
+        resource.data.familyEmail == request.auth.token.email ||
+        isAdmin()
+      );
+
+      allow list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        resource.data.familyUid == request.auth.uid ||
+        resource.data.invitedBy == request.auth.uid ||
+        resource.data.invitedEmail == request.auth.token.email ||
+        resource.data.familyEmail == request.auth.token.email ||
+        isAdmin()
+      );
+
+      // SECURITY FIX: Only the Senior themselves (or inviter/admin) can create a link.
+      // A family member CANNOT create a link to grant themselves uninvited access to a senior!
+      allow create: if isSignedIn() &&
+        isValidId(linkId) &&
+        (incoming().seniorUid == request.auth.uid || incoming().invitedBy == request.auth.uid || isAdmin()) &&
+        incoming().linkId == linkId &&
+        incoming().seniorUid is string &&
+        incoming().status in ['invited', 'active', 'revoked'] &&
+        incoming().permissions is map;
+
+      // SECURITY FIX: Prevent family carers from escalating their own permissions!
+      // Seniors / inviters can update all fields including permissions.
+      // Family invitees/carers can ONLY update their own identity/acceptance details (permissions MUST remain unchanged).
+      allow update: if isSignedIn() && (
+        // Case A: Senior owner or original inviter updating permissions/status
+        (
+          (existing().seniorUid == request.auth.uid || existing().invitedBy == request.auth.uid) &&
+          incoming().linkId == existing().linkId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().status in ['invited', 'active', 'revoked']
+        ) ||
+        // Case B: Family invitee accepting the invite or updating their own profile
+        // CRITICAL: Must NOT allow altering the permissions map or seniorUid!
+        (
+          (
+            existing().familyUid == request.auth.uid || 
+            existing().invitedEmail == request.auth.token.email ||
+            existing().familyEmail == request.auth.token.email
+          ) &&
+          incoming().linkId == existing().linkId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt &&
+          incoming().permissions == existing().permissions &&
+          incoming().status in ['invited', 'active', 'revoked']
+        ) ||
+        // Case C: SuperAdmin
+        isSuperAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        isSuperAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 3. NOTIFICATIONS COLLECTION
+    // fields: notifId, uid, type, payload, read, createdAt
+    // =========================================================================
+    match /notifications/{notifId} {
+      allow get: if isSignedIn() && (
+        resource.data.uid == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow list: if isSignedIn() && (
+        resource.data.uid == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(notifId) &&
+        incoming().notifId == notifId &&
+        incoming().uid is string &&
+        incoming().type is string &&
+        incoming().read is bool;
+
+      allow update: if isSignedIn() && (
+        (existing().uid == request.auth.uid && incoming().notifId == existing().notifId && incoming().uid == existing().uid) ||
+        isAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().uid == request.auth.uid ||
+        isAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 4. AUDIT LOGS COLLECTION (Immutable Append-Only Audit Trail)
+    // fields: logId, actorUid, action, targetUid, targetResource, timestamp
+    // =========================================================================
+    match /auditLogs/{logId} {
+      // Actor can read their own logs; Target senior can read access logs on their account; Admins can read all logs
+      allow get: if isSignedIn() && (
+        resource.data.actorUid == request.auth.uid ||
+        resource.data.targetUid == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow list: if isSignedIn() && (
+        resource.data.actorUid == request.auth.uid ||
+        resource.data.targetUid == request.auth.uid ||
+        isAdmin()
+      );
+
+      // Append-only: Authenticated users can record immutable logs of their own actions
+      allow create: if isSignedIn() &&
+        isValidId(logId) &&
+        incoming().logId == logId &&
+        incoming().actorUid == request.auth.uid &&
+        incoming().timestamp is string;
+
+      // Tamper-resistant: strictly no updates or deletes allowed
+      allow update, delete: if false;
+    }
+
+    // =========================================================================
+    // 5. ADMIN USERS COLLECTION (RBAC Authority Store)
+    // fields: uid, adminRole (support/finance/superadmin)
+    // =========================================================================
+    match /adminUsers/{adminUid} {
+      allow get: if isSignedIn() && (
+        request.auth.uid == adminUid ||
+        isAdmin()
+      );
+
+      allow list: if isSuperAdmin();
+
+      allow create, update, delete: if isSuperAdmin();
+    }
+
+    // =========================================================================
+    // 6. SCAM CHECKS COLLECTION ("Is this message safe?")
+    // fields: checkId, seniorUid, inputType (text/image/email), rawContentRef,
+    //         verdict (safe/caution/likely_scam), explanation, redFlags, createdAt
+    // =========================================================================
+    match /scamChecks/{checkId} {
+      allow get: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'scam-protection', 'view') ||
+        isAdmin()
+      );
+
+      // SECURITY FIX: Allow verified family carers with view permission to list scam checks for the linked senior
+      allow list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'scam-protection', 'view') ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(checkId) &&
+        incoming().checkId == checkId &&
+        (
+          incoming().seniorUid == request.auth.uid ||
+          hasActiveLinkWithPermission(incoming().seniorUid, 'scam-protection', 'edit') ||
+          isAdmin()
+        ) &&
+        incoming().inputType in ['text', 'image', 'email'] &&
+        incoming().verdict in ['safe', 'caution', 'likely_scam'] &&
+        incoming().explanation is string &&
+        incoming().redFlags is list;
+
+      allow update: if isSignedIn() && (
+        (
+          (existing().seniorUid == request.auth.uid || hasActiveLinkWithPermission(existing().seniorUid, 'scam-protection', 'manage')) &&
+          incoming().checkId == existing().checkId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt
+        ) ||
+        isSuperAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(existing().seniorUid, 'scam-protection', 'manage') ||
+        isSuperAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 7. GUIDES COLLECTION ("How do I do this?" Pre-written Library)
+    // fields: guideId, title, category, steps (array of {title, description}),
+    //         createdBy, updatedAt
+    // =========================================================================
+    match /guides/{guideId} {
+      // Any authenticated user (senior, family member, admin) can read guides
+      allow get, list: if isSignedIn();
+
+      // Only support admins / superadmins can create, modify, or delete library guides
+      allow create: if isSignedIn() &&
+        isValidId(guideId) &&
+        incoming().guideId == guideId &&
+        incoming().title is string &&
+        incoming().category is string &&
+        incoming().steps is list &&
+        (isSupportAdmin() || isSuperAdmin());
+
+      allow update: if isSignedIn() &&
+        (isSupportAdmin() || isSuperAdmin()) &&
+        incoming().guideId == existing().guideId;
+
+      allow delete: if isSuperAdmin();
+    }
+
+    // =========================================================================
+    // 8. REMINDERS COLLECTION (Life Reminders)
+    // fields: reminderId, seniorUid, type, title, dueDate, recurrence,
+    //         channel, status, createdBy, createdAt
+    // =========================================================================
+    match /reminders/{reminderId} {
+      allow get, list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'reminders', 'view') ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(reminderId) &&
+        incoming().reminderId == reminderId &&
+        (
+          incoming().seniorUid == request.auth.uid ||
+          hasActiveLinkWithPermission(incoming().seniorUid, 'reminders', 'edit') ||
+          isAdmin()
+        ) &&
+        incoming().type in ['appointment', 'renewal', 'birthday', 'service'] &&
+        incoming().title is string &&
+        incoming().dueDate is string &&
+        incoming().recurrence in ['none', 'weekly', 'monthly', 'yearly'] &&
+        incoming().channel is list &&
+        incoming().status in ['upcoming', 'done', 'snoozed'];
+
+      allow update: if isSignedIn() && (
+        (
+          (
+            existing().seniorUid == request.auth.uid ||
+            hasActiveLinkWithPermission(existing().seniorUid, 'reminders', 'edit')
+          ) &&
+          incoming().reminderId == existing().reminderId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt
+        ) ||
+        isAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(existing().seniorUid, 'reminders', 'manage') ||
+        isAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 9. DOCUMENTS COLLECTION (Document Vault)
+    // fields: docId, seniorUid, category, title, storagePath, expiryDate,
+    //         sharedWith, uploadedAt
+    // =========================================================================
+    match /documents/{docId} {
+      allow get: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        (request.auth.uid in resource.data.sharedWith) ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'document-vault', 'view') ||
+        isAdmin()
+      );
+
+      allow list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        (request.auth.uid in resource.data.sharedWith) ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'document-vault', 'view') ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(docId) &&
+        incoming().docId == docId &&
+        (
+          incoming().seniorUid == request.auth.uid ||
+          hasActiveLinkWithPermission(incoming().seniorUid, 'document-vault', 'edit') ||
+          isAdmin()
+        ) &&
+        incoming().category is string &&
+        incoming().title is string &&
+        incoming().storagePath is string &&
+        incoming().sharedWith is list;
+
+      allow update: if isSignedIn() && (
+        (
+          (
+            existing().seniorUid == request.auth.uid ||
+            hasActiveLinkWithPermission(existing().seniorUid, 'document-vault', 'edit')
+          ) &&
+          incoming().docId == existing().docId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().uploadedAt == existing().uploadedAt
+        ) ||
+        isAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(existing().seniorUid, 'document-vault', 'manage') ||
+        isAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 10. HOME ASSETS COLLECTION (Home Manager)
+    // fields: assetId, seniorUid, type (boiler/appliance/alarm/other), name,
+    //         warrantyExpiry, lastServiceDate, serviceIntervalMonths, notes,
+    //         photoStoragePath, createdAt, updatedAt
+    // =========================================================================
+    match /homeAssets/{assetId} {
+      allow get, list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'home-manager', 'view') ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(assetId) &&
+        incoming().assetId == assetId &&
+        (
+          incoming().seniorUid == request.auth.uid ||
+          hasActiveLinkWithPermission(incoming().seniorUid, 'home-manager', 'edit') ||
+          isAdmin()
+        ) &&
+        incoming().type in ['boiler', 'appliance', 'alarm', 'other'] &&
+        incoming().name is string &&
+        incoming().name.size() > 0 &&
+        incoming().name.size() <= 200;
+
+      allow update: if isSignedIn() && (
+        (
+          (
+            existing().seniorUid == request.auth.uid ||
+            hasActiveLinkWithPermission(existing().seniorUid, 'home-manager', 'edit')
+          ) &&
+          incoming().assetId == existing().assetId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt
+        ) ||
+        isAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(existing().seniorUid, 'home-manager', 'manage') ||
+        isAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 11. TRADESPEOPLE COLLECTION (Trusted Trades & Emergency Contacts)
+    // fields: tradespersonId, seniorUid, name, trade, phone, notes, isEmergency, createdAt
+    // =========================================================================
+    match /tradespeople/{tradespersonId} {
+      allow get, list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'home-manager', 'view') ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(tradespersonId) &&
+        incoming().tradespersonId == tradespersonId &&
+        (
+          incoming().seniorUid == request.auth.uid ||
+          hasActiveLinkWithPermission(incoming().seniorUid, 'home-manager', 'edit') ||
+          isAdmin()
+        ) &&
+        incoming().name is string &&
+        incoming().name.size() > 0 &&
+        incoming().name.size() <= 200 &&
+        incoming().trade is string &&
+        incoming().phone is string;
+
+      allow update: if isSignedIn() && (
+        (
+          (
+            existing().seniorUid == request.auth.uid ||
+            hasActiveLinkWithPermission(existing().seniorUid, 'home-manager', 'edit')
+          ) &&
+          incoming().tradespersonId == existing().tradespersonId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt
+        ) ||
+        isAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(existing().seniorUid, 'home-manager', 'manage') ||
+        isAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 12. TRACKED SUBSCRIPTIONS COLLECTION ("What am I paying for?")
+    // fields: trackId, seniorUid, provider, category, amount, currency,
+    //         billingCycle, nextRenewalDate, status, detectedVia, sharedWithFamily,
+    //         previousAmount, flagReason, notes, createdAt, updatedAt
+    // =========================================================================
+    match /trackedSubscriptions/{trackId} {
+      allow get, list: if isSignedIn() && (
+        resource.data.seniorUid == request.auth.uid ||
+        (request.auth.uid in resource.data.sharedWithFamily) ||
+        hasActiveLinkWithPermission(resource.data.seniorUid, 'subscriptions', 'view') ||
+        isAdmin()
+      );
+
+      allow create: if isSignedIn() &&
+        isValidId(trackId) &&
+        incoming().trackId == trackId &&
+        (
+          incoming().seniorUid == request.auth.uid ||
+          hasActiveLinkWithPermission(incoming().seniorUid, 'subscriptions', 'edit') ||
+          isAdmin()
+        ) &&
+        incoming().provider is string &&
+        incoming().provider.size() > 0 &&
+        incoming().provider.size() <= 200 &&
+        incoming().amount is number &&
+        incoming().amount >= 0 &&
+        incoming().billingCycle in ['monthly', 'annual', 'quarterly', 'other'] &&
+        incoming().status in ['active', 'flagged', 'cancelled'] &&
+        incoming().detectedVia in ['manual', 'emailScan', 'bankScan'] &&
+        incoming().sharedWithFamily is list;
+
+      allow update: if isSignedIn() && (
+        (
+          (
+            existing().seniorUid == request.auth.uid ||
+            hasActiveLinkWithPermission(existing().seniorUid, 'subscriptions', 'edit')
+          ) &&
+          incoming().trackId == existing().trackId &&
+          incoming().seniorUid == existing().seniorUid &&
+          incoming().createdAt == existing().createdAt
+        ) ||
+        isAdmin()
+      );
+
+      allow delete: if isSignedIn() && (
+        existing().seniorUid == request.auth.uid ||
+        hasActiveLinkWithPermission(existing().seniorUid, 'subscriptions', 'manage') ||
+        isAdmin()
+      );
+    }
+
+    // =========================================================================
+    // 13. PLANS COLLECTION (Public Read for Marketing / Pricing Page)
+    // fields: id, name, price, currency, interval, features, popular, order
+    // =========================================================================
+    match /plans/{planId} {
+      // Publicly readable so prospective users and pricing tables can fetch live tiers
+      allow get, list: if true;
+      // Managed only by SuperAdmins or Cloud Functions
+      allow write: if isSuperAdmin();
+    }
+  }
+}
