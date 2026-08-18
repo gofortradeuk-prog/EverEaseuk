@@ -215,7 +215,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
           </div>
 
           <div className="text-center md:text-right shrink-0 text-slate-500 font-normal text-xs">
-            © {new Date().getFullYear()} EverEase Safeguarding Ltd. All rights reserved. Registered in England &amp; Wales.
+            © {new Date().getFullYear()} EverEase. All rights reserved. Registered in England &amp; Wales.
           </div>
         </div>
       </div>

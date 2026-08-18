@@ -49,10 +49,10 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
     },
     refund: {
       title: 'Refund & Cancellation Policy',
-      subtitle: 'Detailed terms governing subscription cancellation, refunds and billing at EverEase',
+      subtitle: 'Clear terms governing subscription cancellations, cooling-off rights, refunds, and billing',
       icon: <FileCheck2 className="w-8 h-8 text-emerald-700" />,
-      effectiveDate: 'Effective date: 18 August 2026 — Last updated: 18 August 2026 — Version 2.0 (Detailed)',
-      details: 'Explains our transparent cancellation rules, 14-day statutory cooling-off rights, proration calculation, and Direct Debit protection.'
+      effectiveDate: 'Effective Date: 18 August 2026 — Last Updated: 18 August 2026 — Version: 3.0',
+      details: 'Clear and straightforward guidance on cancelling subscriptions, statutory cooling-off rights, and refund processes.'
     },
     sla: {
       title: 'Service Level Agreement (SLA)',
@@ -119,8 +119,8 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-md border border-emerald-200">
                   EVEREASE LEGAL &amp; GOVERNANCE
                 </span>
-                <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-md">
-                  Official Consumer Agreement
+                <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-md">
+                  Customer Policy
                 </span>
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -136,7 +136,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <span className="text-emerald-800 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200">
               {config.effectiveDate}
             </span>
-            <span>English Consumer Contracts Regulations 2013 Compliant</span>
+            <span>UK Consumer Cancellation &amp; Refund Terms</span>
           </div>
         </div>
 
@@ -359,7 +359,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Registered:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p><strong>Registered:</strong> EverEase, registered in England &amp; Wales.</p>
               </div>
             </section>
 
@@ -387,7 +387,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <span>Our Commitment to Data Protection</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                EverEase Safeguarding Ltd is committed to protecting the privacy and personal data of our members, their families, and website visitors, in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+                EverEase is committed to protecting the privacy and personal data of our members, their families, and website visitors, in accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
               </p>
             </section>
 
@@ -398,7 +398,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <span>Data Controller</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                EverEase Safeguarding Ltd, registered in England &amp; Wales, acts as the data controller for personal data collected through our website, portal, and services.
+                EverEase, registered in England &amp; Wales, acts as the data controller for personal data collected through our website, portal, and services.
               </p>
             </section>
 
@@ -621,7 +621,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Registered:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p><strong>Registered:</strong> EverEase, registered in England &amp; Wales.</p>
               </div>
             </section>
 
@@ -713,7 +713,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <span>Limitation of Liability</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                To the fullest extent permitted by law, EverEase Safeguarding Ltd shall not be liable for any indirect, incidental, or consequential loss arising from the use of, or inability to use, our services, save that nothing in this disclaimer excludes or limits our liability for death or personal injury caused by negligence, fraud, or any other liability which cannot be excluded or limited under English law.
+                To the fullest extent permitted by law, EverEase shall not be liable for any indirect, incidental, or consequential loss arising from the use of, or inability to use, our services, save that nothing in this disclaimer excludes or limits our liability for death or personal injury caused by negligence, fraud, or any other liability which cannot be excluded or limited under English law.
               </p>
             </section>
 
@@ -767,7 +767,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Registered:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p><strong>Registered:</strong> EverEase, registered in England &amp; Wales.</p>
               </div>
             </section>
 
@@ -1214,7 +1214,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Registered Company:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p><strong>Registered Company:</strong> EverEase, registered in England &amp; Wales.</p>
                 <p><strong>Registered Office:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ.</p>
               </div>
             </section>
@@ -1224,16 +1224,18 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
           <div className="bg-white rounded-3xl p-6 sm:p-12 border-2 border-slate-200 shadow-sm space-y-10 text-slate-800 leading-relaxed font-normal text-base sm:text-lg">
             
             {/* Header intro callout */}
-            <div className="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+            <div className="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
               <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
-                EVEREASE &mdash; Refund &amp; Cancellation Policy
+                EverEase &mdash; Refund &amp; Cancellation Policy
               </h2>
-              <p className="text-sm sm:text-base text-slate-700 font-medium">
-                Detailed terms governing subscription cancellation, refunds and billing at EverEase
-              </p>
-              <div className="text-xs font-bold text-slate-500 pt-1 flex flex-wrap items-center gap-2">
-                <span className="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md font-extrabold">Version 2.0 (Detailed)</span>
-                <span>Effective date: 18 August 2026 &mdash; Last updated: 18 August 2026</span>
+              <div className="flex flex-wrap items-center gap-y-1 gap-x-4 text-sm font-semibold text-slate-700">
+                <span><strong>Email:</strong> support@everease.co.uk</span>
+                <span><strong>Telephone:</strong> 0800 888 2026</span>
+                <span><strong>Support Hours:</strong> 8am&ndash;8pm daily</span>
+              </div>
+              <div className="text-xs font-bold text-slate-500 pt-1 flex flex-wrap items-center gap-2 border-t border-slate-200">
+                <span className="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md font-extrabold">Version 3.0</span>
+                <span>Effective Date: 18 August 2026 &mdash; Last Updated: 18 August 2026</span>
               </div>
             </div>
 
@@ -1244,10 +1246,13 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <span>Purpose and Scope</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                This Refund &amp; Cancellation Policy (&ldquo;Policy&rdquo;) sets out, in detail, how Members and Family Members can cancel an EverEase subscription, when refunds are available, how they are calculated, and how billing issues are resolved. It applies to all Subscription Plans purchased through the EverEase website, telephone support line, or any other official EverEase sales channel, and forms part of our Terms &amp; Conditions.
+                This Refund &amp; Cancellation Policy explains how customers can cancel an EverEase subscription, when refunds may be available, how refunds are processed, and how billing issues are handled.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                This Policy applies to subscriptions and services purchased from EverEase through the EverEase website, by telephone, or through another authorised EverEase sales or support channel.
               </p>
               <p className="text-slate-700 text-base sm:text-lg font-medium">
-                Nothing in this Policy affects your other statutory rights as a consumer under UK law, including under the <strong>Consumer Rights Act 2015</strong> and the <strong>Consumer Contracts Regulations 2013</strong>.
+                Nothing in this Policy limits or excludes any rights that you may have under applicable UK consumer law.
               </p>
             </section>
 
@@ -1255,70 +1260,63 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-2">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">2</span>
-                <span>Definitions</span>
+                <span>Free Introductory Call</span>
               </h3>
-              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong className="text-slate-900">&ldquo;Billing Cycle&rdquo;</strong> means the recurring period (e.g. monthly, quarterly, or annual) for which a Subscription Plan is charged.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong className="text-slate-900">&ldquo;Cooling-Off Period&rdquo;</strong> means the 14-calendar-day period beginning on the day your subscription contract is formed, during which you may cancel under the Consumer Contracts Regulations 2013.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong className="text-slate-900">&ldquo;Renewal Date&rdquo;</strong> means the date on which your next recurring payment is scheduled to be collected.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong className="text-slate-900">&ldquo;Session&rdquo;</strong> means a scheduled one-to-one or group guidance appointment included within a Subscription Plan.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong className="text-slate-900">&ldquo;Proration&rdquo;</strong> means the calculation of a partial refund or charge based on the proportion of a Billing Cycle used or remaining.</span>
-                </li>
-              </ul>
+              <p className="text-slate-700 text-base sm:text-lg">
+                EverEase may offer a free introductory call to help you understand our services and decide whether an EverEase membership is suitable for you.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                The introductory call is provided at no charge and does not create a paid subscription or payment obligation.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                No refund is applicable to the free introductory call because no payment is taken for the call.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If you decide to purchase an EverEase subscription following the introductory call, the subscription will be subject to the applicable pricing, Terms &amp; Conditions, and this Refund &amp; Cancellation Policy.
+              </p>
             </section>
 
             {/* Section 3 */}
             <section className="space-y-4" id="refund-section-3">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">3</span>
-                <span>Subscription Plan Types and How Cancellation Applies</span>
+                <span>Cancelling an EverEase Subscription</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                EverEase offers different Subscription Plans, each of which is cancelled slightly differently:
+                You may request cancellation of your EverEase subscription by:
+              </p>
+              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Emailing <strong>support@everease.co.uk</strong></span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Calling <strong>0800 888 2026</strong>, available 8am&ndash;8pm daily</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Using the cancellation facility available through your EverEase account, where provided</span>
+                </li>
+              </ul>
+              <p className="text-slate-700 text-base sm:text-lg">
+                We will normally confirm your cancellation request by email.
               </p>
 
-              <div className="space-y-3">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <h4 className="font-bold text-slate-900 text-base">3.1 Monthly Rolling Plans</h4>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    Billed every month via Direct Debit. May be cancelled at any time; cancellation takes effect at the end of the current monthly Billing Cycle, with continued access until that date.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <h4 className="font-bold text-slate-900 text-base">3.2 Quarterly and Annual Plans</h4>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    Billed upfront for a 3-month or 12-month period, typically at a discounted rate. These plans are for a fixed term. Cancellation stops future renewal, but (outside the 14-day Cooling-Off Period) no partial refund is given for the remaining months of a term already paid for, except in the circumstances described in Section 7 (Exceptional Circumstances) or Section 8 (Service-Related Refunds).
-                  </p>
-                </div>
-
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <h4 className="font-bold text-slate-900 text-base">3.3 Pay-As-You-Go / Single Session Bookings</h4>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    Where a Member books and pays for a single guidance session rather than a recurring plan, that booking may be cancelled or rescheduled free of charge up to 24 hours before the scheduled time. Cancellations made with less than 24 hours&rsquo; notice, or missed sessions (&ldquo;no-shows&rdquo;), are non-refundable, save at our discretion in genuine emergency circumstances.
-                  </p>
-                </div>
-
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
-                  <h4 className="font-bold text-slate-900 text-base">3.4 Free Introductory Call / Free Trial</h4>
-                  <p className="text-slate-700 text-sm sm:text-base">
-                    No payment is taken during a free introductory call or free trial period. You may cancel at any time before the trial ends at no cost. Where you do not cancel, your chosen paid Subscription Plan begins automatically on the date disclosed to you at sign-up, and standard cancellation and refund terms apply from that point.
-                  </p>
-                </div>
+              <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                <h4 className="font-bold text-slate-900 text-base sm:text-lg">Ordinary Cancellation</h4>
+                <p className="text-slate-700 text-sm sm:text-base">
+                  For cancellations made outside any applicable statutory cancellation or cooling-off period, your subscription will normally remain active until the end of the current paid billing period.
+                </p>
+                <p className="text-slate-700 text-sm sm:text-base">
+                  You will normally not receive a refund for unused time remaining in a billing period unless a refund is required by applicable law or is otherwise approved under this Policy.
+                </p>
+                <p className="text-slate-700 text-sm sm:text-base">
+                  Cancelling your subscription will prevent future renewal charges from being taken after the effective cancellation date.
+                </p>
+                <p className="text-slate-700 text-sm sm:text-base font-medium">
+                  EverEase does not charge a cancellation fee unless a specific charge has been clearly disclosed before entering into the relevant contract and is permitted by applicable law.
+                </p>
               </div>
             </section>
 
@@ -1326,65 +1324,99 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-4" id="refund-section-4">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">4</span>
-                <span>The 14-Day Statutory Cooling-Off Period</span>
+                <span>14-Day Cooling-Off and Statutory Cancellation Rights</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                If you are a UK consumer, you have a legal right to cancel your subscription within 14 calendar days of the contract start date, without giving any reason, under the Consumer Contracts Regulations 2013.
+                Where applicable to your contract, UK consumer law provides a 14-day cancellation period for certain distance contracts.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If you are entitled to a statutory cancellation period, you may cancel within that period without giving a reason.
               </p>
 
               <div className="space-y-3">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                  <h4 className="font-bold text-slate-900 text-base">4.1 Cancelling Before the Service Has Started</h4>
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <h4 className="font-bold text-slate-900 text-base">Services Starting During the Cancellation Period</h4>
                   <p className="text-slate-700 text-sm sm:text-base">
-                    If you cancel within the Cooling-Off Period and have not yet used any part of the Service (e.g. no guidance session has taken place), you will receive a full refund of any amount paid, processed within 14 days of us receiving your cancellation request.
+                    If you expressly request that EverEase begins providing services before the end of the applicable 14-day cancellation period, you acknowledge that the service may begin during that period.
+                  </p>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    If you subsequently cancel during the cancellation period, EverEase may be entitled to charge a proportionate amount for services actually supplied before your cancellation, where permitted by applicable UK law.
+                  </p>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    If the service has been fully performed during the applicable cancellation period following your express request and acknowledgement, statutory cancellation rights may be affected where permitted by law.
+                  </p>
+                  <p className="text-slate-700 text-sm sm:text-base font-medium">
+                    Nothing in this section is intended to remove or restrict any statutory consumer right that cannot lawfully be excluded.
                   </p>
                 </div>
 
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
-                  <h4 className="font-bold text-slate-900 text-base">4.2 Cancelling After the Service Has Started</h4>
+                  <h4 className="font-bold text-slate-900 text-base">How to Exercise a Statutory Cancellation Right</h4>
                   <p className="text-slate-700 text-sm sm:text-base">
-                    If, at sign-up, you expressly asked for the Service to begin immediately (for example, to book your first session straight away) and acknowledged that this may reduce your cancellation rights, and you later cancel within the Cooling-Off Period, we may deduct a proportionate amount corresponding to the Service already supplied up to the point you told us you wished to cancel. The remaining balance will be refunded within 14 days.
+                    To request cancellation, contact:
                   </p>
-                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs sm:text-sm text-emerald-950 font-medium italic">
-                    <strong>Example:</strong> You subscribe to a monthly plan costing £40 and ask to start immediately. You use one guidance session (valued at £10 within your plan) and then cancel on day 6 of the Cooling-Off Period. We would refund £30, retaining £10 for the session delivered.
-                  </div>
-                </div>
-
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                  <h4 className="font-bold text-slate-900 text-base">4.3 How to Exercise Your Cooling-Off Right</h4>
+                  <ul className="space-y-1 text-slate-700 text-sm sm:text-base pl-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-emerald-700 font-bold">&bull;</span>
+                      <span><strong>Email:</strong> support@everease.co.uk</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-emerald-700 font-bold">&bull;</span>
+                      <span><strong>Telephone:</strong> 0800 888 2026</span>
+                    </li>
+                  </ul>
                   <p className="text-slate-700 text-sm sm:text-base">
-                    You can cancel within the Cooling-Off Period by phone, through your Account, or in writing (including by email), clearly stating your decision to cancel. We recommend using our freephone line (<strong>0800 888 2026</strong>) for the fastest confirmation.
+                    Please include your name, account email address and, where possible, your subscription or customer reference.
+                  </p>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    We will normally confirm receipt of your cancellation request.
                   </p>
                 </div>
               </div>
             </section>
 
             {/* Section 5 */}
-            <section className="space-y-3" id="refund-section-5">
+            <section className="space-y-4" id="refund-section-5">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">5</span>
-                <span>Cancelling Outside the Cooling-Off Period</span>
+                <span>Refunds Outside the Cooling-Off Period</span>
               </h3>
-              
-              <div className="space-y-3">
+              <p className="text-slate-700 text-base sm:text-lg">
+                After the applicable cooling-off or statutory cancellation period has ended, subscription payments are generally non-refundable for the unused portion of the current billing period unless a refund is required by law or approved under this Policy.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                A refund or appropriate credit may be available in circumstances including:
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                  <h4 className="font-bold text-slate-900 text-base">5.1 Monthly Plans</h4>
+                  <h4 className="font-bold text-slate-900 text-base">Service Unavailable</h4>
                   <p className="text-slate-700 text-sm sm:text-base">
-                    You may cancel at any time. Cancellation takes effect at the end of the Billing Cycle in which you cancel, and you will not be charged for the following cycle. You will retain full access to the Service, including any remaining Sessions, until the end of the current cycle.
+                    If EverEase is unable to provide a paid service or scheduled session and we cannot reasonably reschedule or otherwise provide the service, we may provide an appropriate refund or credit for the affected service.
                   </p>
                 </div>
 
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                  <h4 className="font-bold text-slate-900 text-base">5.2 Notice Period</h4>
+                  <h4 className="font-bold text-slate-900 text-base">Incorrect or Duplicate Billing</h4>
                   <p className="text-slate-700 text-sm sm:text-base">
-                    To avoid being charged for an upcoming Billing Cycle, please cancel at least <strong>3 UK business days before your Renewal Date</strong>. Cancellations received after this point may not be processed in time to stop the next Direct Debit collection; in that case, the cancellation will apply from the cycle after next, or we will discuss a suitable resolution with you directly, such as a refund of that one payment where the Service has not yet been used.
+                    If you have been charged incorrectly, charged twice for the same transaction, or charged an amount that does not match the agreed price, please contact us promptly so that we can investigate and correct the charge.
                   </p>
                 </div>
 
                 <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
-                  <h4 className="font-bold text-slate-900 text-base">5.3 No Partial-Month Refunds (Outside Exceptions)</h4>
+                  <h4 className="font-bold text-slate-900 text-base">EverEase Unable to Provide the Purchased Service</h4>
                   <p className="text-slate-700 text-sm sm:text-base">
-                    Save as set out in Sections 4, 7 and 8, we do not provide refunds or credits for the unused portion of a Billing Cycle where a Member simply chooses to stop using the Service partway through a period they have already paid for.
+                    If EverEase is unable to provide a service that you have paid for, we will consider an appropriate refund or alternative remedy depending on the circumstances and applicable consumer law.
+                  </p>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                  <h4 className="font-bold text-slate-900 text-base">Exceptional Circumstances</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    EverEase may consider refund requests in exceptional circumstances, including serious illness, bereavement, hospitalisation, or significant changes in a customer&rsquo;s care circumstances.
+                  </p>
+                  <p className="text-xs text-slate-600 italic">
+                    Such refunds are considered individually and are discretionary unless a refund is otherwise required by applicable law.
                   </p>
                 </div>
               </div>
@@ -1394,137 +1426,86 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-6">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">6</span>
-                <span>How Proration Works (Where Applicable)</span>
+                <span>How Refunds Are Processed</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                Where a refund is due on a prorated basis (for example, under Sections 4.2, 7, or 8), we calculate it as follows:
+                Where a refund is approved, it will normally be made to the original payment method used for the transaction.
               </p>
-              
-              <ol className="space-y-2 text-slate-700 text-base sm:text-lg pl-2 list-decimal list-inside">
-                <li>Determine the total value of the current Billing Cycle.</li>
-                <li>Determine the number of days (or Sessions, where more appropriate) used prior to the cancellation or refund request.</li>
-                <li>Calculate the unused proportion of the cycle as a percentage.</li>
-                <li>Refund that percentage of the amount paid for the current cycle, rounded to the nearest penny.</li>
-              </ol>
-
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-sm sm:text-base text-emerald-950 font-medium">
-                <strong>Example:</strong> A monthly plan costs £40 for a 30-day cycle. A Member is granted an exceptional refund (see Section 7) after 9 days of use. Unused proportion = 21/30 = 70%. Refund = £28.
+              <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-emerald-950 font-semibold text-sm sm:text-base">
+                EverEase normally initiates approved refunds within 5&ndash;10 business days after the refund has been confirmed.
               </div>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Once a refund has been initiated, the time required for the funds to appear in your bank or card account may vary depending on your payment method, bank, card issuer, or payment service provider.
+              </p>
+              <p className="text-slate-700 text-sm sm:text-base text-slate-600">
+                EverEase cannot control processing times imposed by a customer&rsquo;s bank or card provider.
+              </p>
             </section>
 
             {/* Section 7 */}
-            <section className="space-y-4" id="refund-section-7">
+            <section className="space-y-3" id="refund-section-7">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">7</span>
-                <span>Exceptional Circumstances</span>
+                <span>Family and Third-Party Purchasers</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                We understand that personal circumstances can change suddenly, particularly for our Members and their families. We will consider a discretionary prorated refund, outside our standard policy, in circumstances including:
+                EverEase services may be purchased by a family member or another person on behalf of the person receiving the service.
               </p>
-              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong>The death of a Member:</strong> A refund of any unused, already-paid period will be issued to the estate or named next of kin upon request and reasonable verification, with no cancellation fee or notice period applied.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong>Residential or nursing care:</strong> A Member&rsquo;s move into residential or nursing care where the Service can no longer reasonably be used.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong>Serious illness or capacity change:</strong> A serious illness, hospitalisation, or significant change in a Member&rsquo;s health or capacity that prevents continued use of the Service.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong>Financial hardship:</strong> Confirmed financial hardship, considered sensitively and on a case-by-case basis.</span>
-                </li>
-              </ul>
               <p className="text-slate-700 text-base sm:text-lg">
-                To request a refund under this section, please contact our support line; we may ask for reasonable supporting information (for example, a death certificate reference, or written confirmation from a Family Member or care provider), but we aim to keep this process as simple and compassionate as possible.
+                Where a subscription has been purchased by a third party, cancellation and refund requests may normally be made by the purchaser or by the service recipient where their authority to make the request can reasonably be confirmed.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                Refunds will normally be returned to the original payment method used by the purchaser.
               </p>
             </section>
 
             {/* Section 8 */}
-            <section className="space-y-4" id="refund-section-8">
+            <section className="space-y-3" id="refund-section-8">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">8</span>
-                <span>Refunds for Service-Related Issues</span>
+                <span>Subscription Renewal and Billing</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                Separately from cancellation for convenience, you may be entitled to a refund (in full or in part) where the Service itself has not been delivered as expected. This includes:
+                EverEase subscriptions may renew automatically according to the billing frequency selected at the time of purchase.
               </p>
-              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span>A Session that was booked and paid for but not delivered due to a fault on our part (e.g. a coach did not attend and it could not be rescheduled to your satisfaction);</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span>A billing error, such as being charged twice for the same Billing Cycle, or being charged after a valid cancellation was submitted;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span>A material and ongoing failure of the platform that prevents you from accessing paid-for features, which we are unable to resolve within a reasonable time;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span>Any other situation where the Service does not match the description provided at the point of sale, in line with your rights under the <strong>Consumer Rights Act 2015</strong>.</span>
-                </li>
-              </ul>
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm sm:text-base font-medium">
-                Refunds under this section are processed in full for the affected charge(s) within 14 days of the issue being confirmed, and do not require you to cancel your ongoing subscription unless you choose to.
-              </div>
+              <p className="text-slate-700 text-base sm:text-lg">
+                The applicable price, billing frequency and renewal terms will be displayed before you complete your purchase.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                You may cancel your subscription using the cancellation methods described in Section 3.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Cancellation before the next scheduled renewal will normally prevent the next recurring charge.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If a renewal payment has already been processed, any refund will be handled according to this Policy and any applicable statutory rights.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                EverEase will not knowingly charge a customer an amount different from the price and billing terms agreed at the time of purchase, except where a change has been properly notified and is permitted under the applicable contract and law.
+              </p>
             </section>
 
             {/* Section 9 */}
             <section className="space-y-4" id="refund-section-9">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">9</span>
-                <span>Refund Processing &mdash; Method and Timescales</span>
+                <span>Billing Errors and Payment Disputes</span>
               </h3>
-              
-              {/* Responsive comparison table */}
-              <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
-                <table className="w-full text-left text-xs sm:text-sm text-slate-800">
-                  <thead className="bg-slate-100 text-slate-900 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
-                    <tr>
-                      <th className="p-3.5 sm:p-4">Scenario</th>
-                      <th className="p-3.5 sm:p-4">Refund Method</th>
-                      <th className="p-3.5 sm:p-4">Typical Timescale</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 bg-white font-medium">
-                    <tr className="hover:bg-slate-50">
-                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Cooling-off cancellation (no service used)</td>
-                      <td className="p-3.5 sm:p-4 text-slate-700">Original Direct Debit / payment method</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of confirmed cancellation</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50">
-                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Cooling-off cancellation (partial service used)</td>
-                      <td className="p-3.5 sm:p-4 text-slate-700">Original Direct Debit / payment method (prorated)</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of confirmed cancellation</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50">
-                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Billing error / duplicate charge</td>
-                      <td className="p-3.5 sm:p-4 text-slate-700">Original payment method</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 5&ndash;10 business days of confirmation</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50">
-                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Service-related refund (Section 8)</td>
-                      <td className="p-3.5 sm:p-4 text-slate-700">Original payment method</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of issue being confirmed</td>
-                    </tr>
-                    <tr className="hover:bg-slate-50">
-                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Exceptional circumstances (Section 7)</td>
-                      <td className="p-3.5 sm:p-4 text-slate-700">Original payment method, or to estate/next of kin where applicable</td>
-                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of approval</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If you believe a payment has been taken incorrectly, please contact us as soon as possible:
+              </p>
+              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-wrap gap-4 text-sm sm:text-base font-bold text-slate-900">
+                <span><strong>Email:</strong> support@everease.co.uk</span>
+                <span><strong>Telephone:</strong> 0800 888 2026</span>
               </div>
-
-              <p className="text-slate-700 text-sm sm:text-base">
-                Refunds are issued to the original Direct Debit account or payment method used, in line with standard UK banking practice, and may take a few additional days to appear depending on your bank.
+              <p className="text-slate-700 text-base sm:text-lg">
+                We encourage customers to contact EverEase first so that billing errors can be investigated and resolved quickly.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                This does not affect any rights you may have through your bank, card provider, payment provider, or applicable consumer law.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Where a payment was processed through a third-party payment provider such as Stripe, any approved refund will normally be processed through the relevant payment method.
               </p>
             </section>
 
@@ -1532,13 +1513,16 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-10">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">10</span>
-                <span>Failed, Declined, or Late Payments</span>
+                <span>Cancellation Confirmation</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                If a scheduled Direct Debit payment fails or is declined, we will typically attempt to notify you and may retry collection in line with standard Direct Debit (BACS) practice. If payment cannot be successfully collected within a reasonable period, we may suspend access to the Service until payment is resolved, and may ultimately cancel the Account if the matter is not resolved after reasonable attempts to contact you.
+                When we receive a cancellation request, we will normally send confirmation to the email address associated with your EverEase account.
               </p>
               <p className="text-slate-700 text-base sm:text-lg">
-                We do not charge our own late payment fees; however, your bank may apply charges under your own account terms if a Direct Debit attempt is declined.
+                If you do not receive confirmation, please contact us at <strong>support@everease.co.uk</strong> or <strong>0800 888 2026</strong> so that we can verify the status of your subscription.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                Customers should retain their cancellation confirmation for their records.
               </p>
             </section>
 
@@ -1546,10 +1530,19 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-11">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">11</span>
-                <span>Chargebacks and Disputed Payments</span>
+                <span>Changes to This Policy</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                If you believe a payment was taken in error, please contact us first so we can investigate and resolve the matter directly and quickly. Raising the issue with us before initiating a chargeback with your bank generally leads to a faster resolution. Where a chargeback is raised, we reserve the right to suspend the associated Account while the matter is investigated, and will act in accordance with the outcome of that process and the Direct Debit Guarantee.
+                EverEase may update this Refund &amp; Cancellation Policy from time to time to reflect changes to our services, payment arrangements, business practices, or applicable law.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Where appropriate, material changes affecting existing customers will be communicated through reasonable means, including email or an account notification.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                The version and effective date shown at the beginning of this Policy identify the current version.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                Any change will not remove or restrict statutory consumer rights that apply to an existing contract.
               </p>
             </section>
 
@@ -1557,129 +1550,63 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-12">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">12</span>
-                <span>Promotional Offers, Discount Codes and Gifted Subscriptions</span>
+                <span>Applicable Law</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                Where a subscription was purchased using a promotional discount, free trial extension, or gifted/prepaid code, refunds (where applicable under this Policy) will generally be calculated based on the amount actually paid, not the standard list price. Promotional pricing is not guaranteed to apply again if a cancelled subscription is later reactivated.
+                This Policy is intended to operate in accordance with applicable law in England and Wales and applicable UK consumer protection requirements.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Where mandatory consumer legislation gives you rights that are more favourable than the terms of this Policy, those statutory rights will apply.
               </p>
               <p className="text-slate-700 text-base sm:text-lg font-medium">
-                For gift subscriptions purchased by a Family Member on behalf of a Member, standard cooling-off and cancellation rights apply to the purchasing family member, with refunds returned to the purchaser&rsquo;s original payment method.
+                EverEase will update its subscription processes and customer policies where necessary to comply with applicable UK subscription and consumer-protection requirements.
               </p>
             </section>
 
-            {/* Section 13 */}
-            <section className="space-y-3" id="refund-section-13">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">13</span>
-                <span>Family and Multi-User Plans</span>
-              </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                Where a Subscription Plan is purchased by a Family Member on behalf of a Member, cancellation and refund requests may be made by either the Account holder (payer) or, where authorised, the Member themselves. Refunds are issued to the original payer&rsquo;s payment method unless otherwise agreed in writing.
-              </p>
-            </section>
-
-            {/* Section 14 */}
-            <section className="space-y-4" id="refund-section-14">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">14</span>
-                <span>How to Request a Cancellation or Refund</span>
-              </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                You may request a cancellation or refund through any of the following channels:
-              </p>
-              
-              <div className="grid grid-cols-1 gap-3">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">&bull;</span>
-                  <div>
-                    <strong className="text-slate-900">Online:</strong> Log in to your Account and select &ldquo;Manage Subscription&rdquo;.
-                  </div>
-                </div>
-
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">&bull;</span>
-                  <div>
-                    <strong className="text-slate-900">Phone:</strong> Call our UK Freephone line on <strong>0800 888 2026</strong> (open 8am&ndash;8pm daily).
-                  </div>
-                </div>
-
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">&bull;</span>
-                  <div>
-                    <strong className="text-slate-900">In writing:</strong> Contact our support team by email at <strong>support@everease.co.uk</strong> or by post at <strong>EverEase Safeguarding Ltd, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ</strong>; please include your Account name/email and the reason for your request to help us process it quickly.
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 font-medium text-sm sm:text-base">
-                We aim to confirm receipt of any cancellation or refund request within <strong>1 UK business day</strong>, and to resolve straightforward requests within <strong>5 business days</strong>.
-              </div>
-            </section>
-
-            {/* Section 15 */}
-            <section className="space-y-3" id="refund-section-15">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">15</span>
-                <span>Complaints About Refunds or Billing</span>
-              </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                If you are unhappy with the outcome of a refund or cancellation request, you may ask for it to be reviewed by a supervisor by contacting our support line and requesting an escalation. We aim to respond to escalated billing complaints within 5 UK business days. You retain the right to refer unresolved disputes to your bank under the Direct Debit Guarantee, or to seek independent advice (for example, from Citizens Advice or the Financial Ombudsman Service, where applicable to the payment method used).
-              </p>
-            </section>
-
-            {/* Section 16 */}
-            <section className="space-y-3" id="refund-section-16">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">16</span>
-                <span>Changes to This Policy</span>
-              </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                We may update this Policy from time to time to reflect changes in our services, pricing structures, or legal requirements. Material changes will be notified to active subscribers by email or through the platform at least 14 days before they take effect. The version in force is the one published on our website at the relevant time.
-              </p>
-            </section>
-
-            {/* Contact section */}
+            {/* Section 13 / Contact Us */}
             <section className="space-y-4 pt-4 border-t border-slate-200" id="refund-section-contact">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-600 text-white text-sm font-black shrink-0">
-                  <PhoneCall className="w-4 h-4" />
-                </span>
-                <span>Contact &amp; Support</span>
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-600 text-white text-sm font-black shrink-0">13</span>
+                <span>Contact Us</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                If you have any questions regarding this policy or wish to initiate a cancellation or refund, please reach out to our dedicated team:
+                If you have any questions about cancellation, refunds or billing, please contact the EverEase support team.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-2">
                   <div className="flex items-center gap-2 text-emerald-900 font-black">
                     <PhoneCall className="w-5 h-5 text-emerald-700" />
-                    <span>Freephone UK Telephone Desk</span>
+                    <span>EverEase Telephone Support</span>
                   </div>
                   <p className="text-2xl font-black text-emerald-950">
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Support Hours: 8am&ndash;8pm daily
                   </p>
                 </div>
 
                 <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
                   <div className="flex items-center gap-2 text-slate-900 font-black">
                     <Mail className="w-5 h-5 text-slate-700" />
-                    <span>Support &amp; Billing Desk</span>
+                    <span>EverEase Email Support</span>
                   </div>
                   <p className="text-base font-bold text-slate-900">
                     support@everease.co.uk
                   </p>
                   <p className="text-xs text-slate-600">
-                    Postal: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ
+                    Support Hours: 8am&ndash;8pm daily
                   </p>
                 </div>
               </div>
 
+              <div className="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl text-emerald-950 font-medium text-sm sm:text-base">
+                We aim to handle cancellation and refund requests clearly, fairly and without unnecessary delay.
+              </div>
+
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Registered:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p>&copy; 2026 EverEase. All rights reserved.</p>
               </div>
             </section>
 
@@ -2049,7 +1976,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Postal Address:</strong> Data Protection Officer, EverEase Safeguarding Ltd, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
+                <p><strong>Postal Address:</strong> Data Protection Officer, EverEase, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
                 <p><strong>ICO Registration:</strong> ZB884210 (UK Data Protection Act 2018)</p>
               </div>
             </section>
@@ -2495,7 +2422,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Postal Address:</strong> EverEase Safeguarding Ltd, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
+                <p><strong>Postal Address:</strong> EverEase, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
                 <p><strong>ICO Registration:</strong> ZB884210 (UK Data Protection Act 2018)</p>
               </div>
             </section>
