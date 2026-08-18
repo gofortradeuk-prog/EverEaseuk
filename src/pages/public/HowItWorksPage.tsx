@@ -327,7 +327,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
                   Family &amp; Caregiver Portal Linking
                 </h3>
                 <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
-                  For adult children living away from aging parents, worry is constant. Our SaaS platform allows subscribers to authorize trusted family members to view support activity. Caregivers can remotely check ticket statuses, monitor scam prevention alerts, and handle billing invoices without intruding on their loved one&rsquo;s personal privacy.
+                  For adult children living away from aging parents, worry is constant. Our digital support platform allows subscribers to authorize trusted family members to view support activity. Caregivers can remotely check ticket statuses, monitor scam prevention alerts, and handle billing invoices without intruding on their loved one&rsquo;s personal privacy.
                 </p>
               </div>
 

@@ -77,7 +77,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
     }
   };
 
-  // 1. What our SaaS Platform Provides items
+  // 1. What our Digital Support Platform Provides items
   const saasCapabilities = [
     {
       id: 'scam-protection',
@@ -181,7 +181,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
         'No invasive pop-ups, advert traps, or unwanted background updates.',
         'Safe banking and Direct Debit guarantee protection on all payments.',
       ],
-      cta: 'Explore SaaS Plans',
+      cta: 'Explore Membership Plans',
       accentColor: 'border-amber-600',
     },
   ];
@@ -214,8 +214,8 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       icon: <Users className="w-6 h-6 text-purple-700" />,
     },
     {
-      title: 'Transparent Monthly SaaS & Cancel Anytime',
-      desc: 'Simple rolling monthly subscription with no hidden setup costs, no exit fees, and backed by the UK Direct Debit Guarantee scheme.',
+      title: 'Transparent Monthly Membership & Cancel Anytime',
+      desc: 'Simple monthly subscriptions with secure payment options. Direct Debit payments are protected by the Direct Debit Guarantee.',
       icon: <CheckCircle2 className="w-6 h-6 text-emerald-700" />,
     },
   ];
@@ -235,7 +235,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
             {/* Safeguarding trust badge */}
             <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold shadow-sm">
               <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
-              <span>UK SaaS Platform for Senior Citizens &amp; Families</span>
+              <span>UK Digital Support Platform for Older Adults &amp; Families</span>
             </div>
 
             {/* Value proposition heading */}
@@ -553,9 +553,9 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       </section>
 
       {/* =========================================================================
-          3. SECTION 1: WHAT OUR SAAS PLATFORM PROVIDES
+          3. SECTION 1: WHAT OUR DIGITAL SUPPORT PLATFORM PROVIDES
           ========================================================================= */}
-      <section className="py-16 sm:py-24 px-4 w-full max-w-[1500px] mx-auto space-y-12" id="what-saas-provides">
+      <section className="py-16 sm:py-24 px-4 w-full max-w-[1500px] mx-auto space-y-12" id="what-support-provides">
         {/* Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-900 font-extrabold text-xs sm:text-sm uppercase tracking-widest px-3.5 py-1.5 rounded-full border border-emerald-300">
@@ -563,7 +563,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
             <span>Core Digital Support Features</span>
           </div>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 tracking-tight">
-            1. What Our SaaS Platform Provides
+            1. What Our Digital Support Platform Provides
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-slate-600 font-normal leading-relaxed">
             EverEase provides an accessible online customer portal, plain-English digital education, and ongoing non-medical tech support for everyday tasks.
@@ -580,7 +580,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
               Practical technology support designed around your everyday routine.
             </h3>
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-              Whether you need help reading an email, making a video call to family, updating your smartphone settings, or checking if a text is a scam, our SaaS platform puts calm, patient assistance right at your fingertips.
+              Whether you need help reading an email, making a video call to family, updating your smartphone settings, or checking if a text is a scam, our support platform puts calm, patient assistance right at your fingertips.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="flex items-center gap-2.5 text-sm font-bold text-slate-800">
@@ -939,7 +939,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
           Ready to feel safe and confident with everyday technology?
         </h2>
         <p className="text-base sm:text-xl text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-          Join EverEase today. Choose your monthly SaaS plan, receive your Unique ID Code and temporary password, and pay securely via Stripe with BACS Direct Debit or Card.
+          Join EverEase today. Choose your monthly membership plan, receive your Unique ID Code and temporary password, and pay securely via Stripe with BACS Direct Debit or Card.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
           <button

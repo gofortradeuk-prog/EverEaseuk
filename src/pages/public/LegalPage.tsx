@@ -841,17 +841,22 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             </section>
 
             {/* Section 3 */}
-            <section className="space-y-4" id="sla-section-3">
+            <section className="space-y-6" id="sla-section-3">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">3</span>
-                <span>Support Channels</span>
+                <span>Support Channels, Plan Tiers &amp; Service Standards</span>
               </h3>
+
+              <p className="text-slate-700 text-base sm:text-lg">
+                EverEase provides multi-channel customer assistance tailored to support everyday digital confidence. The channels and operating schedules available are outlined below:
+              </p>
+
               <div className="overflow-x-auto rounded-2xl border-2 border-slate-200">
                 <table className="w-full text-left border-collapse text-sm sm:text-base">
                   <thead>
                     <tr className="bg-slate-100 border-b border-slate-200 text-slate-900 font-extrabold">
                       <th className="p-4 sm:p-5">Channel</th>
-                      <th className="p-4 sm:p-5">Availability</th>
+                      <th className="p-4 sm:p-5">General Availability</th>
                       <th className="p-4 sm:p-5">Best For</th>
                     </tr>
                   </thead>
@@ -863,18 +868,18 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                           <span>UK Freephone: 0800 888 2026</span>
                         </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-700 font-medium">8am&ndash;8pm daily, including weekends and most public holidays</td>
-                      <td className="p-4 sm:p-5 text-slate-700">Urgent issues, guidance sessions, safeguarding or suspected fraud concerns</td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">8am&ndash;8pm daily, including weekends &amp; bank holidays</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Urgent questions, telephone check-ins, guidance calls, suspected fraud reports</td>
                     </tr>
                     <tr className="bg-slate-50/50 hover:bg-slate-100 transition-colors">
                       <td className="p-4 sm:p-5 font-bold text-slate-900">
                         <div className="flex items-center gap-2">
                           <MessageSquare className="w-4 h-4 text-blue-700 shrink-0" />
-                          <span>Live chat (website)</span>
+                          <span>Live Chat (Website &amp; Portal)</span>
                         </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-700 font-medium">8am&ndash;8pm daily, during published hours</td>
-                      <td className="p-4 sm:p-5 text-slate-700">Quick questions, account and booking help</td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">Active during tier support hours</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Interactive troubleshooting, live walkthroughs, quick account help</td>
                     </tr>
                     <tr className="bg-white hover:bg-slate-50 transition-colors">
                       <td className="p-4 sm:p-5 font-bold text-slate-900">
@@ -883,15 +888,98 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                           <span>Email: support@everease.co.uk</span>
                         </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-700 font-medium">Monitored during Business Hours; messages outside these hours are picked up the next working period</td>
-                      <td className="p-4 sm:p-5 text-slate-700">Non-urgent enquiries, documentation requests, written confirmations</td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">Monitored during support hours; queued 24/7</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Non-urgent enquiries, document verification, written receipts, general feedback</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-slate-600 text-xs sm:text-sm italic">
-                Support email inquiries are monitored throughout 8am&ndash;8pm UK time daily. All messages received outside operational windows are addressed at the start of the following morning.
-              </p>
+
+              {/* 3.1 Plan-Specific Support Tiers Table */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-lg font-bold text-slate-900">3.1 Support Hours &amp; Response Targets by Membership Plan</h4>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  To ensure our support operations remain responsive, our support hours and target response times are tiered by membership plan:
+                </p>
+
+                <div className="overflow-x-auto rounded-2xl border-2 border-slate-200">
+                  <table className="w-full text-left border-collapse text-sm sm:text-base">
+                    <thead>
+                      <tr className="bg-slate-100 border-b border-slate-200 text-slate-900 font-extrabold">
+                        <th className="p-4 sm:p-5">Plan Tier</th>
+                        <th className="p-4 sm:p-5">Support Operating Hours</th>
+                        <th className="p-4 sm:p-5">Target Response Time</th>
+                        <th className="p-4 sm:p-5">Personal Setup &amp; Onboarding</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 text-slate-800">
+                      <tr className="bg-white hover:bg-slate-50 transition-colors">
+                        <td className="p-4 sm:p-5 font-bold text-slate-900">Essentials (£45/mo)</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Mon&ndash;Fri, 9:00 AM &ndash; 5:30 PM UK Time</td>
+                        <td className="p-4 sm:p-5 font-semibold text-slate-800">Within 2 hours during support hours (Standard queue)</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Instant portal access; setup assistance on next business day</td>
+                      </tr>
+                      <tr className="bg-emerald-50/40 hover:bg-emerald-50 transition-colors">
+                        <td className="p-4 sm:p-5 font-bold text-emerald-950">Complete (£55/mo)</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Mon&ndash;Sat, 9:00 AM &ndash; 6:00 PM UK Time</td>
+                        <td className="p-4 sm:p-5 font-extrabold text-emerald-900">Within 1 hour during support hours (Priority queue)</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Instant portal access; 1-to-1 setup assistance within 24 hours</td>
+                      </tr>
+                      <tr className="bg-purple-50/40 hover:bg-purple-50 transition-colors">
+                        <td className="p-4 sm:p-5 font-bold text-purple-950">Complete + Family (£65/mo)</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Mon&ndash;Sun, 8:00 AM &ndash; 8:00 PM UK Time</td>
+                        <td className="p-4 sm:p-5 font-extrabold text-purple-900">Under 30 minutes during support hours (Express queue)</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Instant portal access; priority setup assistance within 12 hours</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* 3.2 What Counts as a Valid Support Request */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-lg font-bold text-slate-900">3.2 What Counts as a Support Request</h4>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  A support request is defined as any inbound communication regarding the EverEase platform, digital learning modules, scam verification, account access, or billing management made through one of the following verified channels:
+                </p>
+                <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                    <span>A help or scam-verification ticket submitted directly through the authenticated Member Portal;</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                    <span>An email sent from the Member&rsquo;s registered email address to <strong>support@everease.co.uk</strong>;</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                    <span>A live chat session initiated on the official website or portal;</span>
+                  </li>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                    <span>A telephone call placed to our UK Freephone helpline on <strong>0800 888 2026</strong>.</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* 3.3 Definition of Response Time vs Resolution Time */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-lg font-bold text-slate-900">3.3 What &ldquo;Response Time&rdquo; Means in Practice</h4>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  <strong>&ldquo;Response Time&rdquo;</strong> refers to the elapsed time between a support request being registered during operational support hours and a qualified UK support advisor reviewing the request and providing a first meaningful, human reply or actionable step. Automated auto-reply acknowledgements do not satisfy our Response Time commitment.
+                </p>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  <strong>Requests Outside Support Hours:</strong> Any request submitted outside the operating hours for your plan tier is safely stored in our queue and will be picked up at the start of the next business support window.
+                </p>
+              </div>
+
+              {/* 3.4 Setup & Onboarding Standards */}
+              <div className="space-y-3 pt-2">
+                <h4 className="text-lg font-bold text-slate-900">3.4 Digital Setup &amp; Onboarding Commitments</h4>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  Upon completion of registration, digital account creation is immediate, allowing instant access to member guides, scam checklists, and document templates. Where personalized 1-to-1 setup or onboarding assistance is requested, our team coordinates with you or your designated family carer to conduct the session within the stated delivery window (e.g. within 24 hours for Complete members, or same business day for requests received before 3:00 PM UK Time).
+                </p>
+              </div>
             </section>
 
             {/* Section 4 */}

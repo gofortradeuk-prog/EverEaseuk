@@ -271,7 +271,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ navigate }) => {
               }}
               className="px-8 py-4 bg-white text-teal-900 hover:bg-teal-50 rounded-2xl font-black text-lg shadow-lg cursor-pointer transition-all"
             >
-              View SaaS Plans
+              View Membership Plans
             </button>
             <button
               type="button"

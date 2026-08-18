@@ -71,20 +71,20 @@ export const AuthPage: React.FC<AuthPageProps> = ({
       id: 'essentials',
       name: 'Essentials Plan',
       price: 45,
-      tagline: 'Scam Protection, 1 Family Seat & UK Support',
+      tagline: 'Scam Protection, 1 Family Account & Dedicated UK Support',
     },
     {
       id: 'complete',
       name: 'Complete Plan',
       price: 55,
-      tagline: 'All 7 Modules, Vault, 3 Family Seats & Direct Debit Protection',
+      tagline: 'All 7 Modules, Vault, Up to 3 Family Accounts & Direct Debit Protection',
       popular: true,
     },
     {
       id: 'complete_family',
       name: 'Complete + Family Plan',
       price: 65,
-      tagline: 'Unlimited Family Seats, Priority Fraud Desk & Home Manager',
+      tagline: 'Unlimited Family Accounts, Priority Fraud Desk & Home Manager',
     },
   ];
 

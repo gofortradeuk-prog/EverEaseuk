@@ -2798,17 +2798,17 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
       'Scam Protection: Instant text, email & letter verification',
       'Digital Help: Step-by-step plain English guides & glossary',
       'Life Reminders: Appointments, MOTs & medication times',
-      '1 Family / Carer seat with permission controls',
-      'Dedicated UK email support (Monday–Sunday)',
+      '1 family/carer account with permission-based access',
+      'Dedicated UK email support (Monday–Friday)',
       'Direct Debit Guarantee protected'
     ],
     supportLevel: 'Email support',
     order: 1,
     bestFor: 'Seniors who only need light support from time to time.',
-    responseTime: 'Within 1-2 hours',
-    supportHours: 'Mon-Fri, 9am - 5:30pm GMT',
-    delivery: 'Same-day software setup',
-    buttonLabel: 'Choose Essential'
+    responseTime: 'Within 2 hours (during support hours)',
+    supportHours: 'Mon–Fri, 9:00 AM – 5:30 PM (UK Time)',
+    delivery: 'Instant portal access (setup guidance next business day)',
+    buttonLabel: 'Choose Essentials'
   },
   {
     id: 'complete',
@@ -2832,17 +2832,17 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
       'Document Vault: Encrypted storage for vital papers & wills',
       'Home Manager: Boiler service tracking & trusted trades directory',
       'Subscription Manager: Monthly outgoings & price hike alerts',
-      '3 Family / Carer seats with carer digest summaries',
+      'Up to 3 family/carer accounts with permission-based access and digest summaries',
       'Priority UK email support & Live Chat guidance',
       'Direct Debit Guarantee protected'
     ],
     supportLevel: 'Priority email + Live chat',
     order: 2,
-    bestFor: 'Seniors who need regular monthly educate on everyday digital tasks.',
-    responseTime: 'Within 1 hours (Priority)',
-    supportHours: 'Mon-Sat, 9am - 6pm GMT',
-    delivery: 'Setup completed under 24 hours',
-    buttonLabel: 'Choose Plus'
+    bestFor: 'Seniors who need regular monthly education on everyday digital tasks.',
+    responseTime: 'Within 1 hour (during support hours, priority queue)',
+    supportHours: 'Mon–Sat, 9:00 AM – 6:00 PM (UK Time)',
+    delivery: 'Instant portal access (guided onboarding within 24 hours)',
+    buttonLabel: 'Choose Complete'
   },
   {
     id: 'complete_family',
@@ -2866,7 +2866,7 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
       'All 7 EverEase modules with full feature access',
       'Unlimited encrypted document & photo storage',
       'Priority rapid scam-check response queue',
-      'Unlimited Family & Carer seats with granular permissions',
+      'Unlimited family/carer accounts with permission-based access',
       'Priority live chat + Monthly telephone check-in call',
       'Direct contact line for family carers in emergencies',
       'Direct Debit Guarantee protected'
@@ -2874,10 +2874,10 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
     supportLevel: 'Priority chat + Monthly phone check-in',
     order: 3,
     bestFor: 'Adult children who want regular support available for a parent or loved one.',
-    responseTime: 'Under 30 min. (Express Priority)',
-    supportHours: 'Mon-Sun, 8am - 8pm GMT',
-    delivery: 'Fast onboarding under 12 hours',
-    buttonLabel: 'Choose Family Care'
+    responseTime: 'Under 30 min. (during support hours, express queue)',
+    supportHours: 'Mon–Sun, 8:00 AM – 8:00 PM (UK Time)',
+    delivery: 'Instant portal access (priority onboarding within 12 hours)',
+    buttonLabel: 'Choose Complete + Family'
   }
 ];
 

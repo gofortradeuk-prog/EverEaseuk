@@ -39,8 +39,8 @@ export const FaqPage: React.FC<FaqPageProps> = ({ navigate }) => {
       globalIndex: 1,
       category: 'general',
       categoryLabel: 'General & Support',
-      question: 'What does the EverEase SaaS Platform educate on?',
-      answer: 'The EverEase SaaS Platform educates on everyday digital tasks such as smartphones, WhatsApp, emails, video calls, online forms, reminders, and general digital confidence support via our secure portal.'
+      question: 'What does the EverEase digital support platform educate on?',
+      answer: 'The EverEase digital support platform educates on everyday digital tasks such as smartphones, WhatsApp, emails, video calls, online forms, reminders, and general digital confidence support via our secure portal.'
     },
     {
       id: 'faq-2',
@@ -48,15 +48,15 @@ export const FaqPage: React.FC<FaqPageProps> = ({ navigate }) => {
       category: 'general',
       categoryLabel: 'General & Support',
       question: 'Is EverEase a care or medical service?',
-      answer: 'No. EverEase is strictly a Software as a Service (SaaS). We provide software tools, dashboards, and friendly digital assistance only. We are not a medical, emergency, nursing, or regulated care provider.'
+      answer: 'No. EverEase is a digital support platform and subscription service providing software tools, guidance dashboards, and friendly technology assistance. We are not a medical, emergency, nursing, or regulated care provider.'
     },
     {
       id: 'faq-3',
       globalIndex: 3,
       category: 'general',
       categoryLabel: 'General & Support',
-      question: 'How do the SaaS monthly plans work?',
-      answer: 'Our software subscriptions are billed monthly and renew automatically until cancelled. Each software plan includes a different level of portal access and ticketing features.'
+      question: 'How do the monthly membership plans work?',
+      answer: 'Our membership subscriptions are billed monthly and renew automatically until cancelled. Each membership plan includes a different level of portal access, response priorities, and family account features.'
     },
     {
       id: 'faq-4',

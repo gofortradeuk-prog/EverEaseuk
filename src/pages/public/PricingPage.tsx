@@ -98,7 +98,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 border border-teal-500/40 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold shadow-sm">
               <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-teal-300 shrink-0" />
-              <span>Transparent UK Monthly SaaS Pricing</span>
+              <span>Transparent UK Monthly Membership Pricing</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
@@ -106,7 +106,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
             </h1>
 
             <p className="text-sm sm:text-base text-slate-200 font-normal leading-relaxed max-w-2xl">
-              Rolling monthly subscriptions backed by the UK Direct Debit Guarantee scheme. Cancel or change your membership whenever you wish.
+              Simple monthly subscriptions with secure payment options. Cancel or change your membership at any time.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
@@ -156,7 +156,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                     Direct Debit Guarantee
                   </h3>
                   <p className="text-xs text-slate-600 font-medium">
-                    Protected by the UK banking guarantee scheme via Stripe.
+                    Direct Debit payments are protected by the Direct Debit Guarantee.
                   </p>
                 </div>
               </div>
@@ -166,8 +166,26 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
       </section>
 
       {/* Main Pricing Cards Container */}
-      <div className="w-full max-w-[1500px] mx-auto px-4 py-16 sm:py-20 space-y-16">
+      <div className="w-full max-w-[1500px] mx-auto px-4 py-16 sm:py-20 space-y-12">
         
+        {/* Notice Above Plans */}
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+            All plans are billed monthly and renew automatically each month until cancelled. Prices are shown in GBP.
+          </p>
+          <p className="text-xs sm:text-sm text-slate-600 font-medium">
+            There are no joining or cancellation fees. See our{' '}
+            <button
+              type="button"
+              onClick={() => navigate('/legal?type=refund')}
+              className="text-teal-700 font-bold underline hover:text-teal-800 cursor-pointer"
+            >
+              Refund &amp; Cancellation Policy
+            </button>{' '}
+            for full details.
+          </p>
+        </div>
+
         {/* Tier Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan) => {
@@ -202,10 +220,10 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                   <div className={`rounded-2xl p-4 border ${isComplete ? 'bg-emerald-950/70 border-emerald-700/60' : 'bg-slate-50 border-slate-200'}`}>
                     <div className="flex items-baseline gap-1">
                       <span className={`text-4xl sm:text-5xl font-black ${isComplete ? 'text-white' : 'text-slate-900'}`}>£{plan.price}</span>
-                      <span className={`font-bold text-base ${isComplete ? 'text-teal-200' : 'text-slate-600'}`}>/ month</span>
+                      <span className={`font-bold text-base ${isComplete ? 'text-teal-200' : 'text-slate-600'}`}>/month</span>
                     </div>
                     <p className={`text-xs font-bold mt-1 ${isComplete ? 'text-teal-300' : 'text-teal-800'}`}>
-                      Rolling monthly subscription • Cancel anytime
+                      Recurring monthly payment • Cancel anytime
                     </p>
                   </div>
 
@@ -432,6 +450,13 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                 We clearly understand that every customer has different payment preferences. <strong>We will send the invoice along with the payment link</strong> directly to your registered email address, and you can make the payment as per your desire using whichever method is most convenient for you!
               </p>
             </div>
+          </div>
+
+          {/* Underneath Payment Section Guarantee Notice */}
+          <div className="text-center pt-2">
+            <p className="text-xs sm:text-sm font-semibold text-slate-700">
+              Direct Debit payments are collected through Stripe and are protected by the Direct Debit Guarantee.
+            </p>
           </div>
         </div>
 

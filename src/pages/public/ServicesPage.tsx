@@ -177,7 +177,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ navigate }) => {
             </h1>
 
             <p className="text-sm sm:text-base text-slate-200 font-normal leading-relaxed max-w-2xl">
-              From scam verification and tablet learning to appointment reminders and family connection — explore our full suite of accessible SaaS modules.
+              From scam verification and tablet learning to appointment reminders and family connection — explore our full suite of accessible support modules.
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
@@ -190,7 +190,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ navigate }) => {
                 className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-xl font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer border-0"
               >
                 <Sparkles className="w-5 h-5 text-slate-950" />
-                <span>Join Now — View SaaS Plans</span>
+                <span>Join Now — View Membership Plans</span>
                 <ArrowRight className="w-5 h-5 text-slate-950" />
               </button>
 
@@ -335,7 +335,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ navigate }) => {
                   </div>
                   <div className="text-xs text-slate-500 font-semibold flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-teal-600" />
-                    <span>Included in all EverEase SaaS subscriptions</span>
+                    <span>Included in all EverEase membership subscriptions</span>
                   </div>
                 </div>
               </div>
@@ -349,7 +349,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ navigate }) => {
             Ready to explore all 7 EverEase modules?
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-slate-300 max-w-2xl mx-auto">
-            Join today with our simple rolling monthly subscription. Backed by the UK Direct Debit Guarantee scheme.
+            Join today with our simple monthly subscriptions with secure payment options. Direct Debit payments are protected by the Direct Debit Guarantee.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
