@@ -344,13 +344,13 @@ export const AuthPage: React.FC<AuthPageProps> = ({
               </div>
             </div>
 
-            {/* Stripe Invoice & Payment Options Card */}
+            {/* Stripe Payment & Activation Card */}
             <div className="bg-emerald-50/80 rounded-2xl p-5 border-2 border-emerald-300 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-emerald-800" />
                   <h3 className="text-base font-black text-emerald-950">
-                    Stripe Official Invoice Dispatched
+                    Complete Payment on Stripe to Activate
                   </h3>
                 </div>
                 <span className="bg-emerald-200 text-emerald-900 text-xs font-black px-2.5 py-1 rounded-full border border-emerald-300">
@@ -363,19 +363,22 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   <strong>Membership:</strong> {onboardingSuccess.plan.name} (£{onboardingSuccess.plan.price}/month)
                 </p>
                 <p>
-                  <strong>Invoice Link Sent To:</strong> {onboardingSuccess.customer.email}
+                  <strong>Registration Email:</strong> {onboardingSuccess.customer.email}
+                </p>
+                <p className="text-xs text-amber-800 bg-amber-50 p-2.5 rounded-xl border border-amber-200 font-semibold">
+                  ⏳ <strong>Activation Note:</strong> Your paid membership access activates automatically once your payment or Direct Debit mandate is confirmed on Stripe.
                 </p>
               </div>
 
               {/* Supported Payment Methods Callout */}
               <div className="bg-white rounded-xl p-4 border border-emerald-200 space-y-2">
                 <span className="text-xs font-extrabold uppercase text-slate-600 block">
-                  Available Payment Options on Invoice:
+                  Available Payment Options on Stripe:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-bold text-slate-800">
                   <div className="flex items-center gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200">
                     <Building className="w-4 h-4 text-teal-700" />
-                    <span>BACS Direct Debit (UK Bank)</span>
+                    <span>UK Direct Debit</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200">
                     <CreditCard className="w-4 h-4 text-purple-700" />
@@ -383,7 +386,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   </div>
                 </div>
                 <p className="text-[11px] text-slate-500 font-semibold pt-1">
-                  ✓ Protected by the UK Direct Debit Guarantee scheme &amp; Stripe 256-bit encryption.
+                  ✓ Direct Debit payments are collected through Stripe and are protected by the UK Direct Debit Guarantee.
                 </p>
               </div>
 
@@ -397,7 +400,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   id="btn-open-stripe-invoice"
                 >
                   <ExternalLink className="w-5 h-5" />
-                  <span>Open Secure Stripe Payment Link</span>
+                  <span>Continue to Stripe Secure Payment — £{onboardingSuccess.plan.price}/month</span>
                 </a>
               </div>
             </div>
@@ -483,10 +486,10 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   <div className="p-4 rounded-2xl bg-emerald-50/90 border-2 border-emerald-300 text-slate-900 space-y-2 shadow-xs">
                     <div className="flex items-center gap-2 text-emerald-900 font-black text-sm uppercase tracking-wider">
                       <ShieldCheck className="w-5 h-5 text-emerald-700 shrink-0" />
-                      <span>No Direct Payment Checkout on Website</span>
+                      <span>Secure Payment via Stripe</span>
                     </div>
                     <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
-                      For your financial security, <strong>we never collect or store credit card or bank details directly on our website</strong>. When you tap <em>"Get Started &amp; Send Stripe Invoice"</em>, our processor, <strong>Stripe</strong>, will generate your official invoice with a secure link to pay via <strong>BACS Direct Debit (UK Bank Account)</strong> or <strong>Card</strong>.
+                      For your financial security, <strong>we never collect or store credit card or bank details directly on our website</strong>. When you tap <em>"Continue to Secure Payment"</em>, you will proceed to our secure Stripe checkout to complete your <strong>UK Direct Debit</strong> or <strong>Card</strong> payment.
                     </p>
                   </div>
 
@@ -668,19 +671,19 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       {isSubmitting ? (
                         <div className="flex items-center gap-2">
                           <div className="w-5 h-5 border-3 border-white border-t-transparent rounded-full animate-spin" />
-                          <span>Generating Unique ID &amp; Stripe Invoice...</span>
+                          <span>Preparing Secure Checkout...</span>
                         </div>
                       ) : (
                         <>
                           <Send className="w-5 h-5" />
-                          <span>Get Started &amp; Send Stripe Invoice</span>
+                          <span>Continue to Secure Payment — £{planOptions.find(p => p.id === selectedPlan)?.price || 55}/month</span>
                         </>
                       )}
                     </button>
 
                     <div className="flex items-center justify-center gap-2 text-xs text-slate-500 font-medium text-center">
                       <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                      <span>Instant Unique ID generation • Payment via BACS Direct Debit or Card on Stripe</span>
+                      <span>Secure registration • Payments collected via UK Direct Debit or Card on Stripe</span>
                     </div>
                   </div>
                 </form>

@@ -92,7 +92,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
         invoiceAmount: plan.price,
         paymentLink: checkoutUrl,
         planName: plan.name,
-        paymentMethod: paymentMethod === 'bacs' ? 'BACS Direct Debit' : 'Credit / Debit Card'
+        paymentMethod: paymentMethod === 'bacs' ? 'UK Direct Debit' : 'Credit / Debit Card'
       });
       setIsSubmitting(false);
     }, 700);
@@ -150,28 +150,48 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                   Registration Successful!
                 </h3>
                 <p className="text-sm text-slate-600 font-medium">
-                  Welcome to EverEase, <strong>{submissionSuccess.customerName}</strong>. Your profile has been created and your welcome email with credentials and Stripe payment link has been dispatched to:
+                  Welcome to EverEase, <strong>{submissionSuccess.customerName}</strong>. Your account has been registered. Please complete your payment setup on Stripe to activate your full membership:
                 </p>
                 <div className="inline-block px-4 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-900 font-bold text-sm">
                   {submissionSuccess.customerEmail}
                 </div>
               </div>
 
-              {/* Email Content Simulation Box */}
+              {/* Payment Action & Credentials Box */}
               <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                {/* Secure Payment Link Action (Prominent First) */}
+                <div className="p-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl space-y-2.5">
+                  <div className="flex items-center gap-2 text-emerald-950 font-black text-sm">
+                    <ShieldCheck className="w-5 h-5 text-emerald-700 shrink-0" />
+                    <span>Complete Payment on Stripe to Activate Membership</span>
+                  </div>
+                  <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                    Click the button below to complete your {submissionSuccess.paymentMethod} setup on Stripe&rsquo;s official secure checkout. Your membership activates immediately upon payment confirmation.
+                  </p>
+                  <a
+                    href={submissionSuccess.paymentLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2 text-center no-underline"
+                  >
+                    <span>Continue to Stripe Secure Payment — &pound;{submissionSuccess.invoiceAmount}/month</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+
+                <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
                     <Mail className="w-4 h-4 text-teal-600" />
-                    <span>Email Dispatched: Credentials &amp; Stripe Invoice</span>
+                    <span>Account Credentials &amp; Confirmation</span>
                   </div>
                   <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                    Sent Just Now
+                    Registered
                   </span>
                 </div>
 
                 {/* Generated Password Card */}
                 <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
-                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Your Generated Account Password:</span>
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Your Temporary Account Password:</span>
                   <div className="flex items-center justify-between bg-slate-900 text-white px-4 py-3 rounded-lg font-mono text-base font-bold">
                     <span className="tracking-widest text-teal-300">{submissionSuccess.tempPassword}</span>
                     <button
@@ -193,44 +213,24 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                     </button>
                   </div>
                   <p className="text-[11px] text-slate-500">
-                    You can change this password at any time inside your member dashboard.
+                    You can use this password to sign in after completing payment on Stripe.
                   </p>
                 </div>
 
-                {/* Stripe Invoice Details */}
+                {/* Order Details */}
                 <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-2 text-xs text-slate-700">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Official Stripe Invoice:</span>
-                    <span className="font-mono font-bold text-slate-900">{submissionSuccess.invoiceNumber}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-500">Plan &amp; Amount:</span>
+                    <span className="text-slate-500">Subscription Plan:</span>
                     <span className="font-bold text-slate-900">{submissionSuccess.planName} &bull; &pound;{submissionSuccess.invoiceAmount}.00 / month</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Payment Protocol:</span>
+                    <span className="text-slate-500">Selected Payment Method:</span>
                     <span className="font-bold text-teal-800">{submissionSuccess.paymentMethod}</span>
                   </div>
-                </div>
-
-                {/* Secure Payment Link Action */}
-                <div className="p-4 bg-teal-50 border border-teal-200 rounded-xl space-y-2.5">
-                  <div className="flex items-center gap-2 text-teal-950 font-bold text-xs sm:text-sm">
-                    <ShieldCheck className="w-4 h-4 text-teal-700 shrink-0" />
-                    <span>Secure Stripe Payment Link</span>
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Membership Status:</span>
+                    <span className="font-bold text-amber-700">Awaiting Stripe Confirmation</span>
                   </div>
-                  <p className="text-xs text-slate-600">
-                    Click below to open the secure Stripe checkout page directly, or use the link received in your welcome email:
-                  </p>
-                  <a
-                    href={submissionSuccess.paymentLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full py-3 bg-teal-600 hover:bg-teal-500 text-white rounded-xl font-bold text-xs sm:text-sm shadow-sm transition-all flex items-center justify-center gap-2 text-center no-underline"
-                  >
-                    <span>Open Stripe Secure Payment ({submissionSuccess.paymentMethod})</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
                 </div>
               </div>
 
@@ -381,10 +381,10 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
               {/* Payment Method Selector */}
               <div className="space-y-2.5 pt-2">
                 <label className="block text-xs sm:text-sm font-bold text-slate-900">
-                  Payment Method &amp; Invoicing Preference
+                  Payment Method &amp; Setup Preference
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {/* BACS Direct Debit Tile */}
+                  {/* UK Direct Debit Tile */}
                   <div
                     onClick={() => setPaymentMethod('bacs')}
                     className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
@@ -397,17 +397,17 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5 font-black text-xs sm:text-sm text-slate-900">
                           <Building2 className="w-4 h-4 text-teal-700 shrink-0" />
-                          <span>BACS DIRECT DEBIT</span>
+                          <span>UK Direct Debit</span>
                         </div>
                         <span className="px-2 py-0.5 rounded-full bg-teal-600 text-white font-extrabold text-[10px] uppercase">
                           RECOMMENDED
                         </span>
                       </div>
                       <span className="text-[11px] font-bold text-teal-800 block">
-                        Best for Monthly Membership
+                        Best for monthly membership
                       </span>
                       <p className="text-[11px] text-slate-600 leading-snug">
-                        Mandate setup via Stripe. Protected by UK Consumer Direct Debit Guarantee with 3-day advance notice.
+                        Payments are collected securely through Stripe using UK Direct Debit. You will receive the required Direct Debit notification before collection.
                       </p>
                     </div>
                   </div>
@@ -424,13 +424,13 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-1.5 font-black text-xs sm:text-sm text-slate-900">
                         <CreditCard className="w-4 h-4 text-slate-700 shrink-0" />
-                        <span>CREDIT / DEBIT CARD</span>
+                        <span>Credit / Debit Card</span>
                       </div>
                       <span className="text-[11px] font-bold text-slate-700 block">
-                        Standard Card Invoicing
+                        Standard Card Subscription
                       </span>
                       <p className="text-[11px] text-slate-600 leading-snug">
-                        Monthly subscription link starts immediately via official Stripe secure checkout.
+                        Instant subscription setup via official Stripe secure payment checkout.
                       </p>
                     </div>
                   </div>
@@ -446,15 +446,15 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                 <div className="grid grid-cols-2 gap-2 text-slate-600 pt-1">
                   <div>
                     <span className="font-semibold text-slate-500">Plan &amp; Rate:</span>
-                    <p className="font-bold text-slate-800">{plan.name} (&pound;{plan.price}/mo)</p>
+                    <p className="font-bold text-slate-800">{plan.name} (&pound;{plan.price}/month)</p>
                   </div>
                   <div>
                     <span className="font-semibold text-slate-500">Payment Method:</span>
-                    <p className="font-bold text-slate-800">{paymentMethod === 'bacs' ? 'BACS Direct Debit' : 'Credit / Debit Card'}</p>
+                    <p className="font-bold text-slate-800">{paymentMethod === 'bacs' ? 'UK Direct Debit' : 'Credit / Debit Card'}</p>
                   </div>
                   <div>
                     <span className="font-semibold text-slate-500">Account Activation:</span>
-                    <p className="font-bold text-emerald-800">Immediate (Login sent to email)</p>
+                    <p className="font-bold text-emerald-800">Activated after payment confirmation</p>
                   </div>
                   <div>
                     <span className="font-semibold text-slate-500">Cancel anytime:</span>
@@ -466,16 +466,13 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
               {/* Terms & Guarantees Callout */}
               <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2 text-[11px] text-slate-600 leading-relaxed">
                 <p>
-                  <strong>Subscription &amp; BACS Mandate Terms:</strong> You are setting up UK Direct Debit subscription billing. An official Stripe Invoice and secure payment link alongside your unique password will be sent directly to your email address.
+                  <strong>Subscription Terms:</strong> You are setting up a monthly membership subscription. You will continue to Stripe&rsquo;s secure checkout to complete payment or mandate setup.
                 </p>
                 <p>
-                  <strong>Why We Recommend BACS Direct Debit:</strong> BACS Direct Debit helps us reduce payment processing costs, allowing us to keep our subscription prices affordable while providing human support to seniors.
+                  <strong>Direct Debit Guarantee:</strong> Your Direct Debit payments are protected by the UK Direct Debit Guarantee. If a payment is taken incorrectly, you are entitled to a refund from your bank under the Guarantee.
                 </p>
                 <p>
-                  <strong>Highlighted Security:</strong> Your payments are protected by the UK Direct Debit Guarantee. If a payment is made in error, you&rsquo;re entitled to an immediate refund from your bank.
-                </p>
-                <p>
-                  <strong>Cancellation Policy:</strong> You can cancel your subscription at any time from your account dashboard or by emailing <span className="font-semibold text-slate-800">support@everease.co.uk</span>.
+                  <strong>Cancellation Policy:</strong> You can cancel your membership at any time from your account dashboard or by contacting <span className="font-semibold text-slate-800">support@everease.co.uk</span>.
                 </p>
               </div>
 
@@ -489,7 +486,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                   className="mt-1 w-4 h-4 rounded text-teal-600 focus:ring-teal-500 border-slate-300"
                 />
                 <label htmlFor="checkbox-agree-terms" className="text-xs text-slate-700 leading-normal cursor-pointer select-none">
-                  I authorize the payment mandate and software account setup today. By subscribing, you agree to our{' '}
+                  I authorize the membership registration and agree to the{' '}
                   <span onClick={() => { onClose(); navigate('/legal/terms'); }} className="text-teal-700 underline font-semibold cursor-pointer">Terms &amp; Conditions</span>,{' '}
                   <span onClick={() => { onClose(); navigate('/legal/privacy'); }} className="text-teal-700 underline font-semibold cursor-pointer">Privacy Policy</span>, and{' '}
                   <span onClick={() => { onClose(); navigate('/legal/refund'); }} className="text-teal-700 underline font-semibold cursor-pointer">Refund Policy</span>.
@@ -512,11 +509,11 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                   className="w-full py-4 bg-teal-600 hover:bg-teal-500 text-white rounded-xl font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer border-0 disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Generating Credentials &amp; Invoice...</span>
+                    <span>Processing Registration &amp; Redirecting...</span>
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4 text-teal-200" />
-                      <span>Complete Registration &amp; Send Stripe Invoice ({plan.name} &ndash; &pound;{plan.price}/mo)</span>
+                      <span>Complete Registration &amp; Continue to Stripe — &pound;{plan.price}/month</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}

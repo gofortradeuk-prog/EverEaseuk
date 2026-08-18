@@ -1,6 +1,6 @@
 {
   "name": "Remix Remix EverEase",
-  "description": "UK SaaS platform providing digital learning, scam safeguarding, encrypted document storage, and family peace of mind for senior citizens.",
+  "description": "UK digital support platform providing digital learning, scam safeguarding, encrypted document storage, and family peace of mind for older adults & families.",
   "requestFramePermissions": [
     "camera"
   ],

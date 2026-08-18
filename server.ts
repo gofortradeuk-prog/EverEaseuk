@@ -721,10 +721,10 @@ app.post('/api/billing/create-onboarding-invoice', async (req, res) => {
           customer: customer.id,
           amount: plan.pence,
           currency: 'gbp',
-          description: `EverEase UK ${plan.name} Monthly Membership - Initial Subscription (Protected by UK Direct Debit Guarantee & Scam Safeguards)`,
+          description: `EverEase UK ${plan.name} Monthly Membership - Initial Subscription (Protected by UK Direct Debit Guarantee)`,
         });
 
-        // Create official Stripe invoice configured with BACS Direct Debit & Card
+        // Create official Stripe invoice configured with UK Direct Debit & Card
         const invoice = await stripe.invoices.create({
           customer: customer.id,
           collection_method: 'send_invoice',
@@ -732,7 +732,7 @@ app.post('/api/billing/create-onboarding-invoice', async (req, res) => {
           payment_settings: {
             payment_method_types: ['bacs_debit', 'card'],
           },
-          description: `EverEase UK Membership: ${plan.name} (£${plan.price}/month). Unique ID Code: ${uniqueMemberId}. BACS Direct Debit & Card enabled.`,
+          description: `EverEase UK Membership: ${plan.name} (£${plan.price}/month). Unique ID Code: ${uniqueMemberId}. UK Direct Debit & Card enabled.`,
           metadata: {
             uniqueMemberId,
             planId: plan.id,
@@ -783,7 +783,7 @@ app.post('/api/billing/create-onboarding-invoice', async (req, res) => {
         signupTarget: signupTarget || 'myself',
       },
       paymentMethodsAllowed: [
-        'BACS Direct Debit (UK Bank Account - Backed by UK Direct Debit Guarantee)',
+        'UK Direct Debit (Protected by UK Direct Debit Guarantee)',
         'Credit / Debit Card (Visa, Mastercard, American Express)',
       ],
       dispatchedAt,

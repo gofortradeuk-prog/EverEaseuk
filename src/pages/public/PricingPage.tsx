@@ -336,7 +336,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
-            {/* Card 1: Pay by BACS Direct Debit */}
+            {/* Card 1: Pay by UK Direct Debit */}
             <div className="bg-white rounded-3xl border-2 border-teal-500 p-6 sm:p-8 shadow-sm relative overflow-hidden flex flex-col justify-between">
               {/* Recommended Top-Right Ribbon */}
               <div className="absolute top-0 right-0 bg-amber-400 text-amber-950 text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-3.5 py-1 rounded-bl-xl border-l border-b border-amber-300 shadow-xs">
@@ -351,7 +351,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-lg sm:text-xl font-black text-slate-900">
-                        Pay by BACS Direct Debit
+                        Pay by UK Direct Debit
                       </h3>
                       <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase px-2 py-0.5 rounded-md">
                         MOST POPULAR
@@ -366,19 +366,19 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                 <ul className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                    <span><strong>Payments collected securely through Stripe Bacs Direct Debit</strong> for automated, hassle-free monthly billing.</span>
+                    <span><strong>Payments are collected securely through Stripe using UK Direct Debit.</strong> You will receive the required Direct Debit notification before collection.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                    <span><strong>Highlighted Security:</strong> Your payments are protected by the UK Direct Debit Guarantee. If a payment is made in error, you're entitled to an immediate refund from your bank.</span>
+                    <span><strong>Direct Debit Guarantee:</strong> Your Direct Debit payments are protected by the UK Direct Debit Guarantee. If a payment is taken incorrectly, you are entitled to a refund from your bank under the Guarantee.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                    <span><strong>Advance notice before collections:</strong> You will always receive notification prior to any debit being made from your account.</span>
+                    <span><strong>Advance notification before collections:</strong> You will always receive notification prior to any debit being made from your account.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                    <span><strong>Easy cancellation process:</strong> Cancel your Direct Debit mandate at any time directly through your bank or our dashboard.</span>
+                    <span><strong>Easy cancellation:</strong> Cancel your Direct Debit mandate at any time directly through your bank or our member dashboard.</span>
                   </li>
                 </ul>
 
@@ -386,10 +386,10 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                 <div className="p-4 bg-[#f0fdfa] border border-[#99f6e4] rounded-2xl text-xs text-teal-950 space-y-1">
                   <p className="font-bold flex items-center gap-1.5 text-teal-900">
                     <Lightbulb className="w-4 h-4 text-amber-500 shrink-0" />
-                    <span>Why We Recommend BACS Direct Debit:</span>
+                    <span>Why We Recommend UK Direct Debit:</span>
                   </p>
                   <p className="italic text-teal-800 leading-relaxed">
-                    "BACS Direct Debit helps us reduce payment processing costs, allowing us to keep our subscription prices affordable while providing reliable support to seniors."
+                    "UK Direct Debit helps us reduce payment processing costs, allowing us to keep our membership prices affordable while providing dedicated support to seniors."
                   </p>
                 </div>
               </div>
