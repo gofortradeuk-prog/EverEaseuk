@@ -2795,10 +2795,12 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
     familySeats: 1,
     modulesIncluded: ['scam-protection', 'digital-help', 'reminders'],
     features: [
-      'Email and login assistance',
-      'Education on common digital issues',
-      'Access during standard support hours',
-      'General scam awareness guidance'
+      'Scam Protection: Instant text, email & letter verification',
+      'Digital Help: Step-by-step plain English guides & glossary',
+      'Life Reminders: Appointments, MOTs & medication times',
+      '1 Family / Carer seat with permission controls',
+      'Dedicated UK email support (Monday–Sunday)',
+      'Direct Debit Guarantee protected'
     ],
     supportLevel: 'Email support',
     order: 1,
@@ -2826,10 +2828,13 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
       'subscriptions'
     ],
     features: [
-      'Email and login assistance',
-      'Ongoing educate on common digital tasks',
-      'Scam awareness guidance',
-      '1 scheduled support call per month'
+      'Everything in Essentials plan',
+      'Document Vault: Encrypted storage for vital papers & wills',
+      'Home Manager: Boiler service tracking & trusted trades directory',
+      'Subscription Manager: Monthly outgoings & price hike alerts',
+      '3 Family / Carer seats with carer digest summaries',
+      'Priority UK email support & Live Chat guidance',
+      'Direct Debit Guarantee protected'
     ],
     supportLevel: 'Priority email + Live chat',
     order: 2,
@@ -2858,11 +2863,13 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
       'family-connect'
     ],
     features: [
-      'Priority handling within standard support operations',
-      '1 monthly check-in',
-      'Family support coordination where applicable',
-      'Video call setup assistance',
-      'Educate on digital confidence, reminders, and communication tasks'
+      'All 7 EverEase modules with full feature access',
+      'Unlimited encrypted document & photo storage',
+      'Priority rapid scam-check response queue',
+      'Unlimited Family & Carer seats with granular permissions',
+      'Priority live chat + Monthly telephone check-in call',
+      'Direct contact line for family carers in emergencies',
+      'Direct Debit Guarantee protected'
     ],
     supportLevel: 'Priority chat + Monthly phone check-in',
     order: 3,

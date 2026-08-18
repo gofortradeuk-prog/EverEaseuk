@@ -52,7 +52,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
               supportHours: p.supportHours || def?.supportHours,
               delivery: p.delivery || def?.delivery,
               buttonLabel: p.buttonLabel || def?.buttonLabel,
-              features: (p.features && p.features.length > 0) ? p.features : (def?.features || [])
+              features: def?.features || p.features || []
             };
           });
           setPlans(merged);
@@ -200,6 +200,9 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
 
                   {/* Feature Checkmarks List */}
                   <div className="space-y-3">
+                    <p className={`text-[11px] font-black tracking-wider uppercase ${isComplete ? 'text-teal-200' : 'text-slate-500'}`}>
+                      INCLUDED IN THIS PLAN:
+                    </p>
                     <ul className="space-y-3">
                       {plan.features.map((feature, fIdx) => (
                         <li key={fIdx} className={`flex items-start gap-2.5 text-xs sm:text-sm font-medium leading-relaxed ${isComplete ? 'text-emerald-50' : 'text-slate-700'}`}>
