@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   CheckCircle2, 
   CreditCard, 
@@ -12,10 +12,18 @@ import {
   HeartHandshake, 
   ShieldAlert,
   Smartphone,
-  Check
+  Check,
+  RefreshCw,
+  FileText,
+  Mail,
+  GraduationCap,
+  ShieldQuestion
 } from 'lucide-react';
 import { useAccessibility } from '../../contexts/AccessibilityContext';
 import howItWorksImg from '../../assets/images/how_it_works_steps_1786863616482.jpg';
+import { JoinPlanModal } from '../../components/public/JoinPlanModal';
+import { DEFAULT_PLANS } from '../../lib/firestoreService';
+import { PricingPlan } from '../../types';
 
 interface HowItWorksPageProps {
   navigate: (route: string) => void;
@@ -23,55 +31,86 @@ interface HowItWorksPageProps {
 
 export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
   const { speakText } = useAccessibility();
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+  const [selectedPlanForModal, setSelectedPlanForModal] = useState<PricingPlan | null>(DEFAULT_PLANS[1]); // Default to Complete Plan
+
+  const handleOpenJoinModal = (plan?: PricingPlan) => {
+    setSelectedPlanForModal(plan || DEFAULT_PLANS[1]);
+    setIsJoinModalOpen(true);
+  };
 
   const steps = [
     {
       number: '1',
-      title: 'Sign Up & Choose a Plan',
-      subtitle: 'Simple, transparent UK membership with no long contracts.',
-      description: 'Select your preferred EverEase plan. Registration takes only two minutes in plain English with large text.',
+      title: 'Choose Your Plan & Receive Secure Credentials',
+      subtitle: 'Simple online registration with zero lock-in contracts.',
+      description: 'Select your preferred EverEase plan and complete our 2-minute registration form. An official Stripe Invoice, secure payment link (supporting UK BACS Direct Debit and Cards), and your unique account password are automatically dispatched to your email address.',
       bullets: [
-        'No complicated tech setup or confusing questions.',
-        'Immediate confirmation sent to your email or SMS.',
-        'Protected by the UK Direct Debit Guarantee via Stripe.'
+        'Transparent UK pricing with zero 7-day trial traps or unexpected surprises.',
+        'Unique generated account password sent immediately to your email inbox.',
+        'Protected by Stripe security and the UK Direct Debit Guarantee scheme.'
       ],
       icon: <CreditCard className="w-8 h-8 text-teal-600" />
     },
     {
       number: '2',
-      title: 'Set Up in Minutes (With Family If Helpful)',
-      subtitle: 'Tailor your preferences and optionally invite a trusted helper.',
-      description: 'Adjust your font size, turn on high-contrast mode, or invite a son, daughter, or carer using a simple 6-digit code or SMS link.',
+      title: 'Empathetic Welcome Call & Needs Assessment',
+      subtitle: 'We speak your language—in plain English without tech jargon.',
+      description: 'A friendly British specialist calls you at your preferred time to introduce the service, take note of the devices you own (iPad, iPhone, Android, or PC), and discuss what everyday tasks you want help with first.',
       bullets: [
-        'Choose your preferred reading size and voice audio options.',
-        'You decide what (if anything) family members can see.',
-        'Optional free welcome phone call with our UK support team.'
+        '100% UK-based senior care specialists trained in unhurried, patient guidance.',
+        'We tailor your account font size, high contrast, and voice audio settings.',
+        'Zero pressure or rushing—take all the time you need to feel comfortable.'
       ],
       icon: <HeartHandshake className="w-8 h-8 text-teal-600" />
     },
     {
       number: '3',
-      title: 'Use Everyday Safeguards & Learning',
-      subtitle: 'Scam checks, reminders, documents, and guides at your fingertips.',
-      description: 'Whenever you receive an odd text message or need to check an appointment, simply open EverEase for an instant, clear answer.',
+      title: '1-on-1 Guided Learning & Software Walkthrough',
+      subtitle: 'Step-by-step guidance tailored to your confidence level.',
+      description: 'We guide you through your EverEase portal, demonstrating how to make video calls to loved ones, browse securely, manage online banking safely, and access our library of plain-English visual tutorials.',
       bullets: [
-        'Check suspicious messages in seconds with clear traffic-light advice.',
-        'Never miss MOTs, boiler services, or hospital appointments.',
-        'Store important insurance policies safely in your encrypted vault.'
+        'Screen-sharing or telephone-only walkthroughs based on your preference.',
+        'Custom large-font printable cheat sheets provided for your specific devices.',
+        'Safe practice environment where you cannot break anything or delete files.'
+      ],
+      icon: <GraduationCap className="w-8 h-8 text-teal-600" />
+    },
+    {
+      number: '4',
+      title: 'Active Scam Protection & Instant Screener',
+      subtitle: 'Never wonder if an email, text, or phone call is real or fake.',
+      description: 'Whenever you receive a suspicious text, delivery fee request, bank alert, or strange phone call, paste it into our Scam Checker or call us on 0800 888 2026 for an instant, plain-English safety verdict.',
+      bullets: [
+        'Instant analysis of HMRC, bank impersonation, and parcel delivery scams.',
+        'Clear traffic-light verdicts (Safe / Caution / Dangerous) with exact next steps.',
+        'Emergency telephone support if you accidentally clicked a suspicious link.'
       ],
       icon: <ShieldAlert className="w-8 h-8 text-teal-600" />
     },
     {
-      number: '4',
-      title: 'Ongoing Telephone & Portal Support',
-      subtitle: 'Never feel stuck or alone when technology changes.',
-      description: 'Call our Freephone line or request assistance directly through the portal whenever you encounter a new update, device, or question.',
+      number: '5',
+      title: 'Encrypted Document Vault & Home Life Organizer',
+      subtitle: 'Keep insurance policies, tradespeople, and emergency records organized.',
+      description: 'Safely store essential paperwork—wills, power of attorney, insurance certificates, boiler service dates, and trusted plumber contacts—in bank-grade UK encrypted cloud storage.',
       bullets: [
-        'Freephone 0800 888 2026 open 8am–8pm daily.',
-        'Patient British staff who explain steps without rushing.',
-        'Monthly contract that you can cancel or change anytime.'
+        'Automatic reminder alerts for MOT renewals, boiler checks, and doctor visits.',
+        'Clean photo uploads of letters, policies, and trusted trade contacts.',
+        'Protected under UK GDPR and Data Protection Act 2018 standards.'
       ],
-      icon: <PhoneCall className="w-8 h-8 text-teal-600" />
+      icon: <FileText className="w-8 h-8 text-teal-600" />
+    },
+    {
+      number: '6',
+      title: 'Optional Family Reassurance & 24/7 Peace of Mind',
+      subtitle: 'Keep adult children informed while maintaining your independence.',
+      description: 'Optionally link trusted family members or caregivers to receive monthly reassurance digests and security alerts without compromising your personal privacy or financial autonomy.',
+      bullets: [
+        'Caregiver portal linking for adult children living elsewhere in the UK.',
+        'Automated scam alert notifications sent to nominated family contacts.',
+        'Ongoing Freephone helpline (0800 888 2026) open 8am–8pm daily.'
+      ],
+      icon: <Users className="w-8 h-8 text-teal-600" />
     }
   ];
 
@@ -87,7 +126,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 border border-teal-500/40 px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold shadow-sm">
               <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-teal-300 shrink-0" />
-              <span>Simple 4-Step Process</span>
+              <span>Simple 6-Step Guided Journey</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
@@ -102,9 +141,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
               <button
                 type="button"
                 id="btn-how-it-works-join-now"
-                onClick={() => {
-                  navigate('/auth?mode=signup');
-                }}
+                onClick={() => handleOpenJoinModal()}
                 className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-xl font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer border-0"
               >
                 <Sparkles className="w-5 h-5 text-slate-950" />
@@ -242,6 +279,106 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
           </div>
         </div>
 
+        {/* Why EverEase Works Differently (Guarantees & Philosophy) */}
+        <div className="space-y-8 pt-4" id="why-everease-works-differently">
+          <div className="text-center space-y-3 max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-teal-50 text-teal-800 border border-teal-200/80 shadow-2xs">
+              <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
+              <span>SERVICE EXCELLENCE &amp; GUARANTEES</span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Why EverEase Works Differently
+            </h2>
+
+            <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
+              We combine human patience with modern UK software standards to ensure our subscribers never feel rushed, judged, or locked into restrictive contracts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {/* Card 1: The 1-on-1 UK Tutoring Philosophy */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs hover:border-teal-400 hover:shadow-md transition-all flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-teal-700 text-white flex items-center justify-center shadow-xs">
+                  <HeartHandshake className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                  The 1-on-1 UK Tutoring Philosophy
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
+                  When family members try to teach technology, frustration often goes both ways. Our UK-based senior care specialists are rigorously trained in empathetic communication. We never use confusing developer jargon, we provide large-font step-by-step notes, and we happily repeat explanations as many times as needed until digital confidence is achieved.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 p-3.5 rounded-2xl bg-teal-50/80 border border-teal-100 text-teal-900 text-xs sm:text-sm font-bold">
+                <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
+                <span>100% UK-Based Specialist Team &bull; Zero Time Limits on Patient Learning</span>
+              </div>
+            </div>
+
+            {/* Card 2: Family & Caregiver Portal Linking */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs hover:border-blue-400 hover:shadow-md transition-all flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                  Family &amp; Caregiver Portal Linking
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
+                  For adult children living away from aging parents, worry is constant. Our SaaS platform allows subscribers to authorize trusted family members to view support activity. Caregivers can remotely check ticket statuses, monitor scam prevention alerts, and handle billing invoices without intruding on their loved one&rsquo;s personal privacy.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100 text-blue-900 text-xs sm:text-sm font-bold">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                <span>Shared Family Reassurance &bull; Automated Reassurance Digests</span>
+              </div>
+            </div>
+
+            {/* Card 3: Stripe BACS Direct Debit & Banking Protection */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs hover:border-amber-400 hover:shadow-md transition-all flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-amber-600 text-white flex items-center justify-center shadow-xs">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                  Stripe BACS Direct Debit &amp; Banking Protection
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
+                  We partner with Stripe to provide industry-leading payment security for both Card and BACS Direct Debit. Direct Debit customers are covered by the UK Consumer Direct Debit Guarantee&mdash;receiving automated email notifications 3 working days before any collection and an immediate banking right to refund in the event of any billing discrepancy.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200/70 text-amber-950 text-xs sm:text-sm font-bold">
+                <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
+                <span>UK Direct Debit Guarantee Protected &bull; 3-Day Advance Notice</span>
+              </div>
+            </div>
+
+            {/* Card 4: 100% No-Hassle Cancellation & Refund Pledge */}
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xs hover:border-purple-400 hover:shadow-md transition-all flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-purple-600 text-white flex items-center justify-center shadow-xs">
+                  <RefreshCw className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                  100% No-Hassle Cancellation &amp; Refund Pledge
+                </h3>
+                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
+                  We believe services should be retained through merit, not contracts. Under UK Consumer Contracts Regulations, all subscribers enjoy a 14-day statutory cooling-off period for a 100% full refund if no tutoring services were utilized. You can pause your subscription during hospital visits or holidays for up to 3 months, or cancel anytime with 1 click.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 p-3.5 rounded-2xl bg-purple-50/80 border border-purple-100 text-purple-900 text-xs sm:text-sm font-bold">
+                <CheckCircle2 className="w-4 h-4 text-purple-600 shrink-0" />
+                <span>14-Day Statutory Money-Back Guarantee &bull; Zero Lock-In Contracts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom CTA */}
         <div className="bg-teal-700 text-white rounded-3xl p-8 sm:p-12 text-center space-y-6">
           <h2 className="text-xl sm:text-2xl font-bold">
@@ -253,10 +390,8 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <button
               type="button"
-              onClick={() => {
-                navigate('/pricing');
-              }}
-              className="px-8 py-4 bg-white text-teal-900 hover:bg-teal-50 rounded-2xl font-black text-lg shadow-lg cursor-pointer transition-all"
+              onClick={() => handleOpenJoinModal()}
+              className="px-8 py-4 bg-white text-teal-900 hover:bg-teal-50 rounded-2xl font-black text-lg shadow-lg cursor-pointer transition-all border-0"
             >
               Choose a Membership Plan
             </button>
@@ -272,6 +407,14 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
           </div>
         </div>
       </div>
+
+      {/* Join Plan Registration & Stripe Invoicing Modal */}
+      <JoinPlanModal
+        isOpen={isJoinModalOpen}
+        onClose={() => setIsJoinModalOpen(false)}
+        plan={selectedPlanForModal}
+        navigate={navigate}
+      />
     </div>
   );
 };

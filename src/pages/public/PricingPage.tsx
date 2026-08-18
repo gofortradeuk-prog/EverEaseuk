@@ -25,6 +25,7 @@ import { useAccessibility } from '../../contexts/AccessibilityContext';
 import { getPricingPlans, DEFAULT_PLANS } from '../../lib/firestoreService';
 import { PricingPlan } from '../../types';
 import pricingHeroImg from '../../assets/images/pricing_peace_mind_1786863627905.jpg';
+import { JoinPlanModal } from '../../components/public/JoinPlanModal';
 
 interface PricingPageProps {
   navigate: (route: string) => void;
@@ -34,6 +35,8 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
   const { speakText } = useAccessibility();
   const [plans, setPlans] = useState<PricingPlan[]>(DEFAULT_PLANS);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedPlanForModal, setSelectedPlanForModal] = useState<PricingPlan | null>(null);
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -72,7 +75,15 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
   }, []);
 
   const handleSelectPlan = (planId: string, planName: string, price: number) => {
-    navigate(`/auth?plan=${planId}&mode=signup`);
+    const targetPlan = plans.find(p => p.id === planId) || {
+      id: planId,
+      name: planName,
+      price: price,
+      tagline: 'Comprehensive senior technology assistance',
+      features: []
+    };
+    setSelectedPlanForModal(targetPlan);
+    setIsJoinModalOpen(true);
   };
 
   return (
@@ -103,7 +114,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                 type="button"
                 id="btn-pricing-join-now"
                 onClick={() => {
-                  navigate('/auth?plan=complete&mode=signup');
+                  handleSelectPlan('complete', 'Complete Plan', 55);
                 }}
                 className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-slate-950 rounded-xl font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer border-0"
               >
@@ -529,6 +540,14 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
         </div>
 
       </div>
+
+      {/* Join Plan Registration & Stripe Invoicing Modal */}
+      <JoinPlanModal
+        isOpen={isJoinModalOpen}
+        onClose={() => setIsJoinModalOpen(false)}
+        plan={selectedPlanForModal}
+        navigate={navigate}
+      />
     </div>
   );
 };

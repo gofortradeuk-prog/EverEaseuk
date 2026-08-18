@@ -14,7 +14,8 @@ import {
   Mail,
   Building2,
   ExternalLink,
-  ShieldAlert
+  ShieldAlert,
+  MessageSquare
 } from 'lucide-react';
 
 interface LegalPageProps {
@@ -48,17 +49,17 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
     },
     refund: {
       title: 'Refund & Cancellation Policy',
-      subtitle: 'Direct Debit Guarantee & Statutory 14-Day Cancellation Terms',
+      subtitle: 'Detailed terms governing subscription cancellation, refunds and billing at EverEase',
       icon: <FileCheck2 className="w-8 h-8 text-emerald-700" />,
-      effectiveDate: 'Effective date: 17 August 2026 — Last updated: 17 August 2026',
-      details: 'Explains our transparent cancellation policy, immediate refund protocols, and Direct Debit rights.'
+      effectiveDate: 'Effective date: 18 August 2026 — Last updated: 18 August 2026 — Version 2.0 (Detailed)',
+      details: 'Explains our transparent cancellation rules, 14-day statutory cooling-off rights, proration calculation, and Direct Debit protection.'
     },
     sla: {
       title: 'Service Level Agreement (SLA)',
-      subtitle: 'Platform Availability, Uptime, & Emergency Response Commitments',
+      subtitle: 'Detailed commitments to platform availability, support responsiveness and incident handling',
       icon: <ShieldCheck className="w-8 h-8 text-emerald-700" />,
-      effectiveDate: 'Effective date: 17 August 2026 — Last updated: 17 August 2026',
-      details: 'Our 99.9% uptime target and response commitments for Scam Protection and customer support.'
+      effectiveDate: 'Effective date: 18 August 2026 — Last updated: 18 August 2026 — Version 2.0 (Detailed)',
+      details: 'Our 99.0% uptime target, multi-tiered incident response matrix, session delivery standards, and service credit terms.'
     },
     disclaimer: {
       title: 'Disclaimer & Emergency Notice',
@@ -776,14 +777,14 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             
             {/* Header intro callout */}
             <div className="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-              <h2 className="text-lg font-black text-slate-900 tracking-tight">
-                EVEREASE — Service Level Agreement (SLA)
+              <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
+                EVEREASE &mdash; Service Level Agreement (SLA)
               </h2>
               <p className="text-sm sm:text-base text-slate-700 font-medium">
-                Standards of service, platform availability commitments, customer support response times, and safeguarding escalation procedures.
+                Detailed commitments to platform availability, support responsiveness and incident handling
               </p>
               <div className="text-xs font-bold text-slate-500 pt-1">
-                Effective date: 17 August 2026 — Last updated: 17 August 2026
+                Effective date: 18 August 2026 &mdash; Last updated: 18 August 2026 &mdash; Version 2.0 (Detailed)
               </div>
             </div>
 
@@ -791,143 +792,235 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="sla-section-1">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">1</span>
-                <span>Purpose</span>
+                <span>Purpose and Scope</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                This Service Level Agreement (SLA) sets out the standards of service that EverEase aims to provide to its members, including platform availability, customer support response times, and safeguarding escalation procedures.
+                This Service Level Agreement (&ldquo;SLA&rdquo;) describes, in detail, the level of service EverEase commits to providing in respect of platform availability, support response and resolution times, incident handling, and service credits. It applies to all active Subscription Plans and covers the EverEase website, online platform, telephone helpline, and live chat support.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                This SLA is an operational commitment and statement of our service standards; it does not replace or limit the legal rights and remedies available to you under our Terms &amp; Conditions, our Refund &amp; Cancellation Policy, or applicable consumer law.
               </p>
             </section>
 
             {/* Section 2 */}
-            <section className="space-y-3" id="sla-section-2">
+            <section className="space-y-4" id="sla-section-2">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">2</span>
-                <span>Platform Availability</span>
+                <span>Definitions</span>
               </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                EverEase aims to maintain platform and portal availability of <strong>99.5%</strong> measured monthly, excluding scheduled maintenance.
-              </p>
-              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
+              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span><strong>Scheduled Maintenance:</strong> Will, where possible, be carried out outside of core hours (8am&ndash;8pm) and communicated to members at least 48 hours in advance.</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Available&rdquo; / &ldquo;Availability&rdquo;</strong> means the EverEase website and Member platform are accessible and functioning as intended for their core purpose (account login, session booking, guidance content).</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span><strong>Emergency Maintenance:</strong> Required to protect the security or safeguarding of members may be carried out without prior notice.</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Downtime&rdquo;</strong> means any period during which the platform is not Available, excluding Scheduled Maintenance and Excused Downtime (see Section 9).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Scheduled Maintenance&rdquo;</strong> means planned maintenance windows notified in advance in accordance with Section 6.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Incident&rdquo;</strong> means an unplanned event that disrupts or degrades the Service.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Response Time&rdquo;</strong> means the time between an Incident or support request being logged and a first meaningful response being given.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Resolution Time&rdquo;</strong> means the time between an Incident being logged and Service being restored to normal operation (which may include a temporary workaround).</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>&ldquo;Business Hours&rdquo;</strong> means 8am&ndash;8pm UK time, daily, in line with our published support hours.</span>
                 </li>
               </ul>
             </section>
 
             {/* Section 3 */}
-            <section className="space-y-3" id="sla-section-3">
+            <section className="space-y-4" id="sla-section-3">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">3</span>
-                <span>Support Availability</span>
+                <span>Support Channels</span>
               </h3>
-              <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-2">
-                <div className="flex items-center gap-2 text-emerald-900 font-bold text-base">
-                  <PhoneCall className="w-5 h-5 text-emerald-700" />
-                  <span>Freephone Support Line &amp; Live Chat</span>
-                </div>
-                <p className="text-slate-800 text-base sm:text-lg">
-                  Our Freephone support helpline (<strong>0800 888 2026</strong>) and live chat are available <strong>8am&ndash;8pm daily</strong>, including weekends and most public holidays.
-                </p>
+              <div className="overflow-x-auto rounded-2xl border-2 border-slate-200">
+                <table className="w-full text-left border-collapse text-sm sm:text-base">
+                  <thead>
+                    <tr className="bg-slate-100 border-b border-slate-200 text-slate-900 font-extrabold">
+                      <th className="p-4 sm:p-5">Channel</th>
+                      <th className="p-4 sm:p-5">Availability</th>
+                      <th className="p-4 sm:p-5">Best For</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 text-slate-800">
+                    <tr className="bg-white hover:bg-slate-50 transition-colors">
+                      <td className="p-4 sm:p-5 font-bold text-slate-900">
+                        <div className="flex items-center gap-2">
+                          <PhoneCall className="w-4 h-4 text-emerald-700 shrink-0" />
+                          <span>UK Freephone: 0800 888 2026</span>
+                        </div>
+                      </td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">8am&ndash;8pm daily, including weekends and most public holidays</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Urgent issues, guidance sessions, safeguarding or suspected fraud concerns</td>
+                    </tr>
+                    <tr className="bg-slate-50/50 hover:bg-slate-100 transition-colors">
+                      <td className="p-4 sm:p-5 font-bold text-slate-900">
+                        <div className="flex items-center gap-2">
+                          <MessageSquare className="w-4 h-4 text-blue-700 shrink-0" />
+                          <span>Live chat (website)</span>
+                        </div>
+                      </td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">8am&ndash;8pm daily, during published hours</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Quick questions, account and booking help</td>
+                    </tr>
+                    <tr className="bg-white hover:bg-slate-50 transition-colors">
+                      <td className="p-4 sm:p-5 font-bold text-slate-900">
+                        <div className="flex items-center gap-2">
+                          <Mail className="w-4 h-4 text-purple-700 shrink-0" />
+                          <span>Email: support@everease.co.uk</span>
+                        </div>
+                      </td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">Monitored during Business Hours; messages outside these hours are picked up the next working period</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Non-urgent enquiries, documentation requests, written confirmations</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+              <p className="text-slate-600 text-xs sm:text-sm italic">
+                Support email inquiries are monitored throughout 8am&ndash;8pm UK time daily. All messages received outside operational windows are addressed at the start of the following morning.
+              </p>
             </section>
 
             {/* Section 4 */}
             <section className="space-y-4" id="sla-section-4">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">4</span>
-                <span>Support Response Times</span>
+                <span>Platform Availability Target</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                We prioritize inquiries based on urgency and risk level:
+                We target a monthly platform Availability of <strong>99.0%</strong>, measured over each calendar month, excluding Scheduled Maintenance and Excused Downtime as defined in Section 9. This equates to a maximum of approximately 7 hours and 18 minutes of unplanned Downtime per 30-day month.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <h4 className="text-lg font-bold text-slate-900">4.1 Measurement Methodology</h4>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  Availability is measured using automated uptime monitoring of our core website and Member login systems, sampled at regular intervals throughout each month. Availability percentage is calculated as:
+                </p>
+                <div className="p-4 bg-slate-100 rounded-xl border border-slate-300 font-mono text-sm sm:text-base text-slate-900 font-semibold overflow-x-auto">
+                  Availability % = ((Total Minutes in Month &minus; Downtime Minutes) &divide; Total Minutes in Month) &times; 100
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <h4 className="text-lg font-bold text-slate-900">4.2 Monthly Reporting</h4>
+                <p className="text-slate-700 text-base sm:text-lg">
+                  A summary of platform Availability for the preceding month is maintained internally and will be made available on request to any Member who raises a specific query about an outage they experienced.
+                </p>
+              </div>
+            </section>
+
+            {/* Section 5 */}
+            <section className="space-y-4" id="sla-section-5">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">5</span>
+                <span>Incident Severity Levels and Targets</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                When we become aware of a genuine service Incident, we classify it by severity to determine our response and resolution targets:
               </p>
 
               <div className="overflow-x-auto rounded-2xl border-2 border-slate-200">
                 <table className="w-full text-left border-collapse text-sm sm:text-base">
                   <thead>
                     <tr className="bg-slate-100 border-b border-slate-200 text-slate-900 font-extrabold">
-                      <th className="p-4 sm:p-5">Priority Level</th>
-                      <th className="p-4 sm:p-5">Example</th>
-                      <th className="p-4 sm:p-5">Target First Response</th>
+                      <th className="p-4 sm:p-5">Severity</th>
+                      <th className="p-4 sm:p-5">Description</th>
+                      <th className="p-4 sm:p-5">Response Time</th>
+                      <th className="p-4 sm:p-5">Resolution Target</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 text-slate-800">
                     <tr className="bg-rose-50/50 hover:bg-rose-50 transition-colors">
-                      <td className="p-4 sm:p-5 font-bold text-rose-950 flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
-                        <span>Urgent / Safeguarding</span>
+                      <td className="p-4 sm:p-5 font-bold text-rose-950">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-rose-600 shrink-0"></span>
+                          <span>Critical (P1)</span>
+                        </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-rose-900">Suspected scam in progress, safeguarding concern</td>
-                      <td className="p-4 sm:p-5 font-extrabold text-rose-700">Immediate &mdash; same call, or within 15 minutes</td>
+                      <td className="p-4 sm:p-5 text-rose-950">Platform completely unavailable, or a safety-critical function (e.g. inability to reach support) is down for all users</td>
+                      <td className="p-4 sm:p-5 font-extrabold text-rose-700">Within 30 minutes during Business Hours</td>
+                      <td className="p-4 sm:p-5 font-extrabold text-rose-800">Within 4 hours</td>
                     </tr>
                     <tr className="bg-amber-50/40 hover:bg-amber-50 transition-colors">
-                      <td className="p-4 sm:p-5 font-bold text-amber-950 flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                        <span>High</span>
+                      <td className="p-4 sm:p-5 font-bold text-amber-950">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+                          <span>High (P2)</span>
+                        </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-amber-900">Account access issue, billing error</td>
-                      <td className="p-4 sm:p-5 font-bold text-amber-800">Within 4 working hours</td>
+                      <td className="p-4 sm:p-5 text-amber-950">Major feature unavailable or badly degraded for many users (e.g. booking system down, login failures)</td>
+                      <td className="p-4 sm:p-5 font-bold text-amber-800">Within 1 hour during Business Hours</td>
+                      <td className="p-4 sm:p-5 font-bold text-amber-900">Within 1 business day</td>
                     </tr>
                     <tr className="bg-white hover:bg-slate-50 transition-colors">
-                      <td className="p-4 sm:p-5 font-bold text-slate-900 flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                        <span>Standard</span>
+                      <td className="p-4 sm:p-5 font-bold text-slate-900">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                          <span>Medium (P3)</span>
+                        </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-700">General how-to questions, learning support</td>
-                      <td className="p-4 sm:p-5 font-bold text-emerald-800">Within 1 working day</td>
+                      <td className="p-4 sm:p-5 text-slate-700">A feature is impaired or unavailable for some users, with a reasonable workaround available</td>
+                      <td className="p-4 sm:p-5 font-bold text-emerald-800">Within 4 hours during Business Hours</td>
+                      <td className="p-4 sm:p-5 text-slate-800">Within 3 business days</td>
                     </tr>
                     <tr className="bg-slate-50/60 hover:bg-slate-100 transition-colors">
-                      <td className="p-4 sm:p-5 font-bold text-slate-800 flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
-                        <span>Low</span>
+                      <td className="p-4 sm:p-5 font-bold text-slate-800">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0"></span>
+                          <span>Low (P4)</span>
+                        </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-600">Feedback, general enquiries</td>
-                      <td className="p-4 sm:p-5 font-semibold text-slate-700">Within 2 working days</td>
+                      <td className="p-4 sm:p-5 text-slate-600">Minor issue with limited impact (e.g. cosmetic display issue) not affecting core functionality</td>
+                      <td className="p-4 sm:p-5 font-semibold text-slate-700">Within 1 business day</td>
+                      <td className="p-4 sm:p-5 text-slate-700">Next scheduled release</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-            </section>
 
-            {/* Section 5 */}
-            <section className="space-y-3" id="sla-section-5">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">5</span>
-                <span>Safeguarding Escalation</span>
-              </h3>
-              <div className="p-5 bg-amber-50 border-2 border-amber-300 rounded-2xl space-y-2 text-amber-950 text-base sm:text-lg">
-                <div className="flex items-center gap-2 font-bold text-amber-900">
-                  <AlertTriangle className="w-5 h-5 text-amber-700 shrink-0" />
-                  <span>Immediate Safeguarding Priority Protocol</span>
-                </div>
-                <p>
-                  Any concern relating to the safety or wellbeing of a member, including suspected scam activity, financial abuse, or self-harm risk, is treated as an immediate safeguarding priority. Our team follows the UK Safeguarding Vulnerable Groups framework and will escalate to appropriate family contacts, and where necessary, statutory authorities.
-                </p>
-              </div>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Severity is assessed by EverEase based on the number of Members affected and the nature of the function impacted. Members can help us classify an issue correctly by describing, when reporting it, what they were trying to do and what happened instead.
+              </p>
             </section>
 
             {/* Section 6 */}
             <section className="space-y-3" id="sla-section-6">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">6</span>
-                <span>Data Security &amp; Backups</span>
+                <span>Scheduled Maintenance</span>
               </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                From time to time we need to carry out planned maintenance to keep the platform secure, reliable and up to date. Wherever possible, we will:
+              </p>
               <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Member data is encrypted in transit (SSL/TLS) and at rest.</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Schedule maintenance outside Business Hours (i.e. overnight, before 8am or after 8pm UK time);</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Regular backups are maintained to protect against data loss.</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Give at least 24 hours&rsquo; advance notice via email or an in-platform notice for any maintenance expected to affect access for more than 15 minutes;</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Payment data is processed securely via Stripe and is never stored directly on EverEase servers.</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Keep planned maintenance windows as short as reasonably possible;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Ensure the telephone helpline remains available during any platform maintenance window, save in exceptional circumstances.</span>
                 </li>
               </ul>
             </section>
@@ -936,93 +1029,193 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="sla-section-7">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">7</span>
-                <span>Service Credits &amp; Remedies</span>
+                <span>Guidance Session Delivery Standards</span>
               </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                Where EverEase fails to meet the availability targets set out in Section 2 for reasons within our reasonable control, affected members may be eligible for service credit or a pro-rata refund of the affected period, at EverEase&rsquo;s discretion, upon request.
-              </p>
+              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Scheduled one-to-one or group guidance Sessions will begin within 5 minutes of the confirmed start time.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Where a coach is unable to attend a Session, we will contact the Member as soon as reasonably possible (and in any event before the scheduled start time, where the unavailability is known in advance) to reschedule at no extra cost.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Where technical issues on our side interrupt a Session in progress, we will attempt to resume within 10 minutes, or reschedule the remaining time at no additional cost.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Rescheduled Sessions will be offered within 3 business days of the original appointment, at a time convenient to the Member, wherever possible.</span>
+                </li>
+              </ul>
             </section>
 
             {/* Section 8 */}
-            <section className="space-y-3" id="sla-section-8">
+            <section className="space-y-4" id="sla-section-8">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">8</span>
-                <span>Exclusions</span>
+                <span>Service Credits</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                This SLA does not cover disruption caused by:
+                Where our monthly platform Availability falls below the target set out in Section 4, or a P1/P2 Incident&rsquo;s Resolution Target in Section 5 is missed due to a fault attributable to EverEase, an affected Member on an active paid Subscription Plan may request a service credit as follows:
               </p>
-              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Scheduled maintenance carried out with appropriate notice;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Issues with a member&rsquo;s own internet connection or device;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Third-party outages beyond our reasonable control (e.g. payment processor, telecoms provider); or</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Events of force majeure.</span>
-                </li>
-              </ul>
+
+              <div className="overflow-x-auto rounded-2xl border-2 border-slate-200">
+                <table className="w-full text-left border-collapse text-sm sm:text-base">
+                  <thead>
+                    <tr className="bg-slate-100 border-b border-slate-200 text-slate-900 font-extrabold">
+                      <th className="p-4 sm:p-5">Circumstance</th>
+                      <th className="p-4 sm:p-5">Credit</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 text-slate-800">
+                    <tr className="bg-white hover:bg-slate-50 transition-colors">
+                      <td className="p-4 sm:p-5 font-bold text-slate-900">Monthly Availability between 97.0% and 98.99%</td>
+                      <td className="p-4 sm:p-5 font-extrabold text-emerald-800">5% of that month&rsquo;s subscription fee credited to the next Billing Cycle</td>
+                    </tr>
+                    <tr className="bg-amber-50/40 hover:bg-amber-50 transition-colors">
+                      <td className="p-4 sm:p-5 font-bold text-amber-950">Monthly Availability below 97.0%</td>
+                      <td className="p-4 sm:p-5 font-extrabold text-amber-900">10% of that month&rsquo;s subscription fee credited to the next Billing Cycle</td>
+                    </tr>
+                    <tr className="bg-purple-50/40 hover:bg-purple-50 transition-colors">
+                      <td className="p-4 sm:p-5 font-bold text-purple-950">A P1 Incident&rsquo;s Resolution Target missed by EverEase</td>
+                      <td className="p-4 sm:p-5 font-extrabold text-purple-900">One guidance Session credited, or 10% of that month&rsquo;s fee, at the Member&rsquo;s choice</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="text-slate-700 text-base sm:text-lg">
+                Service credits must be requested within 30 days of the end of the affected month by contacting our support line, and are applied as a credit to a future Billing Cycle rather than a cash refund, save where a cash refund is more appropriate under our Refund &amp; Cancellation Policy (for example, where the Member is also cancelling their subscription).
+              </p>
             </section>
 
             {/* Section 9 */}
             <section className="space-y-3" id="sla-section-9">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">9</span>
-                <span>Review of this SLA</span>
+                <span>Exclusions (Excused Downtime)</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                This SLA is reviewed periodically and may be updated to reflect improvements to our service. Members will be notified of material changes.
+                The following are excluded from Availability calculations and do not count toward service credit eligibility:
+              </p>
+              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Scheduled Maintenance carried out in accordance with Section 6;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Issues caused by a Member&rsquo;s own internet connection, device, browser, or telephone line;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Outages or degradation of third-party services outside our control (e.g. a Member&rsquo;s mobile network, banking app, or a device manufacturer&rsquo;s service);</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Events of force majeure, including power outages, extreme weather, national telecoms failures, or other circumstances beyond our reasonable control;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Suspension of a specific Member&rsquo;s Account due to a breach of our Terms &amp; Conditions or non-payment;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Beta or clearly-labelled experimental features not yet part of the core, generally available Service.</span>
+                </li>
+              </ul>
+            </section>
+
+            {/* Section 10 */}
+            <section className="space-y-4" id="sla-section-10">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">10</span>
+                <span>Escalation Path</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If a support issue is not resolved within the targets set out in Section 5, or you are unhappy with how it has been handled, you may request escalation at any point:
+              </p>
+              <div className="space-y-3 pl-2">
+                <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                  <div className="font-bold text-slate-900 text-base">Step 1: First point of contact</div>
+                  <p className="text-slate-700 text-sm sm:text-base">Front-line support agent via phone (0800 888 2026), live chat, or email.</p>
+                </div>
+                <div className="p-4 bg-emerald-50/70 border border-emerald-200 rounded-xl space-y-1">
+                  <div className="font-bold text-emerald-950 text-base">Step 2: Support Supervisor Escalation</div>
+                  <p className="text-slate-700 text-sm sm:text-base">If unresolved or you are unsatisfied, ask to escalate to a Support Supervisor &mdash; target acknowledgement within 1 business day.</p>
+                </div>
+                <div className="p-4 bg-blue-50/70 border border-blue-200 rounded-xl space-y-1">
+                  <div className="font-bold text-blue-950 text-base">Step 3: Customer Operations Manager</div>
+                  <p className="text-slate-700 text-sm sm:text-base">If still unresolved, escalate directly to the Customer Operations Manager (operations@everease.co.uk) &mdash; target response within 3 business days.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 11 */}
+            <section className="space-y-3" id="sla-section-11">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">11</span>
+                <span>Reporting an Incident</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                To report a service Incident, please contact us via the freephone line (fastest for urgent issues: <strong>0800 888 2026</strong>) or live chat, and provide as much detail as possible, including: what you were trying to do, what happened instead, the approximate time it occurred, and the device/browser you were using, if known. This helps us classify severity accurately and resolve the issue faster.
               </p>
             </section>
 
-            {/* Contact section */}
-            <section className="space-y-4 pt-4 border-t border-slate-200" id="sla-section-contact">
+            {/* Section 12 */}
+            <section className="space-y-3" id="sla-section-12">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-600 text-white text-sm font-black shrink-0">10</span>
-                <span>Contact Us</span>
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">12</span>
+                <span>Review and Updates to This SLA</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                If you have any questions about this policy, please contact our support and compliance team:
+                We review these service level targets periodically to ensure they remain realistic and reflect good practice, and may update this SLA from time to time. Where changes would reduce the level of service committed to active subscribers, we will give at least 30 days&rsquo; notice by email or in-platform notice. The version in force is the one published on our website at the relevant time.
+              </p>
+            </section>
+
+            {/* Section 13 / Contact section */}
+            <section className="space-y-4 pt-4 border-t border-slate-200" id="sla-section-13">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-600 text-white text-sm font-black shrink-0">13</span>
+                <span>Contact Details</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If you have any questions regarding this SLA or require operational assistance, please reach out to our team:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-5 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-2">
                   <div className="flex items-center gap-2 text-emerald-900 font-black">
                     <PhoneCall className="w-5 h-5 text-emerald-700" />
-                    <span>Freephone UK Telephone Desk</span>
+                    <span>Freephone UK Telephone Line</span>
                   </div>
                   <p className="text-2xl font-black text-emerald-950">
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Open 8:00 AM &ndash; 8:00 PM GMT daily (Monday to Sunday, 365 days a year)
                   </p>
                 </div>
 
                 <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
                   <div className="flex items-center gap-2 text-slate-900 font-black">
                     <Mail className="w-5 h-5 text-slate-700" />
-                    <span>Support &amp; Compliance Email</span>
+                    <span>Support &amp; Operations Inboxes</span>
                   </div>
                   <p className="text-base font-bold text-slate-900">
                     support@everease.co.uk
                   </p>
                   <p className="text-xs text-slate-600">
-                    Legal / Compliance: legal@everease.co.uk
+                    Operations: operations@everease.co.uk &bull; Legal: legal@everease.co.uk
                   </p>
                 </div>
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Registered:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p><strong>Registered Company:</strong> EverEase Safeguarding Ltd, registered in England &amp; Wales.</p>
+                <p><strong>Registered Office:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ.</p>
               </div>
             </section>
 
@@ -1032,14 +1225,15 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             
             {/* Header intro callout */}
             <div className="p-5 sm:p-6 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-              <h2 className="text-lg font-black text-slate-900 tracking-tight">
-                EVEREASE — Refund &amp; Cancellation Policy
+              <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
+                EVEREASE &mdash; Refund &amp; Cancellation Policy
               </h2>
               <p className="text-sm sm:text-base text-slate-700 font-medium">
-                Transparent rules for membership cancellations, 30-day money-back guarantee, and Direct Debit protection.
+                Detailed terms governing subscription cancellation, refunds and billing at EverEase
               </p>
-              <div className="text-xs font-bold text-slate-500 pt-1">
-                Effective date: 17 August 2026 — Last updated: 17 August 2026
+              <div className="text-xs font-bold text-slate-500 pt-1 flex flex-wrap items-center gap-2">
+                <span className="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md font-extrabold">Version 2.0 (Detailed)</span>
+                <span>Effective date: 18 August 2026 &mdash; Last updated: 18 August 2026</span>
               </div>
             </div>
 
@@ -1047,142 +1241,152 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-1">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">1</span>
-                <span>Our Commitment</span>
+                <span>Purpose and Scope</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                EverEase wants every member and their family to feel confident and secure in their membership. This policy explains how refunds, cancellations, and Direct Debit payments are handled, in line with the Consumer Rights Act 2015 and the UK Direct Debit Guarantee.
+                This Refund &amp; Cancellation Policy (&ldquo;Policy&rdquo;) sets out, in detail, how Members and Family Members can cancel an EverEase subscription, when refunds are available, how they are calculated, and how billing issues are resolved. It applies to all Subscription Plans purchased through the EverEase website, telephone support line, or any other official EverEase sales channel, and forms part of our Terms &amp; Conditions.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                Nothing in this Policy affects your other statutory rights as a consumer under UK law, including under the <strong>Consumer Rights Act 2015</strong> and the <strong>Consumer Contracts Regulations 2013</strong>.
               </p>
             </section>
 
             {/* Section 2 */}
-            <section className="space-y-4" id="refund-section-2">
+            <section className="space-y-3" id="refund-section-2">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">2</span>
-                <span>30-Day Money-Back Guarantee</span>
+                <span>Definitions</span>
               </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                New members who join an EverEase membership plan may cancel within 30 days of their first payment and receive a full refund, provided that:
-              </p>
-              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
+              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>The cancellation request is made within 30 calendar days of the initial subscription payment;</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong className="text-slate-900">&ldquo;Billing Cycle&rdquo;</strong> means the recurring period (e.g. monthly, quarterly, or annual) for which a Subscription Plan is charged.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>The request is made by the member, a nominated family contact, or an authorised representative; and</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong className="text-slate-900">&ldquo;Cooling-Off Period&rdquo;</strong> means the 14-calendar-day period beginning on the day your subscription contract is formed, during which you may cancel under the Consumer Contracts Regulations 2013.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>The request is submitted by phone (0800 888 2026), email (support@everease.co.uk), or through the member portal.</span>
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong className="text-slate-900">&ldquo;Renewal Date&rdquo;</strong> means the date on which your next recurring payment is scheduled to be collected.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong className="text-slate-900">&ldquo;Session&rdquo;</strong> means a scheduled one-to-one or group guidance appointment included within a Subscription Plan.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong className="text-slate-900">&ldquo;Proration&rdquo;</strong> means the calculation of a partial refund or charge based on the proportion of a Billing Cycle used or remaining.</span>
                 </li>
               </ul>
-              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-sm sm:text-base text-emerald-950 font-medium">
-                <strong>Processing Timeline:</strong> Refunds under this guarantee are processed within 5&ndash;10 working days to the original payment method.
-              </div>
             </section>
 
             {/* Section 3 */}
             <section className="space-y-4" id="refund-section-3">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">3</span>
-                <span>Cancelling Your Membership</span>
+                <span>Subscription Plan Types and How Cancellation Applies</span>
               </h3>
-              <p className="text-slate-700 text-base sm:text-lg font-medium">
-                Members may cancel their EverEase membership at any time, with no lock-in period and no cancellation fee:
+              <p className="text-slate-700 text-base sm:text-lg">
+                EverEase offers different Subscription Plans, each of which is cancelled slightly differently:
               </p>
-              
-              <div className="grid grid-cols-1 gap-3">
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">1</span>
-                  <div>
-                    <strong className="text-slate-900">Contact our Freephone Support Helpline:</strong> Call <strong>0800 888 2026</strong> (8am&ndash;8pm daily), or email <strong>support@everease.co.uk</strong>.
-                  </div>
+
+              <div className="space-y-3">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <h4 className="font-bold text-slate-900 text-base">3.1 Monthly Rolling Plans</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Billed every month via Direct Debit. May be cancelled at any time; cancellation takes effect at the end of the current monthly Billing Cycle, with continued access until that date.
+                  </p>
                 </div>
 
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">2</span>
-                  <div>
-                    <strong className="text-slate-900">Identity Confirmation:</strong> Our UK team will confirm your identity and process the cancellation request swiftly and politely.
-                  </div>
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <h4 className="font-bold text-slate-900 text-base">3.2 Quarterly and Annual Plans</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Billed upfront for a 3-month or 12-month period, typically at a discounted rate. These plans are for a fixed term. Cancellation stops future renewal, but (outside the 14-day Cooling-Off Period) no partial refund is given for the remaining months of a term already paid for, except in the circumstances described in Section 7 (Exceptional Circumstances) or Section 8 (Service-Related Refunds).
+                  </p>
                 </div>
 
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">3</span>
-                  <div>
-                    <strong className="text-slate-900">Written Confirmation:</strong> You will receive written confirmation of your cancellation by email within 2 working days.
-                  </div>
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <h4 className="font-bold text-slate-900 text-base">3.3 Pay-As-You-Go / Single Session Bookings</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Where a Member books and pays for a single guidance session rather than a recurring plan, that booking may be cancelled or rescheduled free of charge up to 24 hours before the scheduled time. Cancellations made with less than 24 hours&rsquo; notice, or missed sessions (&ldquo;no-shows&rdquo;), are non-refundable, save at our discretion in genuine emergency circumstances.
+                  </p>
                 </div>
 
-                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
-                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">4</span>
-                  <div>
-                    <strong className="text-slate-900">Access Period:</strong> Your membership and any associated services will continue until the end of the current billing period, unless you request immediate cancellation.
-                  </div>
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1">
+                  <h4 className="font-bold text-slate-900 text-base">3.4 Free Introductory Call / Free Trial</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    No payment is taken during a free introductory call or free trial period. You may cancel at any time before the trial ends at no cost. Where you do not cancel, your chosen paid Subscription Plan begins automatically on the date disclosed to you at sign-up, and standard cancellation and refund terms apply from that point.
+                  </p>
                 </div>
               </div>
             </section>
 
             {/* Section 4 */}
-            <section className="space-y-3" id="refund-section-4">
+            <section className="space-y-4" id="refund-section-4">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">4</span>
-                <span>Refunds Outside the 30-Day Window</span>
+                <span>The 14-Day Statutory Cooling-Off Period</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                After the initial 30-day period, subscription payments are generally non-refundable for the portion of the billing period already used. However, EverEase will consider refunds on a case-by-case basis in circumstances such as:
+                If you are a UK consumer, you have a legal right to cancel your subscription within 14 calendar days of the contract start date, without giving any reason, under the Consumer Contracts Regulations 2013.
               </p>
-              <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Duplicate or accidental payments;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Technical errors resulting in incorrect charges;</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>Exceptional or compassionate circumstances (e.g. bereavement, ill health), considered sensitively and on request.</span>
-                </li>
-              </ul>
-              <p className="text-slate-700 text-base sm:text-lg">
-                To request a discretionary refund, please contact <strong>support@everease.co.uk</strong> with your membership details and reason for the request.
-              </p>
+
+              <div className="space-y-3">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                  <h4 className="font-bold text-slate-900 text-base">4.1 Cancelling Before the Service Has Started</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    If you cancel within the Cooling-Off Period and have not yet used any part of the Service (e.g. no guidance session has taken place), you will receive a full refund of any amount paid, processed within 14 days of us receiving your cancellation request.
+                  </p>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <h4 className="font-bold text-slate-900 text-base">4.2 Cancelling After the Service Has Started</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    If, at sign-up, you expressly asked for the Service to begin immediately (for example, to book your first session straight away) and acknowledged that this may reduce your cancellation rights, and you later cancel within the Cooling-Off Period, we may deduct a proportionate amount corresponding to the Service already supplied up to the point you told us you wished to cancel. The remaining balance will be refunded within 14 days.
+                  </p>
+                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs sm:text-sm text-emerald-950 font-medium italic">
+                    <strong>Example:</strong> You subscribe to a monthly plan costing £40 and ask to start immediately. You use one guidance session (valued at £10 within your plan) and then cancel on day 6 of the Cooling-Off Period. We would refund £30, retaining £10 for the session delivered.
+                  </div>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                  <h4 className="font-bold text-slate-900 text-base">4.3 How to Exercise Your Cooling-Off Right</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    You can cancel within the Cooling-Off Period by phone, through your Account, or in writing (including by email), clearly stating your decision to cancel. We recommend using our freephone line (<strong>0800 888 2026</strong>) for the fastest confirmation.
+                  </p>
+                </div>
+              </div>
             </section>
 
             {/* Section 5 */}
-            <section className="space-y-4" id="refund-section-5">
+            <section className="space-y-3" id="refund-section-5">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">5</span>
-                <span>Direct Debit Guarantee</span>
+                <span>Cancelling Outside the Cooling-Off Period</span>
               </h3>
-              <p className="text-slate-700 text-base sm:text-lg">
-                All Direct Debit payments collected by EverEase are protected by the UK Direct Debit Guarantee:
-              </p>
-              <div className="p-5 bg-emerald-50 border-2 border-emerald-300 rounded-2xl space-y-2.5 text-emerald-950 text-base sm:text-lg">
-                <div className="flex items-center gap-2 font-bold text-emerald-900">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
-                  <span>The UK Direct Debit Guarantee Rules</span>
+              
+              <div className="space-y-3">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                  <h4 className="font-bold text-slate-900 text-base">5.1 Monthly Plans</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    You may cancel at any time. Cancellation takes effect at the end of the Billing Cycle in which you cancel, and you will not be charged for the following cycle. You will retain full access to the Service, including any remaining Sessions, until the end of the current cycle.
+                  </p>
                 </div>
-                <ul className="space-y-2 pl-2">
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-emerald-700 font-black mt-1">•</span>
-                    <span>The Guarantee is offered by all banks and building societies that accept Direct Debit instructions.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-emerald-700 font-black mt-1">•</span>
-                    <span>If there are any changes to the amount, date, or frequency of your Direct Debit, EverEase (or our payment processor, Stripe) will notify you in advance.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-emerald-700 font-black mt-1">•</span>
-                    <span>If an error is made in the payment of your Direct Debit, by EverEase or your bank or building society, you are entitled to a full and immediate refund from your bank or building society.</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-emerald-700 font-black mt-1">•</span>
-                    <span>You can cancel a Direct Debit at any time by contacting your bank or building society directly. We also recommend informing us so we can update your account accordingly.</span>
-                  </li>
-                </ul>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                  <h4 className="font-bold text-slate-900 text-base">5.2 Notice Period</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    To avoid being charged for an upcoming Billing Cycle, please cancel at least <strong>3 UK business days before your Renewal Date</strong>. Cancellations received after this point may not be processed in time to stop the next Direct Debit collection; in that case, the cancellation will apply from the cycle after next, or we will discuss a suitable resolution with you directly, such as a refund of that one payment where the Service has not yet been used.
+                  </p>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                  <h4 className="font-bold text-slate-900 text-base">5.3 No Partial-Month Refunds (Outside Exceptions)</h4>
+                  <p className="text-slate-700 text-sm sm:text-base">
+                    Save as set out in Sections 4, 7 and 8, we do not provide refunds or credits for the unused portion of a Billing Cycle where a Member simply chooses to stop using the Service partway through a period they have already paid for.
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -1190,43 +1394,260 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
             <section className="space-y-3" id="refund-section-6">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">6</span>
-                <span>How Refunds Are Processed</span>
+                <span>How Proration Works (Where Applicable)</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                Approved refunds are returned to the original payment method used at checkout, via our payment processor, Stripe. Refunds typically appear within 5&ndash;10 working days, though your bank may take longer to display the funds.
+                Where a refund is due on a prorated basis (for example, under Sections 4.2, 7, or 8), we calculate it as follows:
               </p>
+              
+              <ol className="space-y-2 text-slate-700 text-base sm:text-lg pl-2 list-decimal list-inside">
+                <li>Determine the total value of the current Billing Cycle.</li>
+                <li>Determine the number of days (or Sessions, where more appropriate) used prior to the cancellation or refund request.</li>
+                <li>Calculate the unused proportion of the cycle as a percentage.</li>
+                <li>Refund that percentage of the amount paid for the current cycle, rounded to the nearest penny.</li>
+              </ol>
+
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-sm sm:text-base text-emerald-950 font-medium">
+                <strong>Example:</strong> A monthly plan costs £40 for a 30-day cycle. A Member is granted an exceptional refund (see Section 7) after 9 days of use. Unused proportion = 21/30 = 70%. Refund = £28.
+              </div>
             </section>
 
             {/* Section 7 */}
-            <section className="space-y-3" id="refund-section-7">
+            <section className="space-y-4" id="refund-section-7">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">7</span>
-                <span>Family &amp; Nominated Contacts</span>
+                <span>Exceptional Circumstances</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                Where a family member or nominated contact manages billing on behalf of a member, cancellation and refund requests may be made by that nominated contact, subject to identity verification, in accordance with our safeguarding procedures.
+                We understand that personal circumstances can change suddenly, particularly for our Members and their families. We will consider a discretionary prorated refund, outside our standard policy, in circumstances including:
+              </p>
+              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>The death of a Member:</strong> A refund of any unused, already-paid period will be issued to the estate or named next of kin upon request and reasonable verification, with no cancellation fee or notice period applied.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>Residential or nursing care:</strong> A Member&rsquo;s move into residential or nursing care where the Service can no longer reasonably be used.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>Serious illness or capacity change:</strong> A serious illness, hospitalisation, or significant change in a Member&rsquo;s health or capacity that prevents continued use of the Service.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span><strong>Financial hardship:</strong> Confirmed financial hardship, considered sensitively and on a case-by-case basis.</span>
+                </li>
+              </ul>
+              <p className="text-slate-700 text-base sm:text-lg">
+                To request a refund under this section, please contact our support line; we may ask for reasonable supporting information (for example, a death certificate reference, or written confirmation from a Family Member or care provider), but we aim to keep this process as simple and compassionate as possible.
               </p>
             </section>
 
             {/* Section 8 */}
-            <section className="space-y-3" id="refund-section-8">
+            <section className="space-y-4" id="refund-section-8">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
                 <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">8</span>
-                <span>Your Statutory Rights</span>
+                <span>Refunds for Service-Related Issues</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                This policy does not affect your statutory rights under the Consumer Rights Act 2015 or other applicable UK consumer protection legislation.
+                Separately from cancellation for convenience, you may be entitled to a refund (in full or in part) where the Service itself has not been delivered as expected. This includes:
+              </p>
+              <ul className="space-y-2.5 text-slate-700 text-base sm:text-lg pl-2">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>A Session that was booked and paid for but not delivered due to a fault on our part (e.g. a coach did not attend and it could not be rescheduled to your satisfaction);</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>A billing error, such as being charged twice for the same Billing Cycle, or being charged after a valid cancellation was submitted;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>A material and ongoing failure of the platform that prevents you from accessing paid-for features, which we are unable to resolve within a reasonable time;</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-emerald-700 font-black mt-1">&bull;</span>
+                  <span>Any other situation where the Service does not match the description provided at the point of sale, in line with your rights under the <strong>Consumer Rights Act 2015</strong>.</span>
+                </li>
+              </ul>
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-800 text-sm sm:text-base font-medium">
+                Refunds under this section are processed in full for the affected charge(s) within 14 days of the issue being confirmed, and do not require you to cancel your ongoing subscription unless you choose to.
+              </div>
+            </section>
+
+            {/* Section 9 */}
+            <section className="space-y-4" id="refund-section-9">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">9</span>
+                <span>Refund Processing &mdash; Method and Timescales</span>
+              </h3>
+              
+              {/* Responsive comparison table */}
+              <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-2xs">
+                <table className="w-full text-left text-xs sm:text-sm text-slate-800">
+                  <thead className="bg-slate-100 text-slate-900 font-black uppercase text-[11px] tracking-wider border-b border-slate-200">
+                    <tr>
+                      <th className="p-3.5 sm:p-4">Scenario</th>
+                      <th className="p-3.5 sm:p-4">Refund Method</th>
+                      <th className="p-3.5 sm:p-4">Typical Timescale</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 bg-white font-medium">
+                    <tr className="hover:bg-slate-50">
+                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Cooling-off cancellation (no service used)</td>
+                      <td className="p-3.5 sm:p-4 text-slate-700">Original Direct Debit / payment method</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of confirmed cancellation</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50">
+                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Cooling-off cancellation (partial service used)</td>
+                      <td className="p-3.5 sm:p-4 text-slate-700">Original Direct Debit / payment method (prorated)</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of confirmed cancellation</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50">
+                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Billing error / duplicate charge</td>
+                      <td className="p-3.5 sm:p-4 text-slate-700">Original payment method</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 5&ndash;10 business days of confirmation</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50">
+                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Service-related refund (Section 8)</td>
+                      <td className="p-3.5 sm:p-4 text-slate-700">Original payment method</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of issue being confirmed</td>
+                    </tr>
+                    <tr className="hover:bg-slate-50">
+                      <td className="p-3.5 sm:p-4 font-bold text-slate-900">Exceptional circumstances (Section 7)</td>
+                      <td className="p-3.5 sm:p-4 text-slate-700">Original payment method, or to estate/next of kin where applicable</td>
+                      <td className="p-3.5 sm:p-4 text-emerald-800 font-semibold">Within 14 days of approval</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="text-slate-700 text-sm sm:text-base">
+                Refunds are issued to the original Direct Debit account or payment method used, in line with standard UK banking practice, and may take a few additional days to appear depending on your bank.
+              </p>
+            </section>
+
+            {/* Section 10 */}
+            <section className="space-y-3" id="refund-section-10">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">10</span>
+                <span>Failed, Declined, or Late Payments</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If a scheduled Direct Debit payment fails or is declined, we will typically attempt to notify you and may retry collection in line with standard Direct Debit (BACS) practice. If payment cannot be successfully collected within a reasonable period, we may suspend access to the Service until payment is resolved, and may ultimately cancel the Account if the matter is not resolved after reasonable attempts to contact you.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg">
+                We do not charge our own late payment fees; however, your bank may apply charges under your own account terms if a Direct Debit attempt is declined.
+              </p>
+            </section>
+
+            {/* Section 11 */}
+            <section className="space-y-3" id="refund-section-11">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">11</span>
+                <span>Chargebacks and Disputed Payments</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If you believe a payment was taken in error, please contact us first so we can investigate and resolve the matter directly and quickly. Raising the issue with us before initiating a chargeback with your bank generally leads to a faster resolution. Where a chargeback is raised, we reserve the right to suspend the associated Account while the matter is investigated, and will act in accordance with the outcome of that process and the Direct Debit Guarantee.
+              </p>
+            </section>
+
+            {/* Section 12 */}
+            <section className="space-y-3" id="refund-section-12">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">12</span>
+                <span>Promotional Offers, Discount Codes and Gifted Subscriptions</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Where a subscription was purchased using a promotional discount, free trial extension, or gifted/prepaid code, refunds (where applicable under this Policy) will generally be calculated based on the amount actually paid, not the standard list price. Promotional pricing is not guaranteed to apply again if a cancelled subscription is later reactivated.
+              </p>
+              <p className="text-slate-700 text-base sm:text-lg font-medium">
+                For gift subscriptions purchased by a Family Member on behalf of a Member, standard cooling-off and cancellation rights apply to the purchasing family member, with refunds returned to the purchaser&rsquo;s original payment method.
+              </p>
+            </section>
+
+            {/* Section 13 */}
+            <section className="space-y-3" id="refund-section-13">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">13</span>
+                <span>Family and Multi-User Plans</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                Where a Subscription Plan is purchased by a Family Member on behalf of a Member, cancellation and refund requests may be made by either the Account holder (payer) or, where authorised, the Member themselves. Refunds are issued to the original payer&rsquo;s payment method unless otherwise agreed in writing.
+              </p>
+            </section>
+
+            {/* Section 14 */}
+            <section className="space-y-4" id="refund-section-14">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">14</span>
+                <span>How to Request a Cancellation or Refund</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                You may request a cancellation or refund through any of the following channels:
+              </p>
+              
+              <div className="grid grid-cols-1 gap-3">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
+                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">&bull;</span>
+                  <div>
+                    <strong className="text-slate-900">Online:</strong> Log in to your Account and select &ldquo;Manage Subscription&rdquo;.
+                  </div>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
+                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">&bull;</span>
+                  <div>
+                    <strong className="text-slate-900">Phone:</strong> Call our UK Freephone line on <strong>0800 888 2026</strong> (open 8am&ndash;8pm daily).
+                  </div>
+                </div>
+
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-start gap-3">
+                  <span className="w-7 h-7 rounded-full bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">&bull;</span>
+                  <div>
+                    <strong className="text-slate-900">In writing:</strong> Contact our support team by email at <strong>support@everease.co.uk</strong> or by post at <strong>EverEase Safeguarding Ltd, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ</strong>; please include your Account name/email and the reason for your request to help us process it quickly.
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-950 font-medium text-sm sm:text-base">
+                We aim to confirm receipt of any cancellation or refund request within <strong>1 UK business day</strong>, and to resolve straightforward requests within <strong>5 business days</strong>.
+              </div>
+            </section>
+
+            {/* Section 15 */}
+            <section className="space-y-3" id="refund-section-15">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">15</span>
+                <span>Complaints About Refunds or Billing</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                If you are unhappy with the outcome of a refund or cancellation request, you may ask for it to be reviewed by a supervisor by contacting our support line and requesting an escalation. We aim to respond to escalated billing complaints within 5 UK business days. You retain the right to refer unresolved disputes to your bank under the Direct Debit Guarantee, or to seek independent advice (for example, from Citizens Advice or the Financial Ombudsman Service, where applicable to the payment method used).
+              </p>
+            </section>
+
+            {/* Section 16 */}
+            <section className="space-y-3" id="refund-section-16">
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 text-sm font-black shrink-0">16</span>
+                <span>Changes to This Policy</span>
+              </h3>
+              <p className="text-slate-700 text-base sm:text-lg">
+                We may update this Policy from time to time to reflect changes in our services, pricing structures, or legal requirements. Material changes will be notified to active subscribers by email or through the platform at least 14 days before they take effect. The version in force is the one published on our website at the relevant time.
               </p>
             </section>
 
             {/* Contact section */}
             <section className="space-y-4 pt-4 border-t border-slate-200" id="refund-section-contact">
               <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-600 text-white text-sm font-black shrink-0">9</span>
-                <span>Contact Us</span>
+                <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-600 text-white text-sm font-black shrink-0">
+                  <PhoneCall className="w-4 h-4" />
+                </span>
+                <span>Contact &amp; Support</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                If you have any questions about this policy, please contact our support and compliance team:
+                If you have any questions regarding this policy or wish to initiate a cancellation or refund, please reach out to our dedicated team:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -1246,13 +1667,13 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
                   <div className="flex items-center gap-2 text-slate-900 font-black">
                     <Mail className="w-5 h-5 text-slate-700" />
-                    <span>Support &amp; Compliance Email</span>
+                    <span>Support &amp; Billing Desk</span>
                   </div>
                   <p className="text-base font-bold text-slate-900">
                     support@everease.co.uk
                   </p>
                   <p className="text-xs text-slate-600">
-                    Legal / Compliance: legal@everease.co.uk
+                    Postal: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ
                   </p>
                 </div>
               </div>
