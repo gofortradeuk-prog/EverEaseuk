@@ -15,6 +15,7 @@ import { PricingPage } from './pages/public/PricingPage';
 import { FaqPage } from './pages/public/FaqPage';
 import { ContactPage } from './pages/public/ContactPage';
 import { LegalPage } from './pages/public/LegalPage';
+import { LoginPage } from './pages/public/LoginPage';
 
 // Auth & App Pages
 import { AuthPage } from './pages/AuthPage';
@@ -32,6 +33,7 @@ import { FamilyConnectPage } from './pages/modules/FamilyConnectPage';
 
 const PUBLIC_ROUTES = [
   '/',
+  '/login',
   '/about',
   '/services',
   '/how-it-works',
@@ -133,6 +135,8 @@ const MainRouter: React.FC = () => {
           return <FaqPage navigate={navigate} />;
         case '/contact':
           return <ContactPage navigate={navigate} />;
+        case '/login':
+          return <LoginPage navigate={navigate} />;
         case '/terms':
           return <LegalPage type="terms" navigate={navigate} />;
         case '/privacy':

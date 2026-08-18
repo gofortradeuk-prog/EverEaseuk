@@ -250,9 +250,13 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ currentRoute, naviga
                 type="button"
                 id="btn-nav-login"
                 onClick={() => {
-                  navigate('/auth?mode=signin');
+                  navigate('/login');
                 }}
-                className="px-3 py-1.5 font-medium text-slate-700 hover:text-teal-700 transition-colors text-sm cursor-pointer border-0 bg-transparent"
+                className={`px-3 py-1.5 font-medium transition-colors text-sm cursor-pointer border-0 bg-transparent ${
+                  currentRoute.startsWith('/login')
+                    ? 'text-teal-700 font-bold bg-teal-50/70 rounded-lg'
+                    : 'text-slate-700 hover:text-teal-700'
+                }`}
               >
                 <span>Login</span>
               </button>
