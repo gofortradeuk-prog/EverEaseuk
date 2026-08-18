@@ -457,8 +457,8 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                     <p className="font-bold text-emerald-800">Activated after payment confirmation</p>
                   </div>
                   <div>
-                    <span className="font-semibold text-slate-500">Cancel anytime:</span>
-                    <p className="font-bold text-slate-800">Yes (0 Days Lock-in)</p>
+                    <span className="font-semibold text-slate-500">Cancellation:</span>
+                    <p className="font-bold text-slate-800">Cancel anytime</p>
                   </div>
                 </div>
               </div>
