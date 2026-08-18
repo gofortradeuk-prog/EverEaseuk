@@ -956,11 +956,11 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
           <button
             type="button"
             id="btn-home-bottom-call"
-            onClick={() => navigate('/contact?book=call')}
+            onClick={() => navigate('/contact')}
             className="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-100 text-slate-900 border-2 border-slate-300 rounded-2xl font-bold text-lg transition-colors cursor-pointer flex items-center justify-center gap-2"
           >
             <PhoneCall className="w-5 h-5 text-emerald-700" />
-            <span>Book Free Introductory Call</span>
+            <span>Contact UK Support Team</span>
           </button>
         </div>
       </section>

@@ -144,7 +144,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
                 onClick={() => navigate('/how-it-works')} 
                 className="text-slate-300 hover:text-white transition-colors cursor-pointer border-0 bg-transparent p-0 text-left"
               >
-                How It Works (4 Simple Steps)
+                How It Works (6 Simple Steps)
               </button>
             </li>
             <li>
@@ -171,7 +171,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
                 onClick={() => navigate('/contact')} 
                 className="text-slate-300 hover:text-white transition-colors cursor-pointer border-0 bg-transparent p-0 text-left"
               >
-                Contact &amp; Book Intro Call
+                Contact Us &amp; Enquiries
               </button>
             </li>
           </ul>
