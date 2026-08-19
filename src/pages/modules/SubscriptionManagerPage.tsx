@@ -36,6 +36,10 @@ import {
   deleteTrackedSubscription,
   updateSubscriptionStatus,
   calculateSubscriptionSpendSummary,
+  cancelUserMembership,
+  reactivateUserMembership,
+  getStoredUserCancellation,
+  MembershipCancellationRecord,
 } from '../../lib/firestoreService';
 import { useAuth } from '../../contexts/AuthContext';
 import { useAccessibility } from '../../contexts/AccessibilityContext';
@@ -43,6 +47,7 @@ import { SubscriptionCard } from '../../components/subscriptions/SubscriptionCar
 import { SubscriptionModal } from '../../components/subscriptions/SubscriptionModal';
 import { SubscriptionSpendSummaryCard } from '../../components/subscriptions/SubscriptionSpendSummaryCard';
 import { ShareSummaryModal } from '../../components/subscriptions/ShareSummaryModal';
+import { CancelSubscriptionModal, CancellationResult } from '../../components/subscriptions/CancelSubscriptionModal';
 
 interface Props {
   navigate: (route: string) => void;
@@ -71,6 +76,10 @@ export const SubscriptionManagerPage: React.FC<Props> = ({ navigate }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
   const [editingSubscription, setEditingSubscription] = useState<TrackedSubscription | null>(null);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [isCancelEverEaseModalOpen, setIsCancelEverEaseModalOpen] = useState<boolean>(false);
+  const [cancellationRecord, setCancellationRecord] = useState<MembershipCancellationRecord | null>(() =>
+    getStoredUserCancellation(activeSeniorUid)
+  );
 
   // Notifications Toast
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'alert' } | null>(null);
@@ -80,6 +89,54 @@ export const SubscriptionManagerPage: React.FC<Props> = ({ navigate }) => {
     { uid: 'family_david_jenkins', name: 'David Jenkins (Son & Primary Carer)' },
     { uid: 'family_sarah_jenkins', name: 'Sarah Jenkins (Daughter)' },
   ];
+
+  const handleConfirmCancelEverEase = async (result: CancellationResult) => {
+    try {
+      await cancelUserMembership(activeSeniorUid, {
+        reason: result.reason,
+        refundRequested: result.refundRequested,
+        refundReasonCategory: result.refundReasonCategory,
+        notes: result.notes,
+        referenceCode: result.referenceCode,
+        effectiveEndDate: result.effectiveEndDate,
+        planName: result.planName,
+        price: result.price,
+      });
+
+      const updatedRecord = getStoredUserCancellation(activeSeniorUid);
+      setCancellationRecord(updatedRecord || {
+        uid: activeSeniorUid,
+        planName: result.planName,
+        reason: result.reason,
+        refundRequested: result.refundRequested,
+        referenceCode: result.referenceCode,
+        cancelledAt: result.cancelledAt,
+        effectiveEndDate: result.effectiveEndDate,
+        status: result.refundRequested ? 'pending_refund' : 'cancelled',
+      });
+
+      showToast(
+        result.refundRequested
+          ? `✓ EverEase Subscription cancelled (Ref: ${result.referenceCode}). Refund request is under review.`
+          : `✓ EverEase Subscription cancelled (Ref: ${result.referenceCode}). No future charges will be taken.`,
+        'success'
+      );
+    } catch (err) {
+      console.error('Failed to cancel membership:', err);
+      showToast('Error recording cancellation. Please contact support.', 'alert');
+    }
+  };
+
+  const handleReactivateEverEase = async () => {
+    try {
+      await reactivateUserMembership(activeSeniorUid);
+      setCancellationRecord(null);
+      showToast('✓ EverEase Membership reactivated successfully.', 'success');
+    } catch (err) {
+      console.error('Failed to reactivate:', err);
+      showToast('Could not reactivate membership. Please try again.', 'alert');
+    }
+  };
 
   // Subscribe to real-time updates from Firestore
   useEffect(() => {
@@ -307,6 +364,100 @@ export const SubscriptionManagerPage: React.FC<Props> = ({ navigate }) => {
 
       {/* Main Container */}
       <main className="w-full max-w-[1500px] mx-auto px-4 sm:px-8 mt-8 space-y-8 flex-1 w-full">
+        {/* EverEase Membership Plan & Direct Debit Status Panel */}
+        <section id="everease-membership-manager-card" className="bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-xs space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2.5">
+                <ShieldCheck className="w-6 h-6 text-emerald-600 shrink-0" />
+                <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">
+                  Your EverEase Membership
+                </h2>
+              </div>
+              <p className="text-sm md:text-base text-slate-600 font-medium">
+                Active plan covering all 7 support portals, scam checks, and phone support.
+              </p>
+            </div>
+
+            <div>
+              {cancellationRecord && cancellationRecord.status !== 'active' ? (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200 font-extrabold text-xs">
+                  <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
+                  <span>Cancellation Scheduled</span>
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-extrabold text-xs">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Active &amp; BACS Direct Debit Protected</span>
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Membership Plan</span>
+              <h3 className="text-lg font-black text-slate-900">{userProfile?.plan || 'EverEase Complete Plan'}</h3>
+              <p className="text-sm font-semibold text-slate-600">£55.00 / month &bull; BACS Direct Debit</p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Billing Status</span>
+              <p className="text-sm font-bold text-slate-800">
+                {cancellationRecord && cancellationRecord.status !== 'active' ? (
+                  <span className="text-rose-700">Access active until {cancellationRecord.effectiveEndDate}</span>
+                ) : (
+                  <span className="text-emerald-700">Protected &bull; Renews 1st of next month</span>
+                )}
+              </p>
+              <p className="text-xs text-slate-500">Under BACS Direct Debit Guarantee</p>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col justify-center gap-2">
+              {cancellationRecord && cancellationRecord.status !== 'active' ? (
+                <button
+                  onClick={handleReactivateEverEase}
+                  className="w-full px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-sm shadow-xs transition-colors cursor-pointer text-center"
+                  id="btn-reactivate-everease-sub"
+                >
+                  Reactivate Membership
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsCancelEverEaseModalOpen(true)}
+                  className="w-full px-4 py-2.5 rounded-xl bg-white hover:bg-rose-50 border-2 border-rose-300 text-rose-700 hover:text-rose-800 font-extrabold text-sm shadow-xs transition-colors cursor-pointer text-center flex items-center justify-center gap-2"
+                  id="btn-cancel-everease-sub"
+                >
+                  <XCircle className="w-4 h-4 text-rose-600" />
+                  <span>Cancel Subscription</span>
+                </button>
+              )}
+
+              <button
+                onClick={() => setIsCancelEverEaseModalOpen(true)}
+                className="text-xs text-slate-500 hover:text-slate-800 font-bold underline text-center cursor-pointer"
+              >
+                View Refund Policy &amp; Cancellation Terms
+              </button>
+            </div>
+          </div>
+
+          {cancellationRecord && cancellationRecord.status !== 'active' && (
+            <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-start gap-3 text-xs sm:text-sm text-rose-900 font-medium">
+              <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold text-rose-950">
+                  EverEase cancellation confirmed (Ref: {cancellationRecord.referenceCode}).
+                </p>
+                <p>
+                  No future direct debits will be collected. Your full protection and access remain active until {cancellationRecord.effectiveEndDate}.
+                  {cancellationRecord.refundRequested && ' Your refund request is logged with our billing department.'}
+                </p>
+              </div>
+            </div>
+          )}
+        </section>
+
         {/* Top Spend Summary Dashboard Card */}
         <section id="spend-summary-section">
           <SubscriptionSpendSummaryCard
@@ -569,6 +720,17 @@ export const SubscriptionManagerPage: React.FC<Props> = ({ navigate }) => {
         seniorName={activeSeniorName}
         seniorUid={activeSeniorUid}
         familyCarers={familyCarers}
+      />
+
+      {/* EverEase Cancel Subscription & Refund Policy Modal */}
+      <CancelSubscriptionModal
+        isOpen={isCancelEverEaseModalOpen}
+        onClose={() => setIsCancelEverEaseModalOpen(false)}
+        onConfirmCancel={handleConfirmCancelEverEase}
+        planName={userProfile?.plan || 'EverEase Complete Plan'}
+        monthlyPrice={55.0}
+        paymentMethod="BACS Direct Debit"
+        navigate={navigate}
       />
     </div>
   );

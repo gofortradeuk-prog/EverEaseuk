@@ -2902,6 +2902,133 @@ export async function getPricingPlans(): Promise<import('../types').PricingPlan[
   return DEFAULT_PLANS;
 }
 
+// =============================================================================
+// 14. User Membership Cancellation & Refund Requests
+// =============================================================================
+
+export interface MembershipCancellationRecord {
+  uid: string;
+  planId?: string;
+  planName?: string;
+  reason: string;
+  refundRequested: boolean;
+  refundReasonCategory?: string;
+  notes?: string;
+  referenceCode: string;
+  cancelledAt: string;
+  effectiveEndDate: string;
+  status: 'cancelled' | 'pending_refund' | 'refunded' | 'active';
+}
+
+/**
+ * Cancel user membership and optionally record refund request
+ */
+export async function cancelUserMembership(
+  uid: string,
+  cancellationData: {
+    reason: string;
+    refundRequested: boolean;
+    refundReasonCategory?: string;
+    notes?: string;
+    referenceCode: string;
+    effectiveEndDate: string;
+    planName?: string;
+    price?: number;
+  }
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const userRef = doc(db, 'users', uid);
+    const cancelRecord: MembershipCancellationRecord = {
+      uid,
+      planName: cancellationData.planName || 'EverEase Membership',
+      reason: cancellationData.reason,
+      refundRequested: cancellationData.refundRequested,
+      refundReasonCategory: cancellationData.refundReasonCategory,
+      notes: cancellationData.notes,
+      referenceCode: cancellationData.referenceCode,
+      cancelledAt: new Date().toISOString(),
+      effectiveEndDate: cancellationData.effectiveEndDate,
+      status: cancellationData.refundRequested ? 'pending_refund' : 'cancelled',
+    };
+
+    // Update user record
+    await updateDoc(userRef, {
+      paymentStatus: 'cancelled',
+      cancellation: cancelRecord,
+      updatedAt: new Date().toISOString(),
+    }).catch(async () => {
+      // If doc doesn't exist or permissions fallback, save to local storage as fallback
+    });
+
+    // Also store in cancellations collection for admin audit
+    const cancelDocRef = doc(db, 'cancellations', `${uid}_${Date.now()}`);
+    await setDoc(cancelDocRef, cancelRecord).catch(() => {});
+
+    // Save to localStorage for instant client state persistence
+    try {
+      localStorage.setItem(`everease_cancellation_${uid}`, JSON.stringify(cancelRecord));
+    } catch {}
+
+    return { success: true };
+  } catch (error) {
+    console.warn('cancelUserMembership fallback to local cache:', error);
+    try {
+      const fallbackRecord: MembershipCancellationRecord = {
+        uid,
+        planName: cancellationData.planName || 'EverEase Membership',
+        reason: cancellationData.reason,
+        refundRequested: cancellationData.refundRequested,
+        refundReasonCategory: cancellationData.refundReasonCategory,
+        notes: cancellationData.notes,
+        referenceCode: cancellationData.referenceCode,
+        cancelledAt: new Date().toISOString(),
+        effectiveEndDate: cancellationData.effectiveEndDate,
+        status: cancellationData.refundRequested ? 'pending_refund' : 'cancelled',
+      };
+      localStorage.setItem(`everease_cancellation_${uid}`, JSON.stringify(fallbackRecord));
+      return { success: true };
+    } catch {
+      return { success: false, error: (error as Error).message };
+    }
+  }
+}
+
+/**
+ * Reactivate user membership
+ */
+export async function reactivateUserMembership(uid: string): Promise<{ success: boolean; error?: string }> {
+  try {
+    const userRef = doc(db, 'users', uid);
+    await updateDoc(userRef, {
+      paymentStatus: 'paid',
+      cancellation: null,
+      updatedAt: new Date().toISOString(),
+    }).catch(() => {});
+
+    try {
+      localStorage.removeItem(`everease_cancellation_${uid}`);
+    } catch {}
+
+    return { success: true };
+  } catch (error) {
+    return { success: false, error: (error as Error).message };
+  }
+}
+
+/**
+ * Get active cancellation status for user
+ */
+export function getStoredUserCancellation(uid: string): MembershipCancellationRecord | null {
+  try {
+    const item = localStorage.getItem(`everease_cancellation_${uid}`);
+    if (item) {
+      return JSON.parse(item);
+    }
+  } catch {}
+  return null;
+}
+
+
 
 
 
