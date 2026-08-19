@@ -95,7 +95,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ currentRoute, naviga
               UK Freephone: <strong className="text-white text-sm">0800 888 2026</strong>
             </span>
             <span className="hidden sm:inline text-slate-300 font-medium">
-              • Open 8am–8pm Daily
+              • Open 9:00 AM – 5:30 PM Daily
             </span>
           </div>
 
@@ -368,7 +368,7 @@ export const PublicHeader: React.FC<PublicHeaderProps> = ({ currentRoute, naviga
                 <PhoneCall className="w-4 h-4 text-emerald-600" />
                 0800 888 2026
               </a>
-              <p className="text-xs text-emerald-700 font-medium">Freephone • 8am to 8pm UK</p>
+              <p className="text-xs text-emerald-700 font-medium">Freephone • 9:00 AM – 5:30 PM UK</p>
             </div>
           </div>
         </div>

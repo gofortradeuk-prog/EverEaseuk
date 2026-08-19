@@ -179,10 +179,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ navigate }) => {
                 <div className="space-y-0.5 pt-0.5">
                   <h3 className="text-base font-bold text-slate-900">Email</h3>
                   <a 
-                    href="mailto:support@everease.co.uk" 
+                    href="mailto:support@evereaseuk.com" 
                     className="text-sm font-semibold text-teal-700 hover:text-teal-800 transition-colors block"
                   >
-                    support@everease.co.uk
+                    support@evereaseuk.com
                   </a>
                 </div>
               </div>

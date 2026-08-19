@@ -2875,7 +2875,7 @@ export const DEFAULT_PLANS: import('../types').PricingPlan[] = [
     order: 3,
     bestFor: 'Adult children who want regular support available for a parent or loved one.',
     responseTime: 'Under 30 min. (during support hours, express queue)',
-    supportHours: 'Mon–Sun, 8:00 AM – 8:00 PM (UK Time)',
+    supportHours: 'Mon–Sun, 9:00 AM – 5:30 PM (UK Time)',
     delivery: 'Instant portal access (priority onboarding within 12 hours)',
     buttonLabel: 'Choose Complete + Family'
   }

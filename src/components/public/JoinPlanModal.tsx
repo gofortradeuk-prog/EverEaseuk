@@ -92,7 +92,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
         invoiceAmount: plan.price,
         paymentLink: checkoutUrl,
         planName: plan.name,
-        paymentMethod: paymentMethod === 'bacs' ? 'UK Direct Debit' : 'Credit / Debit Card'
+        paymentMethod: paymentMethod === 'bacs' ? 'BACS Direct Debit' : 'Credit / Debit Card'
       });
       setIsSubmitting(false);
     }, 700);
@@ -384,7 +384,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                   Payment Method &amp; Setup Preference
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {/* UK Direct Debit Tile */}
+                  {/* BACS Direct Debit Tile */}
                   <div
                     onClick={() => setPaymentMethod('bacs')}
                     className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
@@ -397,7 +397,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5 font-black text-xs sm:text-sm text-slate-900">
                           <Building2 className="w-4 h-4 text-teal-700 shrink-0" />
-                          <span>UK Direct Debit</span>
+                          <span>BACS Direct Debit</span>
                         </div>
                         <span className="px-2 py-0.5 rounded-full bg-teal-600 text-white font-extrabold text-[10px] uppercase">
                           RECOMMENDED
@@ -407,7 +407,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                         Best for monthly membership
                       </span>
                       <p className="text-[11px] text-slate-600 leading-snug">
-                        Payments are collected securely through Stripe using UK Direct Debit. You will receive the required Direct Debit notification before collection.
+                        Payments are collected securely through Stripe using BACS Direct Debit. You will receive the required Direct Debit notification before collection.
                       </p>
                     </div>
                   </div>
@@ -450,7 +450,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                   </div>
                   <div>
                     <span className="font-semibold text-slate-500">Payment Method:</span>
-                    <p className="font-bold text-slate-800">{paymentMethod === 'bacs' ? 'UK Direct Debit' : 'Credit / Debit Card'}</p>
+                    <p className="font-bold text-slate-800">{paymentMethod === 'bacs' ? 'BACS Direct Debit' : 'Credit / Debit Card'}</p>
                   </div>
                   <div>
                     <span className="font-semibold text-slate-500">Account Activation:</span>
@@ -469,7 +469,7 @@ export const JoinPlanModal: React.FC<JoinPlanModalProps> = ({
                   <strong>Subscription Terms:</strong> You are setting up a monthly membership subscription. You will continue to Stripe&rsquo;s secure checkout to complete payment or mandate setup.
                 </p>
                 <p>
-                  <strong>Direct Debit Guarantee:</strong> Your Direct Debit payments are protected by the UK Direct Debit Guarantee. If a payment is taken incorrectly, you are entitled to a refund from your bank under the Guarantee.
+                  <strong>Direct Debit Guarantee:</strong> Your Direct Debit payments are protected by the BACS Direct Debit Guarantee. If a payment is taken incorrectly, you are entitled to a refund from your bank under the Guarantee.
                 </p>
                 <p>
                   <strong>Cancellation Policy:</strong> You can cancel your membership at any time from your account dashboard or by contacting <span className="font-semibold text-slate-800">support@everease.co.uk</span>.

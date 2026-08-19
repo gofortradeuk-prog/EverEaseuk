@@ -204,7 +204,7 @@ export const ModuleScaffold: React.FC<ModuleScaffoldProps> = ({
               • <strong>Family support built-in:</strong> If you are unsure, you can tap one button to ask your family member or carer for help with this item.
             </p>
             <p className="font-medium leading-relaxed">
-              • <strong>Telephone assistance:</strong> Call our freephone support team on <strong>0800 888 2026</strong> anytime between 8am and 8pm.
+              • <strong>Telephone assistance:</strong> Call our freephone support team on <strong>0800 888 2026</strong> anytime between 9:00 AM and 5:30 PM.
             </p>
           </div>
         </div>

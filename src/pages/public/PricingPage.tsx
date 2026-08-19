@@ -336,7 +336,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
-            {/* Card 1: Pay by UK Direct Debit */}
+            {/* Card 1: Pay by BACS Direct Debit */}
             <div className="bg-white rounded-3xl border-2 border-teal-500 p-6 sm:p-8 shadow-sm relative overflow-hidden flex flex-col justify-between">
               {/* Recommended Top-Right Ribbon */}
               <div className="absolute top-0 right-0 bg-amber-400 text-amber-950 text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-3.5 py-1 rounded-bl-xl border-l border-b border-amber-300 shadow-xs">
@@ -351,7 +351,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-lg sm:text-xl font-black text-slate-900">
-                        Pay by UK Direct Debit
+                        Pay by BACS Direct Debit
                       </h3>
                       <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase px-2 py-0.5 rounded-md">
                         MOST POPULAR
@@ -366,11 +366,11 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                 <ul className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                    <span><strong>Payments are collected securely through Stripe using UK Direct Debit.</strong> You will receive the required Direct Debit notification before collection.</span>
+                    <span><strong>Payments are collected securely through Stripe using BACS Direct Debit.</strong> You will receive the required Direct Debit notification before collection.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                    <span><strong>Direct Debit Guarantee:</strong> Your Direct Debit payments are protected by the UK Direct Debit Guarantee. If a payment is taken incorrectly, you are entitled to a refund from your bank under the Guarantee.</span>
+                    <span><strong>Direct Debit Guarantee:</strong> Your Direct Debit payments are protected by the BACS Direct Debit Guarantee. If a payment is taken incorrectly, you are entitled to a refund from your bank under the Guarantee.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
@@ -386,10 +386,10 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
                 <div className="p-4 bg-[#f0fdfa] border border-[#99f6e4] rounded-2xl text-xs text-teal-950 space-y-1">
                   <p className="font-bold flex items-center gap-1.5 text-teal-900">
                     <Lightbulb className="w-4 h-4 text-amber-500 shrink-0" />
-                    <span>Why We Recommend UK Direct Debit:</span>
+                    <span>Why We Recommend BACS Direct Debit:</span>
                   </p>
                   <p className="italic text-teal-800 leading-relaxed">
-                    "UK Direct Debit helps us reduce payment processing costs, allowing us to keep our membership prices affordable while providing dedicated support to seniors."
+                    "BACS Direct Debit helps us reduce payment processing costs, allowing us to keep our membership prices affordable while providing dedicated support to seniors."
                   </p>
                 </div>
               </div>
@@ -549,7 +549,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ navigate }) => {
               Have questions about which plan is right for you?
             </h3>
             <p className="text-slate-300 text-sm sm:text-base font-medium">
-              Call our friendly British support desk on Freephone <strong className="text-teal-300 font-black">0800 888 2026</strong> (8am–8pm daily).
+              Call our friendly British support desk on Freephone <strong className="text-teal-300 font-black">0800 888 2026</strong> (9:00 AM – 5:30 PM daily).
             </p>
           </div>
           <button

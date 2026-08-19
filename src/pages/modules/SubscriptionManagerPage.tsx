@@ -515,7 +515,7 @@ export const SubscriptionManagerPage: React.FC<Props> = ({ navigate }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
             <div className="space-y-1.5">
-              <h4 className="font-bold text-base text-white">UK Direct Debit Guarantee</h4>
+              <h4 className="font-bold text-base text-white">BACS Direct Debit Guarantee</h4>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                 You can cancel any Direct Debit instruction anytime through your bank or building society before the payment date.
               </p>

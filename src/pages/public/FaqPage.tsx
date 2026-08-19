@@ -167,7 +167,7 @@ export const FaqPage: React.FC<FaqPageProps> = ({ navigate }) => {
       globalIndex: 16,
       category: 'billing',
       categoryLabel: 'Direct Debit & Billing',
-      question: 'What is the UK Direct Debit Guarantee?',
+      question: 'What is the BACS Direct Debit Guarantee?',
       answer: 'The Direct Debit Guarantee protects all UK bank account holders. If an error is made in the payment of your Direct Debit, you are entitled to a full and immediate refund from your bank or building society.'
     },
     {

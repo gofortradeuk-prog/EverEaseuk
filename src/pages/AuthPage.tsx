@@ -378,7 +378,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-bold text-slate-800">
                   <div className="flex items-center gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200">
                     <Building className="w-4 h-4 text-teal-700" />
-                    <span>UK Direct Debit</span>
+                    <span>BACS Direct Debit</span>
                   </div>
                   <div className="flex items-center gap-2 p-2 bg-slate-50 rounded-lg border border-slate-200">
                     <CreditCard className="w-4 h-4 text-purple-700" />
@@ -386,7 +386,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                   </div>
                 </div>
                 <p className="text-[11px] text-slate-500 font-semibold pt-1">
-                  ✓ Direct Debit payments are collected through Stripe and are protected by the UK Direct Debit Guarantee.
+                  ✓ Direct Debit payments are collected through Stripe and are protected by the BACS Direct Debit Guarantee.
                 </p>
               </div>
 
@@ -489,7 +489,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
                       <span>Secure Payment via Stripe</span>
                     </div>
                     <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
-                      For your financial security, <strong>we never collect or store credit card or bank details directly on our website</strong>. When you tap <em>"Continue to Secure Payment"</em>, you will proceed to our secure Stripe checkout to complete your <strong>UK Direct Debit</strong> or <strong>Card</strong> payment.
+                      For your financial security, <strong>we never collect or store credit card or bank details directly on our website</strong>. When you tap <em>"Continue to Secure Payment"</em>, you will proceed to our secure Stripe checkout to complete your <strong>BACS Direct Debit</strong> or <strong>Card</strong> payment.
                     </p>
                   </div>
 
@@ -683,7 +683,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({
 
                     <div className="flex items-center justify-center gap-2 text-xs text-slate-500 font-medium text-center">
                       <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                      <span>Secure registration • Payments collected via UK Direct Debit or Card on Stripe</span>
+                      <span>Secure registration • Payments collected via BACS Direct Debit or Card on Stripe</span>
                     </div>
                   </div>
                 </form>

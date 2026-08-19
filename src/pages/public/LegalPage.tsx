@@ -294,7 +294,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 <span>Reporting a Concern</span>
               </h3>
               <p className="text-slate-700 text-base sm:text-lg">
-                Anyone &mdash; a member, family member, or member of the public &mdash; can raise a safeguarding concern with EverEase at any time via our Freephone helpline (<strong>0800 888 2026</strong>, 8am&ndash;8pm daily) or by email to <strong>support@everease.co.uk</strong>. All concerns are treated seriously and in confidence.
+                Anyone &mdash; a member, family member, or member of the public &mdash; can raise a safeguarding concern with EverEase at any time via our Freephone helpline (<strong>0800 888 2026</strong>, 9:00 AM&ndash;5:30 PM daily) or by email to <strong>support@everease.co.uk</strong>. All concerns are treated seriously and in confidence.
               </p>
             </section>
 
@@ -340,7 +340,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Open 9:00 AM &ndash; 5:30 PM (Monday to Sunday, 365 days a year)
                   </p>
                 </div>
 
@@ -602,7 +602,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Open 9:00 AM &ndash; 5:30 PM (Monday to Sunday, 365 days a year)
                   </p>
                 </div>
 
@@ -748,7 +748,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Open 9:00 AM &ndash; 5:30 PM (Monday to Sunday, 365 days a year)
                   </p>
                 </div>
 
@@ -835,7 +835,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span><strong>&ldquo;Business Hours&rdquo;</strong> means 8am&ndash;8pm UK time, daily, in line with our published support hours.</span>
+                  <span><strong>&ldquo;Business Hours&rdquo;</strong> means 9:00 AM&ndash;5:30 PM UK time, daily, in line with our published support hours.</span>
                 </li>
               </ul>
             </section>
@@ -868,7 +868,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                           <span>UK Freephone: 0800 888 2026</span>
                         </div>
                       </td>
-                      <td className="p-4 sm:p-5 text-slate-700 font-medium">8am&ndash;8pm daily, including weekends &amp; bank holidays</td>
+                      <td className="p-4 sm:p-5 text-slate-700 font-medium">9:00 AM&ndash;5:30 PM daily, including weekends &amp; bank holidays</td>
                       <td className="p-4 sm:p-5 text-slate-700">Urgent questions, telephone check-ins, guidance calls, suspected fraud reports</td>
                     </tr>
                     <tr className="bg-slate-50/50 hover:bg-slate-100 transition-colors">
@@ -927,7 +927,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                       </tr>
                       <tr className="bg-purple-50/40 hover:bg-purple-50 transition-colors">
                         <td className="p-4 sm:p-5 font-bold text-purple-950">Complete + Family (£65/mo)</td>
-                        <td className="p-4 sm:p-5 text-slate-700">Mon&ndash;Sun, 8:00 AM &ndash; 8:00 PM UK Time</td>
+                        <td className="p-4 sm:p-5 text-slate-700">Mon&ndash;Sun, 9:00 AM &ndash; 5:30 PM UK Time</td>
                         <td className="p-4 sm:p-5 font-extrabold text-purple-900">Under 30 minutes during support hours (Express queue)</td>
                         <td className="p-4 sm:p-5 text-slate-700">Instant portal access; priority setup assistance within 12 hours</td>
                       </tr>
@@ -1096,7 +1096,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               <ul className="space-y-2 text-slate-700 text-base sm:text-lg pl-2">
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span>Schedule maintenance outside Business Hours (i.e. overnight, before 8am or after 8pm UK time);</span>
+                  <span>Schedule maintenance outside Business Hours (i.e. overnight, before 9:00 AM or after 5:30 PM UK time);</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">&bull;</span>
@@ -1283,7 +1283,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM GMT daily (Monday to Sunday, 365 days a year)
+                    Open 9:00 AM &ndash; 5:30 PM GMT daily (Monday to Sunday, 365 days a year)
                   </p>
                 </div>
 
@@ -1303,7 +1303,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
                 <p><strong>Registered Company:</strong> EverEase, registered in England &amp; Wales.</p>
-                <p><strong>Registered Office:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ.</p>
+                <p><strong>Registered Office:</strong> 160 City Road, Kemp House, London, EC1V 2NX.</p>
               </div>
             </section>
 
@@ -1319,7 +1319,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               <div className="flex flex-wrap items-center gap-y-1 gap-x-4 text-sm font-semibold text-slate-700">
                 <span><strong>Email:</strong> support@everease.co.uk</span>
                 <span><strong>Telephone:</strong> 0800 888 2026</span>
-                <span><strong>Support Hours:</strong> 8am&ndash;8pm daily</span>
+                <span><strong>Support Hours:</strong> 9:00 AM&ndash;5:30 PM daily</span>
               </div>
               <div className="text-xs font-bold text-slate-500 pt-1 flex flex-wrap items-center gap-2 border-t border-slate-200">
                 <span className="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md font-extrabold">Version 3.0</span>
@@ -1380,7 +1380,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">&bull;</span>
-                  <span>Calling <strong>0800 888 2026</strong>, available 8am&ndash;8pm daily</span>
+                  <span>Calling <strong>0800 888 2026</strong>, available 9:00 AM&ndash;5:30 PM daily</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">&bull;</span>
@@ -1671,7 +1671,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Support Hours: 8am&ndash;8pm daily
+                    Support Hours: 9:00 AM&ndash;5:30 PM daily
                   </p>
                 </div>
 
@@ -1684,7 +1684,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     support@everease.co.uk
                   </p>
                   <p className="text-xs text-slate-600">
-                    Support Hours: 8am&ndash;8pm daily
+                    Support Hours: 9:00 AM&ndash;5:30 PM daily
                   </p>
                 </div>
               </div>
@@ -1738,7 +1738,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-600 font-medium space-y-1">
                 <p className="font-bold text-slate-900">EverEase UK Safeguarding &amp; Digital Learning Ltd</p>
                 <p>Company Registration: England &amp; Wales (Registered in the United Kingdom)</p>
-                <p>Registered Office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
+                <p>Registered Office: 160 City Road, Kemp House, London, EC1V 2NX, United Kingdom</p>
                 <p>Information Commissioner&rsquo;s Office (ICO) Data Protection Registration: ZB884210</p>
                 <p className="text-xs text-slate-500 pt-1">This entity is the &ldquo;data controller&rdquo; responsible for your personal data.</p>
               </div>
@@ -2045,7 +2045,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Open 9:00 AM &ndash; 5:30 PM (Monday to Sunday)
                   </p>
                 </div>
 
@@ -2064,7 +2064,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Postal Address:</strong> Data Protection Officer, EverEase, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
+                <p><strong>Postal Address:</strong> Data Protection Officer, EverEase, 160 City Road, Kemp House, London, EC1V 2NX, United Kingdom.</p>
                 <p><strong>ICO Registration:</strong> ZB884210 (UK Data Protection Act 2018)</p>
               </div>
             </section>
@@ -2118,7 +2118,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-600 font-medium space-y-1">
                 <p className="font-bold text-slate-900">EverEase UK Safeguarding &amp; Digital Learning Ltd</p>
                 <p>Company Registration: England &amp; Wales (Registered in the United Kingdom)</p>
-                <p>Registered Office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom</p>
+                <p>Registered Office: 160 City Road, Kemp House, London, EC1V 2NX, United Kingdom</p>
                 <p>Information Commissioner&rsquo;s Office (ICO) Data Protection Registration: ZB884210</p>
               </div>
               <p className="text-slate-700 text-base sm:text-lg">
@@ -2207,7 +2207,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">•</span>
-                  <span>A UK freephone helpline, available during the hours shown on our website (currently 8am&ndash;8pm daily, subject to change);</span>
+                  <span>A UK freephone helpline, available during the hours shown on our website (currently 9:00 AM&ndash;5:30 PM daily, subject to change);</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-emerald-700 font-black mt-1">•</span>
@@ -2491,7 +2491,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                     0800 888 2026
                   </p>
                   <p className="text-xs font-semibold text-emerald-800">
-                    Open 8:00 AM &ndash; 8:00 PM (Monday to Sunday, 365 days a year)
+                    Open 9:00 AM &ndash; 5:30 PM (Monday to Sunday)
                   </p>
                 </div>
 
@@ -2510,7 +2510,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
               </div>
 
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-1">
-                <p><strong>Postal Address:</strong> EverEase, 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, United Kingdom.</p>
+                <p><strong>Postal Address:</strong> EverEase, 160 City Road, Kemp House, London, EC1V 2NX, United Kingdom.</p>
                 <p><strong>ICO Registration:</strong> ZB884210 (UK Data Protection Act 2018)</p>
               </div>
             </section>
@@ -2530,7 +2530,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type, navigate }) => {
                 This policy governs {config.subtitle.toLowerCase()}. EverEase operates under the laws of England and Wales and complies fully with the UK Data Protection Act 2018, the Consumer Rights Act 2015, and the BACS Direct Debit Scheme Rules.
               </p>
               <p>
-                For any inquiries regarding this policy or to request documentation in large print or braille, please call our UK freephone desk on <strong>0800 888 2026</strong> (8am&ndash;8pm daily) or email <strong>legal@everease.co.uk</strong>.
+                For any inquiries regarding this policy or to request documentation in large print or braille, please call our UK freephone desk on <strong>0800 888 2026</strong> (9:00 AM&ndash;5:30 PM daily) or email <strong>legal@everease.co.uk</strong>.
               </p>
             </div>
           </div>

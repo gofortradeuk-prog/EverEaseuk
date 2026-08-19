@@ -48,7 +48,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
       bullets: [
         'Transparent UK pricing with zero 7-day trial traps or unexpected surprises.',
         'Unique generated account password sent immediately to your email inbox.',
-        'Protected by Stripe security and the UK Direct Debit Guarantee scheme.'
+        'Protected by Stripe security and the BACS Direct Debit Guarantee scheme.'
       ],
       icon: <CreditCard className="w-8 h-8 text-teal-600" />
     },
@@ -108,7 +108,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
       bullets: [
         'Caregiver portal linking for adult children living elsewhere in the UK.',
         'Automated scam alert notifications sent to nominated family contacts.',
-        'Ongoing Freephone helpline (0800 888 2026) open 8am–8pm daily.'
+        'Ongoing Freephone helpline (0800 888 2026) open 9:00 AM – 5:30 PM daily.'
       ],
       icon: <Users className="w-8 h-8 text-teal-600" />
     }
@@ -260,7 +260,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
           </div>
 
           <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-medium">
-            For maximum security, EverEase never takes card details over unverified phone calls or insecure forms. All subscriptions are collected via Stripe using the UK Direct Debit Guarantee scheme. You are always notified in writing prior to any charge, and you can cancel anytime with a single click or phone call.
+            For maximum security, EverEase never takes card details over unverified phone calls or insecure forms. All subscriptions are collected via Stripe using the BACS Direct Debit Guarantee scheme. You are always notified in writing prior to any charge, and you can cancel anytime with a single click or phone call.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
@@ -353,7 +353,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ navigate }) => {
 
               <div className="flex items-center gap-2 p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200/70 text-amber-950 text-xs sm:text-sm font-bold">
                 <CheckCircle2 className="w-4 h-4 text-amber-700 shrink-0" />
-                <span>UK Direct Debit Guarantee Protected &bull; 3-Day Advance Notice</span>
+                <span>BACS Direct Debit Guarantee Protected &bull; 3-Day Advance Notice</span>
               </div>
             </div>
 

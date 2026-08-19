@@ -244,7 +244,7 @@ const MainRouter: React.FC = () => {
             </button>
           </div>
           <div className="text-slate-400 text-xs md:text-sm">
-            Freephone Helpline: <span className="text-white font-bold">0800 888 2026</span> • Open daily 8am to 8pm
+            Freephone Helpline: <span className="text-white font-bold">0800 888 2026</span> • Open daily 9:00 AM – 5:30 PM
           </div>
         </div>
       </footer>

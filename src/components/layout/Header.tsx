@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             >
               0800 888 2026
             </a>
-            <span className="text-xs text-slate-400 hidden md:inline font-medium">(Free 8am–8pm 7 days a week)</span>
+            <span className="text-xs text-slate-400 hidden md:inline font-medium">(Free 9:00 AM – 5:30 PM 7 days a week)</span>
           </div>
 
           {/* Quick Accessibility Controls */}

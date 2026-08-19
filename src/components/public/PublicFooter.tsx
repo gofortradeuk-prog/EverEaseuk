@@ -5,10 +5,9 @@ import {
   Headphones, 
   FileCheck2, 
   CheckCircle2, 
-  PhoneCall, 
+  Phone,
   Mail, 
-  HeartHandshake,
-  ExternalLink,
+  MapPin,
   CreditCard
 } from 'lucide-react';
 import { useAccessibility } from '../../contexts/AccessibilityContext';
@@ -67,9 +66,9 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
       </div>
 
       {/* 2. Main Footer Body */}
-      <div className="w-full max-w-[1500px] mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="w-full max-w-[1500px] mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand & Purpose */}
-        <div className="md:col-span-2 space-y-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-teal-600 flex items-center justify-center text-white shadow">
               <ShieldCheck className="w-6 h-6" />
@@ -82,26 +81,15 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
             </div>
           </div>
 
-          <p className="text-slate-300 text-sm leading-relaxed max-w-lg">
+          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
             EverEase provides plain-English scam protection, step-by-step digital guidance, life reminders, household management, and caring family connections. Designed specifically to empower older adults with confidence, dignity, and independence online.
           </p>
 
-          {/* Helpline box */}
-          <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-4 inline-block">
-            <div className="text-xs text-teal-400 font-bold uppercase tracking-wider">
-              Freephone Support Helpline
-            </div>
-            <div className="flex items-center gap-2 mt-1">
-              <PhoneCall className="w-5 h-5 text-teal-400" />
-              <a href="tel:08008882026" className="text-xl font-black text-white hover:text-teal-300 transition-colors">
-                0800 888 2026
-              </a>
-              <span className="text-xs text-slate-400 ml-2">(8am – 8pm daily)</span>
-            </div>
-            <div className="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-slate-400" />
-              <span>Email: support@everease.co.uk</span>
-            </div>
+          <div className="pt-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-300 bg-teal-950/60 border border-teal-800/80 px-2.5 py-1 rounded-lg">
+              <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
+              Direct Debit Guarantee protected
+            </span>
           </div>
         </div>
 
@@ -177,6 +165,55 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
           </ul>
         </div>
 
+        {/* Contact Section */}
+        <div className="space-y-3" id="footer-contact-section">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-teal-400">
+            Contact
+          </h3>
+          <div className="space-y-3.5 text-xs sm:text-sm">
+            {/* Address */}
+            <div className="flex items-start gap-2.5">
+              <MapPin className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-xs font-bold text-slate-200">Address</p>
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mt-0.5">
+                  160 City Road<br />
+                  Kemp House<br />
+                  London, EC1V 2NX
+                </p>
+              </div>
+            </div>
+
+            {/* Phone */}
+            <div className="flex items-start gap-2.5">
+              <Phone className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-xs font-bold text-slate-200">Phone</p>
+                <a 
+                  href="tel:+443304010019" 
+                  className="text-slate-300 hover:text-teal-300 transition-colors text-xs sm:text-sm font-semibold block mt-0.5"
+                >
+                  +44 (0) 330 401 0019
+                </a>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-start gap-2.5">
+              <Mail className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-xs font-bold text-slate-200">Email</p>
+                <a 
+                  href="mailto:support@evereaseuk.com" 
+                  className="text-slate-300 hover:text-teal-300 transition-colors text-xs sm:text-sm font-semibold block mt-0.5 break-all"
+                >
+                  support@evereaseuk.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Safeguarding & Direct Debit Guarantee */}
         <div className="space-y-3">
           <h3 className="text-xs font-bold uppercase tracking-wider text-teal-400">
@@ -191,7 +228,7 @@ export const PublicFooter: React.FC<PublicFooterProps> = ({ navigate }) => {
               Direct Debit Guarantee
             </div>
             <p className="text-slate-300 text-[11px] leading-relaxed">
-              Direct Debit payments are collected securely via Stripe and fully protected under the UK Direct Debit Guarantee. You can cancel at any time with no lock-in.
+              Direct Debit payments are collected securely via Stripe and fully protected under the BACS Direct Debit Guarantee. You can cancel at any time with no lock-in.
             </p>
           </div>
         </div>
